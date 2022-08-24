@@ -19,5 +19,7 @@ Programming Languages I enjoy to work with:
 <hr>
 
 ### Other Accounts
-<p>Let's connect on <a href="https://www.linkedin.com/in/saad-azam-9113011b8/">Linkedin</a></p>
-<p>Check out some of my work at <a href="https://www.kaggle.com/sadmadlad">Kaggle </a></p>
+<ul>
+<li>Let's connect on <a href="https://www.linkedin.com/in/saad-azam-9113011b8/">Linkedin</a></li>
+<li>Check out some of my work at <a href="https://www.kaggle.com/sadmadlad">Kaggle </a></li>
+</ul>
