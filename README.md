@@ -12,7 +12,6 @@ I am Saad Azam. My interests include:
 Programming Languages I enjoy to work with:
 <ul>
   <li>Python</li>
-  <li>Dart</li> 
   <li>C++</li>
   <li>Julia (recently)</li>
 </ul>
