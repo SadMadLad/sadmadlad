@@ -14,6 +14,7 @@ Programming Languages I enjoy to work with:
   <li>Python</li>
   <li>C++</li>
   <li>Julia (recently)</li>
+  <li>Dart</li>
 </ul>
 
 <hr>
