@@ -1,7 +1,5 @@
 # Hi! I am Saad
 
-![Welcome](https://media.giphy.com/media/8PyTvI5EOu9LbAm8uS/giphy.gif)
-
 A software developer who likes Machine Learning and Data Science.
 
 ![](https://komarev.com/ghpvc/?username=sadmadlad&color=blueviolet&style=flat-square)
@@ -45,6 +43,9 @@ A software developer who likes Machine Learning and Data Science.
 [![image](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=Kaggle&logoColor=white)](https://www.kaggle.com/sadmadlad)
 [![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saad-azam-9113011b8/)
 [![image](https://img.shields.io/badge/UpWork-6FDA44?style=for-the-badge&logo=Upwork&logoColor=white)](https://www.upwork.com/freelancers/saada126)
+
+## Portfolio Website
+[![image](https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://sadmadlad.github.io/sadmadlad/)
 
 
 
