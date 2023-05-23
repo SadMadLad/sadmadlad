@@ -4,9 +4,9 @@ export default function NavBar() {
       <h1 className="text-xl sm:text-2xl lg:text-4xl">Muhammad Saad Azam</h1>
 
       <nav className="hidden sm:flex gap-6 lg:gap-10 text-xl lg:text-2xl">
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-        <a href="#">Kaggle</a>
+        <a href="https://www.linkedin.com/in/saad-azam-9113011b8/">LinkedIn</a>
+        <a href="https://github.com/SadMadLad">GitHub</a>
+        <a href="https://www.kaggle.com/sadmadlad">Kaggle</a>
       </nav>
     </header>
   )
