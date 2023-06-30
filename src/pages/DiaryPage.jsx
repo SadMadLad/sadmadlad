@@ -9,7 +9,9 @@ export default function DIaryPage() {
       <Hero />
       <div className="w-full md:w-3/4">
         <Section />
-
+        <Section />
+        <Section />
+        <Section />
       </div>
     </div>
   )

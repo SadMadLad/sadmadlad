@@ -10,9 +10,9 @@ export default function DiaryEntry() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="py-4 px-2"
+      className="px-2"
     >
-      <div className="flex flex-row gap-2 items-center border-b border-b-lite pt-1 pb-2">
+      <div className="flex flex-row gap-2 items-center border-b border-b-lite">
         <h5 className="font-bold text-lg">Complex Password Validation Devise</h5>
         <motion.div animate={{ rotate: isExpanded ? 180 : 0, cursor: 'pointer' }} onClick={() => setExpanded(!isExpanded)}><ChevronDownIcon className="w-6 h-6" /></motion.div>
       </div>
@@ -22,7 +22,7 @@ export default function DiaryEntry() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col gap-2.5 py-4"
+            className="flex flex-col gap-2.5"
           >
             <div className="flex flex-col gap-0.5">
               <span><b>Type: </b><span>Bug</span></span>
