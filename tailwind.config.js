@@ -20,5 +20,16 @@ export default {
       }
     },
   },
+  purge: {
+
+  },
+  safelist: [
+    'bg-zinc-700',
+    'text-pink-500',
+    'text-purple-500',
+    'text-orange-500',
+    'text-sky-500',
+    'whitespace-pre-wrap'
+  ],
   plugins: [],
 }
