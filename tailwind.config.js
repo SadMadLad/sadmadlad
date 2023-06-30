@@ -20,9 +20,6 @@ export default {
       }
     },
   },
-  purge: {
-
-  },
   safelist: [
     'bg-zinc-700',
     'text-pink-500',
