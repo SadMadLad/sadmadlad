@@ -26,7 +26,11 @@ export default {
     'text-purple-500',
     'text-orange-500',
     'text-sky-500',
-    'whitespace-pre-wrap'
+    'text-yellow-500',
+    'text-green-500',
+    'break-words',
+    'whitespace-pre-wrap',
+    'list-decimal'
   ],
   plugins: [],
 }
