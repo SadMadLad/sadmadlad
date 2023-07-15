@@ -6,7 +6,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export default function DiaryEntry({ title, type, updatedOn, description, solution }) {
-  const [isExpanded, setExpanded] = useState(true)
+  const [isExpanded, setExpanded] = useState(false)
   const typeTag = typeName => {
     if (typeName === 'Bug') { return <button className="bg-red-600 px-1.5 py-0.5 rounded font-semibold">{typeName}</button> }
     if (typeName === 'Feature') { return <button className="bg-green-600 px-1.5 py-0.5 rounded font-semibold">{typeName}</button> }

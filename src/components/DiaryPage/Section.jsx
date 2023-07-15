@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Section({ title, entries }) {
   const sortedEntries = entries.sort((a, b) => a.title > b.title)
-  const [isExpanded, setExpanded] = useState(true)
+  const [isExpanded, setExpanded] = useState(false)
 
   return (
     <section className="px-2 md:px-0">
