@@ -4,7 +4,7 @@ import Section from '../components/DiaryPage/Section'
 import Diary from '../assets/diary.json'
 
 export default function DiaryPage() {
-  const sortedDiary = Diary.sort((a, b) => a.title > b.title )
+  const sortedDiary = Diary.sort((a, b) => a.title > b.title)
 
   return (
     <div className="flex flex-col items-center pb-6">
