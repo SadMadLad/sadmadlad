@@ -12,8 +12,8 @@
           "has_code_snippet": true,
           "text": "In a typical devise model (which in my case was <code class=\"bg-zinc-700\">User</code>), there is no field/attribute named password. Instead, the encrypted password is stored in the database. So, how does Devise takes the input password? Actually, it stores the input password temporarily as <b>instance variable</b>, and I was unable to apply validations on the password field because on update, there was no instance variable of password being passed. This snippet basically checks if the instance of password variable is present, and allows it to be blank if the user is being updated. Otherwise, it checks for the specified regex expression. When it comes to creating new user, the presence of password can be checked by the length which is specified in devise's initializer file. The keypoint is understanding how devise manages passwords.",
           "code_snippet": {
-            "language": "javascript",
-            "code": "const Component = () => {\n    const codeString = '(num) => num + 1';\n    return (\n      <SyntaxHighlighter language=\"javascript\" style={dark}>\n        {codeString}\n      </SyntaxHighlighter>\n    );\n};\n"
+            "language": "ruby",
+            "code": "validate :password_regex\n\ndef password_regex\n  if password.blank? || password =~ /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z!@#$%^&*]/\n    return\n  end\n\n  errors.add :password, :bad_password\nend\n"
           }
         }
       },
