@@ -7,14 +7,60 @@
         "type": "Bug",
         "updated_on": "28th June, 2023",
         "description": "I had to apply complex validation (like presence of a special character and a number) for password. I initially did it like this <code class=\"bg-zinc-700\">validates :password, ..validations</code>. And on the app, I also had to update other info (like name) for the user. With this implementation, the password was coming out to be <code class=\"bg-zinc-700\">nil</code>. At first, I thought that updating user required password, but that was not the case.",
-        "solution": "In a typical devise model (which in my case was <code class=\"bg-zinc-700\">User</code>), there is no field/attribute named password. Instead, the encrypted password is stored in the database. So, how does Devise takes the input password? Actually, it stores the input password temporarily as <b>instance variable</b>, and I was unable to apply validations on the password field because on update, there was no instance variable of password being passed. At the end, my code snippet looked something like this: <pre class=\"bg-zinc-700 text-white whitespace-pre-wrap\"><code> <span class=\"text-pink-500\">def</span> <span class=\"text-orange-500\">password_regex</span> <span class=\"text-pink-500\">\n \tif</span> password.blank? <span class=\"text-pink-500\">||</span> password =~ <span class=\"text-purple-500\">/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z!@#$%^&*]/</span>\n \t\t<span class=\"text-pink-500\">return</span>\n \t<span class=\"text-pink-500\">end</span>\n \terrors.add <span class=\"text-sky-500\">:password</span>, <span class=\"text-sky-500\">:bad_password</span>\n <span class=\"text-pink-500\">end</span>\n</code></pre>This snippet basically checks if the instance of password variable is present, and allows it to be blank if the user is being updated. Otherwise, it checks for the specified regex expression. When it comes to creating new user, the presence of password can be checked by the length which is specified in devise's initializer file. The keypoint is understanding how devise manages passwords."
+        "solution": {
+          "has_steps": false,
+          "has_code_snippet": true,
+          "text": "In a typical devise model (which in my case was <code class=\"bg-zinc-700\">User</code>), there is no field/attribute named password. Instead, the encrypted password is stored in the database. So, how does Devise takes the input password? Actually, it stores the input password temporarily as <b>instance variable</b>, and I was unable to apply validations on the password field because on update, there was no instance variable of password being passed. This snippet basically checks if the instance of password variable is present, and allows it to be blank if the user is being updated. Otherwise, it checks for the specified regex expression. When it comes to creating new user, the presence of password can be checked by the length which is specified in devise's initializer file. The keypoint is understanding how devise manages passwords.",
+          "code_snippet": {
+            "language": "javascript",
+            "code": "const Component = () => {\n    const codeString = '(num) => num + 1';\n    return (\n      <SyntaxHighlighter language=\"javascript\" style={dark}>\n        {codeString}\n      </SyntaxHighlighter>\n    );\n};\n"
+          }
+        }
       },
       {
         "title": "Send invitation links to newly added users (Devise)",
         "type": "Feature",
         "updated_on": "30th June, 2023",
         "description": "In an ongoing project, I was asked to implement a feature where an admin creates a user, and an invitation link is sent to the user on the specified email address. The invited user sets the password and can sign in successfully.",
-        "solution": "This feature seemed daunting at first. I assumed I had to use a lot of gems like web tokens and had to do a lot of stuff for this. As I was using devise, I came up with a simpler solution. I looked at the source code of Devise and inspected how it sends links to reset passwords. I decided to leverage this approach to send invitation links. If I had to summarize the procedure, it would look like this: <ol class=\"list-inside list-decimal\"><li> Set a mailer for Devise. The new mailer can be set in <code class=\"bg-zinc-700\">initializers/devise.rb</code>file. Our custom mailer should be a child of <code class=\"bg-zinc-700\">Devise::Mailer</code>. Include the <code>UrlHelpers</code> and set the template path. You can create your custom mailer with something like this: <pre class=\"whitespace-pre-wrap break-words bg-zinc-700\"> <span class=\"text-pink-500\">class</span> <span class=\"text-yellow-500\">ExtendedDeviseMailer < Devise::Mailer</span>\n \tinclude <span class=\"text-yellow-500\">Devise::Controllers::UrlHelpers</span>\n \thelper <span class=\"text-sky-500\">:application</span>\n \tdefault <span class=\"text-sky-500\">template_path:</span> <span class=\"text-green-500\">'devise/mailer'</span>\n <span class=\"text-pink-500\">end</span></pre></li><li> Add these two methods in your <code class=\"bg-zinc-700\">User</code> model. These methods use the reset password token and then send an email notification. If you do not want to use the reset password token, you can add a new token field in the table of users, and generate the token accordingly. This might be a better way to achieve this, but will require more code. (You can write these methods as a single method, but I kept on copying the way devise sends reset password tokens.) <pre class=\"whitespace-pre-wrap break-words bg-zinc-700\"> <span class=\"text-pink-500\">def</span> <span class=\"text-orange-500\">send_set_password_instructions</span>\n \ttoken <span class=\"text-pink-500\">=</span> set_reset_password_token\n \t<span class=\"text-orange-500\">send_set_password_instructions_notification</span>(token)\n \ttoken\n <span class=\"text-pink-500\">end</span>\n\n <span class=\"text-pink-500\">def</span> <span class=\"text-orange-500\">send_set_password_instructions_notification</span>(token)\n \t<span class=\"text-orange-500\">send_devise_notification</span>(<span class=\"text-sky-500\">:set_password_instructions</span>, token, {})\n <span class=\"text-pink-500\">end</span></pre></li><li class=\"break-words\"> Add a method in your mailer that will send the email to the user, and create the view for the body of the email. Pass the token in the URL. With this, by using something like <code class=\"bg-zinc-700\">@user.send_set_password_instructions</code> in your controller will send the URL to set the password. <pre class=\"whitespace-pre-wrap break-words bg-zinc-700\"> <span class=\"text-pink-500\">def</span> <span class=\"text-orange-500\">set_password_instructions</span>(record, token, opts = {})\n @token = token\n \t<span class=\"text-orange-500\">devise_mail</span>(record, <span class=\"text-sky-500\">:set_password_instructions</span>, opts)\n <span class=\"text-pink-500\">end</span></pre></li><li>Now, create a route, a method in your controller and a view to verify the token and set the password. You can check the <code class=\"bg-zinc-700\">#update</code> action of Devise's <code class=\"bg-zinc-700\">PasswordsController</code> to see how you can achieve this.</li></ol>"
+        "solution": {
+          "has_steps": true,
+          "has_intro": true,
+          "intro": {
+            "has_code_snippet": false,
+            "text": "This feature seemed daunting at first. I assumed I had to use a lot of gems like web tokens and had to do a lot of stuff for this. As I was using devise, I came up with a simpler solution. I looked at the source code of Devise and inspected how it sends links to reset passwords. I decided to leverage this approach to send invitation links. If I had to summarize the procedure, it would look like this: "
+          },
+          "has_outro": false,
+          "steps": [
+            {
+              "text": "Set a mailer for Devise. The new mailer can be set in <code class=\"bg-zinc-700\">initializers/devise.rb</code>file. Our custom mailer should be a child of <code class=\"bg-zinc-700\">Devise::Mailer</code>. Include the <code>UrlHelpers</code> and set the template path. You can create your custom mailer with something like this: ",
+              "has_code_snippet": true,
+              "code_snippet": {
+                "language": "ruby",
+                "code": "class ExtendedDeviseMailer < Devise::Mailer\n  include Devise::Controllers::UrlHelpers\n\n  helper :application\n  default template_path: 'devise/mailer'\nend\n"
+              }
+            },
+            {
+              "text": "Add these two methods in your <code class=\"bg-zinc-700\">User</code> model. These methods use the reset password token and then send an email notification. If you do not want to use the reset password token, you can add a new token field in the table of users, and generate the token accordingly. This might be a better way to achieve this, but will require more code. (You can write these methods as a single method, but I kept on copying the way devise sends reset password tokens.)",
+              "has_code_snippet": true,
+              "code_snippet": {
+                "language": "ruby",
+                "code": "def send_set_password_instructions\n  return if admin?\n\n  token = set_reset_password_token\n  send_set_password_instructions_notification(token)\n\n  token\nend\n\ndef send_set_password_instructions_notification(token)\n  send_devise_notification(:set_password_instructions, token, {})\nend\n"
+              }
+            },
+            {
+              "text": "Add a method in your mailer that will send the email to the user, and create the view for the body of the email. Pass the token in the URL. With this, by using something like <code class=\"bg-zinc-700\">@user.send_set_password_instructions</code> in your controller, this will send the URL to set the password.",           
+              "has_code_snippet": true,
+              "code_snippet": {
+                "language": "ruby",
+                "code": "def set_password_instructions(record, token, opts = {})\n  @token = token\n  devise_mail(record, :set_password_instructions, opts)\nend\n"
+              }
+            },
+            {
+              "text": "Now, create a route, a method in your controller and a view to verify the token and set the password. You can check the <code class=\"bg-zinc-700\">#update</code> action of Devise's <code class=\"bg-zinc-700\">PasswordsController</code> to see how you can achieve this.</li>",
+              "has_code_snippet": false
+            }
+          ]
+        }
       }
     ]
   }
