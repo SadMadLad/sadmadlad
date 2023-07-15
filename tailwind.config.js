@@ -20,17 +20,6 @@ export default {
       }
     },
   },
-  safelist: [
-    'bg-zinc-700',
-    'text-pink-500',
-    'text-purple-500',
-    'text-orange-500',
-    'text-sky-500',
-    'text-yellow-500',
-    'text-green-500',
-    'break-words',
-    'whitespace-pre-wrap',
-    'list-decimal'
-  ],
+  safelist: ['bg-zinc-700'],
   plugins: [],
 }
