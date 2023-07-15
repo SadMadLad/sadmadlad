@@ -1,11 +1,15 @@
+import SolutionWithSteps from "./SolutionWithSteps"
+import CodeParagraph from "../shared/CodeParagraph"
+
 import { ChevronDownIcon } from "@heroicons/react/20/solid"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export default function DiaryEntry({ title, type, updatedOn, description, solution }) {
-  const [isExpanded, setExpanded] = useState(false)
+  const [isExpanded, setExpanded] = useState(true)
   const typeTag = typeName => {
-    if (typeName === 'Bug') { return <button className="bg-red-600 px-1.5 py-0.5 rounded font-semibold">{typeName}</button>}
+    if (typeName === 'Bug') { return <button className="bg-red-600 px-1.5 py-0.5 rounded font-semibold">{typeName}</button> }
+    if (typeName === 'Feature') { return <button className="bg-green-600 px-1.5 py-0.5 rounded font-semibold">{typeName}</button> }
   }
   return (
     <motion.div
@@ -36,7 +40,7 @@ export default function DiaryEntry({ title, type, updatedOn, description, soluti
             </div>
             <div>
               <h6 className="font-semibold">Solution: </h6>
-              <p dangerouslySetInnerHTML={{ __html: solution }} />
+              { solution.has_steps ? <SolutionWithSteps solution={solution} /> : <CodeParagraph paragraph={solution} /> }
             </div>
           </motion.div>
         }
