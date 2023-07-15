@@ -1,9 +1,9 @@
-import JavaScript from "/JavaScript.png"
-import Python from "/Python.png"
-import Html from "/Html.png"
-import Cpp from "/Cpp.png"
-import Ruby from "/Ruby.png"
-import Css from "/Css.png"
+import JavaScript from "/technologies/JavaScript.png"
+import Python from "/technologies/Python.png"
+import Html from "/technologies/Html.png"
+import Cpp from "/technologies/Cpp.png"
+import Ruby from "/technologies/Ruby.png"
+import Css from "/technologies/Css.png"
 
 export default function ProgrammingLanguages() {
   return (
