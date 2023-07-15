@@ -8,6 +8,7 @@ export default function Hero() {
       <div className="flex flex-row gap-2">
         <button className="shadow-xl border border-opacity-25 border-lite font-serif bg-darklite text-2xl px-6 py-4 hover:bg-lite hover:text-darklite duration-300 transition-colors">Check Projects</button>
         <Link to="/diary" className="shadow-xl border border-opacity-25 border-lite font-serif bg-darklite text-2xl px-6 py-4 hover:bg-lite hover:text-darklite duration-300 transition-colors">Diary</Link>
+        <Link to="/command-lines" className="shadow-xl border border-opacity-25 border-lite font-serif bg-darklite text-2xl px-6 py-4 hover:bg-lite hover:text-darklite duration-300 transition-colors">Command Lines</Link>
       </div>
     </main>
   )
