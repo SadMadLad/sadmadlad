@@ -1,0 +1,4 @@
+[
+  { "command": "cat <path/to/filename>", "description": "Open file in terminal." },
+  { "command": "sudo fuser -k <port>/<protocol>", "description": "Kill a web process running on the specific port. Where port is the <code class=\"bg-zinc-700\">port</code> on which the process is running, and the <code class=\"bg-zinc-700\">protocol</code> is mostly <code class=\"bg-zinc-700\">tcp</code> or <code class=\"bg-zinc-700\">udp</code>.\n" }
+]

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import LandingPage from './pages/LandingPage'
 import DiaryPage from './pages/DiaryPage'
+import CommandLinesPage from './pages/CommandLinesPage'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/diary' element={<DiaryPage />} />
+        <Route path='/command-lines' element={<CommandLinesPage />} />
       </Routes>
     </BrowserRouter>
   )
