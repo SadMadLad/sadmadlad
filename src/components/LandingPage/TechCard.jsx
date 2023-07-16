@@ -1,3 +1,4 @@
+// A Card of a specific technology with all frameworks attached
 export default function TechCard({ heading, leadingIcon, description, techStacks }) {
   return (
     <li className="bg-darklite border-b-4 border-b-black border-opacity-40 p-8 flex flex-col gap-8 justify-between">

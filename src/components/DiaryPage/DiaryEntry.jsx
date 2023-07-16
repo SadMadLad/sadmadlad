@@ -1,10 +1,12 @@
+// My Components
 import SolutionWithSteps from "./SolutionWithSteps"
 import CodeParagraph from "../shared/CodeParagraph"
-
+// Node Imports
 import { ChevronDownIcon } from "@heroicons/react/20/solid"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
+// One single entry component of Diary
 export default function DiaryEntry({ title, type, updatedOn, description, solution }) {
   const [isExpanded, setExpanded] = useState(false)
   const typeTag = typeName => {

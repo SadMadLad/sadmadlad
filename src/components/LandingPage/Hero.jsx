@@ -1,5 +1,7 @@
+// Node Imports
 import { Link } from 'react-router-dom'
 
+// Hero section of the landing page
 export default function Hero() {
   return (
     <main className="my-20 flex flex-col gap-10 items-center px-8">

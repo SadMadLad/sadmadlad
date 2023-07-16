@@ -1,8 +1,11 @@
+// My Component
+import Note from './Note'
+// Node Imports
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
-import Note from './Note'
 import { motion, AnimatePresence } from 'framer-motion'
 
+// Section to render notes for a specific topic
 export default function Section({ title, notes }) {
   const sortedNotes = notes.sort((a, b) => a.title > b.title)
   const [isExpanded, setExpanded] = useState(false)

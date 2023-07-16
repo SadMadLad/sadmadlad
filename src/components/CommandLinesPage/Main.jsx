@@ -1,7 +1,10 @@
+// Assets
 import CommandLines from '../../assets/command_lines.json'
+// Node Imports
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
+// List of all the Command Lines
 export default function Main() {
   return (
     <main className="px-5">

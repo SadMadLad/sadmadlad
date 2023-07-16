@@ -1,5 +1,7 @@
+// My Component
 import CodeParagraph from '../shared/CodeParagraph'
 
+// To render those solutions that have multiple steps
 export default function SolutionWithSteps({ solution }) {
   const { has_intro, has_outro, steps } = solution
 

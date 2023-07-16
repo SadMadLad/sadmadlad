@@ -1,3 +1,4 @@
+// Assets
 import JavaScript from "/technologies/JavaScript.png"
 import Python from "/technologies/Python.png"
 import Html from "/technologies/Html.png"
@@ -5,6 +6,7 @@ import Cpp from "/technologies/Cpp.png"
 import Ruby from "/technologies/Ruby.png"
 import Css from "/technologies/Css.png"
 
+// Programming Languages that I have worked with
 export default function ProgrammingLanguages() {
   return (
     <section className="px-8 bg-darklite min-w-full py-14 flex gap-10 lg:justify-center overflow-x-auto no-scrollbar">

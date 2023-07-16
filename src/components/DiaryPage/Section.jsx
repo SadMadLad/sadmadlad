@@ -1,8 +1,11 @@
+// My Components
+import DiaryEntry from './DiaryEntry'
+// Node Imports
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
-import DiaryEntry from './DiaryEntry'
 import { motion, AnimatePresence } from 'framer-motion'
 
+// Section to render one topic (Like Python, Ruby on Rails etc.)
 export default function Section({ title, entries }) {
   const sortedEntries = entries.sort((a, b) => a.title > b.title)
   const [isExpanded, setExpanded] = useState(false)

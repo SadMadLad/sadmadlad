@@ -1,9 +1,11 @@
+// My Components
 import CodeParagraph from "../shared/CodeParagraph"
-
+// Node Imports
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDownIcon } from "@heroicons/react/20/solid"
 
+// Component to render one single note
 export default function Note({ title, paragraphs, updatedOn }) {
   const [isExpanded, setExpanded] = useState(false)
 

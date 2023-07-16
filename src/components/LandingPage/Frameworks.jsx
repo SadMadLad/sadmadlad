@@ -1,3 +1,6 @@
+// My Components
+import TechCard from "./TechCard"
+// Assets
 import Frontend from "/technologies/Frontend.png"
 import Backend from "/technologies/Backend.png"
 import Ml from "/technologies/ML.png"
@@ -22,8 +25,7 @@ import Rust from "/technologies/Rust.png"
 import Unity from "/technologies/Unity.png"
 import BeautifulSoup4 from "/technologies/BeautifulSoup4.png"
 
-import TechCard from "./TechCard"
-
+// Frameworks that I have worked with
 export default function Frameworks() {
   const techCardsData = [
     { heading: 'Frontend', leadingIcon: Frontend, description: 'Experienced with many frontend technologies, ranging from CSS frameworks to JavaScript ones.', techStacks: [React, Vite, Tailwind, Hotwired] },
