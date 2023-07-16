@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Ruby on Rails",
+    "notes": [
+      {
+        "title": "How do Turbo Frames work seemingly",
+        "updated_on": "16 July, 2023",
+        "paragraphs": [
+          {
+            "text": "On a surface level, turbo frames allow to target certain frames from other or within the same pages. They do this by intercepting the link and targetting the <code class=\"bg-zinc-700\"><turbo-frame></code> by its id.",
+            "has_code_snippet": false
+          },
+          {
+            "text": "As an example, let's have a search form for users. The forms fetches the users, targets the turbo frame with id of users and shows the users in that frame.",
+            "has_code_snippet": true,
+            "code_snippet": {
+              "language": "erb",
+              "code": "<%= form_with url: users_path, class: 'flex-1', method: :get, data: { turbo_frame: 'users' } do |f| %>\n    <%= f.text_field :query %>\n<% end %>\n"
+            }
+          },
+          {
+            "text": "The form on the page looks like this:",
+            "has_code_snippet": true,
+            "code_snippet": {
+              "language": "erb",
+              "code": "<%= turbo_frame_tag 'users' do %>\n  <%= render(partial: 'user', collection: @users) %>\n<% end %>\n"
+            }
+          },
+          {
+            "text": "And the controller this form hits looks like this:",
+            "has_code_snippet": true,
+            "code_snippet": {
+              "language": "ruby",
+              "code": "class UsersController < ApplicationController  \n  def index\n    @users = current_company.users.active.search(params)\n  end\nend\n"
+            }
+          },
+          {
+            "text": "Now, when the search happens, the form targets the frame with the id of \"users\" and updates the frame accordingly. Quite cool. In a similar manner, we can have a frame on an entirely different page and the form can target that specific frame and fetch the results on the page on which you are staying.",
+            "has_code_snippet": false
+          }
+        ] 
+      }
+    ]
+  }
+]
