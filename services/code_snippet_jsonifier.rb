@@ -1,5 +1,4 @@
 require 'json'
-
 class CodeSnippetJsonifier
   attr_reader :path_to_file, :code
 
