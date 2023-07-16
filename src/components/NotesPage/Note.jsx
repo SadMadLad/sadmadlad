@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDownIcon } from "@heroicons/react/20/solid"
 
 // Component to render one single note
-export default function Note({ title, paragraphs, updatedOn }) {
+export default function Note({ title, paragraphs }) {
   const [isExpanded, setExpanded] = useState(false)
 
   return (
@@ -28,7 +28,6 @@ export default function Note({ title, paragraphs, updatedOn }) {
             exit={{ opacity: 0 }}
             className="flex flex-col gap-2.5 py-2"
           >
-            <h6 className="font-semibold">Updated On: {updatedOn}</h6>
             { paragraphs.map((paragraph, index) => <CodeParagraph key={index} paragraph={paragraph} />)}
           </motion.div>}
         </AnimatePresence>

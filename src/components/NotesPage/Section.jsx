@@ -23,7 +23,6 @@ export default function Section({ title, notes }) {
             key={index}
             title={note.title}
             paragraphs={note.paragraphs}
-            updatedOn={note.updated_on}
           />)
         }
       </AnimatePresence>
