@@ -4,10 +4,10 @@
     "notes": [
       {
         "title": "How do Turbo Frames work seemingly",
-        "updated_on": "16 July, 2023",
+        "updated_on": "17 July, 2023",
         "paragraphs": [
           {
-            "text": "On a surface level, turbo frames allow to target certain frames from other or within the same pages. They do this by intercepting the link and targetting the <code class=\"bg-zinc-800\"><turbo-frame></code> by its id.",
+            "text": "On a surface level, turbo frames allow to target certain frames from other or within the same pages. They do this by intercepting the link and targetting the <code class=\"bg-zinc-800\">turbo-frame</code> by its id.",
             "has_code_snippet": false
           },
           {
@@ -37,6 +37,9 @@
           {
             "text": "Now, when the search happens, the form targets the frame with the id of \"users\" and updates the frame accordingly. Quite cool. In a similar manner, we can have a frame on an entirely different page and the form can target that specific frame and fetch the results on the page on which you are staying.",
             "has_code_snippet": false
+          },
+          {
+            "text": "Furthermore, the links within a frame work differently. If a link is clicked with in a frame (let's say, the link takes you to a new page), turbo will intercept the link and try to fetch the frame of the same id from the newer page. The behavior of links can be controlled using different attributes like <code class=\"bg-zinc-800\">data-turbo-frame</code> etc."
           }
         ] 
       }
@@ -62,6 +65,47 @@
             "has_code_snippet": false
           }
         ]
+      },
+      {
+        "title": "Variables, Constants, Mutability and Shadowing",
+        "paragraphs": [
+          {
+            "text": "Variables in Rust are declared using <code class=\"bg-zinc-800\">let</code> keyword. By default, all the variables are immutable in Rust, which means their value cannot be changed.\n",
+            "has_code_snippet": false
+          },
+          {
+            "text": "To create a mutable value in Rust, we would need to use the <code class=\"bg-zinc-800\">mut<code>keyword.\n",
+            "has_code_snippet": false
+          },
+          {
+            "text": "Constants in Rust are declared using the <code class=\"bg-zinc-800\">const</code> keyword. By convention, the variable name is always capitalized.\n",
+            "has_code_snippet": false 
+          },
+          {
+            "text": "Shadowing allows you to override the previous value of the same variable. Basically, it just creates a new variable. An example:",
+            "has_code_snippet": true,
+            "code_snippet": {
+              "language": "rust",
+              "code": "fn main() {\n    let x = 10;\n    let x = x + 1; // Shadowing\n    println!(\"x's value: {x}\");\n}\n"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Shadowing vs Mutable Variable",
+        "paragraphs": [
+          {
+            "text": "Shadowing allows to override the type of the previous variable while <code class=\"bg-zinc-800\">mut</code> does not allow you to change the type of the variable. As an example:\n",
+            "has_code_snippet": true,
+            "code_snippet": {
+              "language": "rust",
+              "code": "fn main() {\n    let x = \"123\";\n    let x = x.len(); // Valid because of shadowing.\n\n    let mut y = \"123\";\n    y = y.len(); // Not Valid\n}\n"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Data Types"
       }
     ]
   }
