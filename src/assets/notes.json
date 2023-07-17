@@ -7,7 +7,7 @@
         "updated_on": "16 July, 2023",
         "paragraphs": [
           {
-            "text": "On a surface level, turbo frames allow to target certain frames from other or within the same pages. They do this by intercepting the link and targetting the <code class=\"bg-zinc-700\"><turbo-frame></code> by its id.",
+            "text": "On a surface level, turbo frames allow to target certain frames from other or within the same pages. They do this by intercepting the link and targetting the <code class=\"bg-zinc-800\"><turbo-frame></code> by its id.",
             "has_code_snippet": false
           },
           {
@@ -39,6 +39,29 @@
             "has_code_snippet": false
           }
         ] 
+      }
+    ]
+  },
+  {
+    "title": "Rust",
+    "notes": [
+      {
+        "title": "What is a Macro in Rust?",
+        "paragraphs": [
+          {
+            "text": "Macros are pieces of code that generate more code. There are usually highlighted with exclamation mark at the end (like <code class=\"bg-zinc-800\">println!</code>). Macros are quite useful when it comes to metaprogramming.\n",
+            "has_code_snippet": false
+          }
+        ]
+      },
+      {
+        "title": "What is a cargo?",
+        "paragraphs": [
+          {
+            "text": "Cargo is a build system and package manager for Rust. It has a TOML file (Tom's Obvious, Minimal Language) to keep track of configuration, version and dependencies. It also helps in debugging, optimizing, and releasing code packages. Checkout the Command Lines page to see some cargo commands.",
+            "has_code_snippet": false
+          }
+        ]
       }
     ]
   }
