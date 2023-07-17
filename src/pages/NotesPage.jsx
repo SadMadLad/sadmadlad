@@ -1,7 +1,7 @@
 // NotesPage
 import Section from "../components/NotesPage/Section"
 // Assets
-import Notes from "../assets/notes.json"
+import Notes from "../assets/notes.yml"
 // Shared
 import NavBar from "../components/shared/NavBar"
 import SharedHero from "../components/shared/SharedHero"

@@ -1,0 +1,21 @@
+---
+- command: cat <path/to/filename>
+  description: Open file in terminal.
+- command: sudo fuser -k <port>/<protocol>
+  description: Kill a web process running on the specific port. Where port is the
+    <code class="bg-zinc-800">port</code> on which the process is running, and the
+    <code class="bg-zinc-800">protocol</code> is mostly <code class="bg-zinc-800">tcp</code>
+    or <code class="bg-zinc-800">udp</code>.
+- command: cargo new <project-name> --vcs=git
+  description: Creates a new rust project with the given name. The --vcs flag allows
+    to use Version Control System optionally.
+- command: cargo build
+  description: Builds the project, creates an executable file under <code class="bg-zinc-800">./target/debug/project-name</code>.
+    Also, creates a <code span="bg-zinc-800">Cargo.toml</code> file to keep track
+    of dependencies.
+- command: cargo run
+  description: Builds and executes the code in one go.
+- command: cargo check
+  description: Does not execute the code but makes sure that the code compiles.
+- command: cargo build --release
+  description: Compiles and optimizes the code and prepares to release the product.
