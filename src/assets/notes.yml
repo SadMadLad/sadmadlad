@@ -63,18 +63,12 @@
     paragraphs:
     - text: 'Variables in Rust are declared using <code class="bg-zinc-800">let</code>
         keyword. By default, all the variables are immutable in Rust, which means
-        their value cannot be changed.
-
-        '
+        their value cannot be changed.'
       has_code_snippet: false
-    - text: 'To create a mutable value in Rust, we would need to use the <code class="bg-zinc-800">mut<code>keyword.
-
-        '
+    - text: 'To create a mutable value in Rust, we would need to use the <code class="bg-zinc-800">mut<code>keyword.'
       has_code_snippet: false
     - text: 'Constants in Rust are declared using the <code class="bg-zinc-800">const</code>
-        keyword. By convention, the variable name is always capitalized.
-
-        '
+        keyword. By convention, the variable name is always capitalized.'
       has_code_snippet: false
     - text: 'Shadowing allows you to override the previous value of the same variable.
         Basically, it just creates a new variable. An example:'
@@ -91,9 +85,7 @@
     paragraphs:
     - text: 'Shadowing allows to override the type of the previous variable while
         <code class="bg-zinc-800">mut</code> does not allow you to change the type
-        of the variable. As an example:
-
-        '
+        of the variable. As an example:'
       has_code_snippet: true
       code_snippet:
         language: rust
@@ -105,3 +97,28 @@
               let mut y = "123";
               y = y.len(); // Not Valid
           }
+  - title: Data Types
+    paragraphs:
+    - text: 'Rust is statically typed, which means it needs to know the types of the variable before compilation.
+        For example, this will render an error because we have not defined the type of the <code class="bg-zinc-800>guess</code>.'
+      has_code_snippet: true
+      code_snippet:
+        language: rust
+        code: |
+          let guess = "42".parse().expect("Not a number!");
+    - text: 'There are two types of data in Rust: Scalar and Compound. Scalar types represent a single value, like boolean, integer, character and floating
+        point number. Compound Types have multiple values in them, like tuples and arrays.'
+      has_code_snippet: false
+    - text: Integers can be created using different data types like <code class="bg-zinc-800">i8, u8,
+        i16, i32, i64</code> and their unsigned versions. There are many ways to represent the integer too
+        like <code class="bg-zinc-800">92_000, 0xff, 0o33, 0b1111_0000, b'A'</code> which represent decimal,
+        hexadecimal, octadecimal, binary and bytes.
+      has_code_snippet: false
+    - text: 'Arrays can be declared in different ways, like this:'
+      has_code_snippet: true
+      code_snippet:
+        language: rust
+        code: |
+          let list_one: [i32; 3] = [3, 3, 3];
+          let list_two = [3; 5]; // list_two = [3, 3, 3, 3, 3]
+      
