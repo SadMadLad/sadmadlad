@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 require 'json'
+
+# Class to convert long code snippets or text to single line string to store in JSON.
 class CodeSnippetJsonifier
   attr_reader :path_to_file, :code
 
