@@ -121,4 +121,25 @@
         code: |
           let list_one: [i32; 3] = [3, 3, 3];
           let list_two = [3; 5]; // list_two = [3, 3, 3, 3, 3]
+  - title: Statements vs Expressions
+    paragraphs:
+    - text: 'Statements are lines of codes that perform some action but do not give a resultant value.
+        Statements usually end with a semicolon. Expressions always result a value, and do not end with a semicolon.
+        If a function returns something, it should always end in an expression. Some examples:'
+      has_code_snippet: true
+      code_snippet:
+        language: rust
+        code: |
+          fn main() {
+              let y = (let x = 10); // Will cause an error because let is always a statement, and 'y' is not being bound to anything.
+              let z = {
+                  let x = 10;
+                  10 + 1
+              }; // Valid and 'z' will be 11 because the code block has returned it in the expression. If we put semicolon after 10 + 1, it will not work as it will become a statement then.
+          }
+
+          fn five() -> i32 {
+              5 // Function returns an expression
+          }
+
       
