@@ -146,4 +146,15 @@ end
 `}}]},{title:"Data Types",paragraphs:[{text:'Rust is statically typed, which means it needs to know the types of the variable before compilation. For example, this will render an error because we have not defined the type of the <code class="bg-zinc-800>guess</code>.',has_code_snippet:!0,code_snippet:{language:"rust",code:`let guess = "42".parse().expect("Not a number!");
 `}},{text:"There are two types of data in Rust: Scalar and Compound. Scalar types represent a single value, like boolean, integer, character and floating point number. Compound Types have multiple values in them, like tuples and arrays.",has_code_snippet:!1},{text:`Integers can be created using different data types like <code class="bg-zinc-800">i8, u8, i16, i32, i64</code> and their unsigned versions. There are many ways to represent the integer too like <code class="bg-zinc-800">92_000, 0xff, 0o33, 0b1111_0000, b'A'</code> which represent decimal, hexadecimal, octadecimal, binary and bytes.`,has_code_snippet:!1},{text:"Arrays can be declared in different ways, like this:",has_code_snippet:!0,code_snippet:{language:"rust",code:`let list_one: [i32; 3] = [3, 3, 3];
 let list_two = [3; 5]; // list_two = [3, 3, 3, 3, 3]
+`}}]},{title:"Statements vs Expressions",paragraphs:[{text:"Statements are lines of codes that perform some action but do not give a resultant value. Statements usually end with a semicolon. Expressions always result a value, and do not end with a semicolon. If a function returns something, it should always end in an expression. Some examples:",has_code_snippet:!0,code_snippet:{language:"rust",code:`fn main() {
+    let y = (let x = 10); // Will cause an error because let is always a statement, and 'y' is not being bound to anything.
+    let z = {
+        let x = 10;
+        10 + 1
+    }; // Valid and 'z' will be 11 because the code block has returned it in the expression. If we put semicolon after 10 + 1, it will not work as it will become a statement then.
+}
+
+fn five() -> i32 {
+    5 // Function returns an expression
+}
 `}}]}]}];function CF(){const e=vF.sort((t,n)=>t.title>n.title);return O.jsxs("div",{className:"flex flex-col items-center pb-6",children:[O.jsx(Ho,{}),O.jsx(im,{title:"Notes",heroCaption:"This page has some notes, tips and some resources that I learnt about on my way."}),O.jsx("div",{className:"w-full md:w-3/4 flex flex-col gap-2.5",children:e.map((t,n)=>O.jsx(RF,{title:t.title,notes:t.notes},n))})]})}function NF(){return O.jsx("div",{children:"Will Make Later"})}function yF(){return O.jsx(aA,{basename:"/sadmadlad",children:O.jsxs(JI,{children:[O.jsx(ir,{path:"/",element:O.jsx(FA,{})}),O.jsx(ir,{path:"/diary",element:O.jsx(fF,{})}),O.jsx(ir,{path:"/command-lines",element:O.jsx(hF,{})}),O.jsx(ir,{path:"/notes",element:O.jsx(CF,{})}),O.jsx(ir,{path:"/projects",element:O.jsx(NF,{})})]})})}Rd.createRoot(document.getElementById("root")).render(O.jsx(lt.StrictMode,{children:O.jsx(yF,{})}));
