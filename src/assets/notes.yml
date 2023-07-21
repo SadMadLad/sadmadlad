@@ -48,9 +48,7 @@
     paragraphs:
     - text: 'Macros are pieces of code that generate more code. There are usually
         highlighted with exclamation mark at the end (like <code class="bg-zinc-800">println!</code>).
-        Macros are quite useful when it comes to metaprogramming.
-
-        '
+        Macros are quite useful when it comes to metaprogramming.'
       has_code_snippet: false
   - title: What is a cargo?
     paragraphs:
@@ -141,5 +139,22 @@
           fn five() -> i32 {
               5 // Function returns an expression
           }
+- title: Git
+  notes:
+  - title: Different version controls (CVS, SVN, Git)
+    paragraphs:
+    - text: 'CVS and SVN are fairly similar to each other in a sense that; both are centralized version control systems,
+        both have linear workflow (i.e. commits are to the main trunk only), both need their developers to have connection
+        in order to commit, both are somewhat similar in speed.'
+      has_code_snippet: false
+    - text: 'On the other hand, Git has a decentralized approach where each develop can have a copy of the codebase, do his/her
+        tasks offline and commit. Git uses branching and a powerful merging algorithm to merge branches, commits and resolve
+        conflicts, and is faster than CVS and SVN.'
+      has_code_snippet: false
+- title: Miscellaneous
+  notes:
+    - title: What is a Makefile?
+      paragraphs:
+      - text: Makefiles allow us to recompile files condtionally when recompilation is needed.
+        has_code_snippet: false
 
-      
