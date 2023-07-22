@@ -167,5 +167,36 @@
   notes:
     - title: What is a Makefile?
       paragraphs:
-      - text: Makefiles allow us to recompile files condtionally when recompilation is needed.
-        has_code_snippet: false
+      - text: 'Makefiles allow us to build files where re-build is needed. Makefiles are intelligent enough to detect if build is needed
+          or not. They consist of variables, dependencies and commands in their files. Headers are not included generally in the makefile.
+          A typical makefile looks like this:'
+        has_code_snippet: true
+        code_snippet:
+          language: makefile
+          code: |
+            CC=g++ # Variable for type of compile
+            CFLAGS=-g -Wall # Variable for flags to use
+
+            CFILES=main.cpp	# Files to build
+            OBJECTS=main.o	# Object files to be created from files
+
+            BINARY=bin	# Variable for command
+
+            # A convention for makefiles to include an all: directive, which typically compiles all the files.
+            # Here, it runs the 'bin' command. But then it looks for, how can I build 'bin', for which it moves to next command.
+            all: $(BINARY)
+
+            # The next directive creates the object files (as mentioned in OBJECTS variable). So far, to compile the bin directive, it has to create object files.
+            # The command for creating those files is $(CC) -o $@ $^. Here, CC is the compile, -o is the flag for creating object files. $@ means what is on the left side of the directive (bin). $^ means what is on the right side of the directive (here it is main.o)
+            # But now it needs to look for how to create those object files from the cpp files, and the command below tells it that.
+            $(BINARY): $(OBJECTS)
+              $(CC) -o $@ $^
+
+            # Very similar to the directive above. One new thing here is the wildcard %.
+            # The directive can be read as: For creating a x.o file from each x.cpp file, run the command below.
+            %.o: %.cpp
+              $(CC) $(FLAGS) -c -o $@ $^
+
+            # A clean directive to remove binary and object files.
+            clean:
+              rm -rf $(BINARY) $(OBJECTS)
