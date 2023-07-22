@@ -66,7 +66,7 @@
     - text: 'To create a mutable value in Rust, we would need to use the <code class="bg-zinc-800">mut<code>keyword.'
       has_code_snippet: false
     - text: 'Constants in Rust are declared using the <code class="bg-zinc-800">const</code>
-        keyword. By convention, the variable name is always capitalized.'
+        keyword. Declaration of Constant always requires a type. By convention, the variable name is always capitalized.'
       has_code_snippet: false
     - text: 'Shadowing allows you to override the previous value of the same variable.
         Basically, it just creates a new variable. An example:'
@@ -139,6 +139,18 @@
           fn five() -> i32 {
               5 // Function returns an expression
           }
+  - title: Heap vs Stack
+    paragraphs:
+      - text: 'Rust requires you to understand the difference between Heap and Stack to understand
+          how does ownership works. In stack, the data stored at the top, and fetch first (Last In First Out)
+          Accessing and pushing data to a stack is easier. Rust uses stack to store variables whenever the size
+          is known.'
+        has_code_snippet: false
+      - text: 'On the other hand, storing data in a heap is a lot more random. Heap needs a pointer to achieve this,
+          to know how much space is required. Heap is used to variables that do not have fixed known size. Accessing and pushing to heap is slower.
+          Rust uses heap to store strings.
+          Whenever a value that is stored in a heap goes out of scope, the memory becomes free.'
+        has_code_snippet: false
 - title: Git
   notes:
   - title: Different version controls (CVS, SVN, Git)
@@ -157,4 +169,3 @@
       paragraphs:
       - text: Makefiles allow us to recompile files condtionally when recompilation is needed.
         has_code_snippet: false
-
