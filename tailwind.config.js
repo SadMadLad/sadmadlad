@@ -20,6 +20,6 @@ export default {
       }
     },
   },
-  safelist: ['bg-zinc-800'],
+  safelist: ['bg-zinc-800', 'list-decimal', 'list-inside', 'list-disc'],
   plugins: [],
 }

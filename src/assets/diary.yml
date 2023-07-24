@@ -129,3 +129,29 @@
         language: erb
         code: '<%= link_to "Checkout the Activity", activity_path(activity), data:
           { turbo_frame: ''_top'' } %>'
+- title: Elixir
+  entries:
+  - title: Print list in Elixir
+    type: Small Issue
+    updated_on: 23 July, 2023
+    description: I could not find a good way to print a linked list. <code class="bg-zinc-800">IO.puts</code>
+      could not do the deed.
+    solution:
+      has_steps: false
+      has_code_snippet: false
+      text: <code class="bg-zinc-800">IO.inspect</code> was what I needed.
+- title: Tailwind
+  entries:
+  - title: String interpolation classes
+    type: Bug
+    updated_on: 23 July, 2023
+    description: | 
+      "I was trying to use Tailwind classes conditionally using interpolation like
+      <code class="bg-zinc-800"><%= "bg-#{activity.good? ? 'yellow' : 'purple'}-500" %></code>"
+    solution:
+      has_steps: false
+      has_code_snippet: false
+      text: | 
+        Tailwind does not really allow interpolation in its classes for safety purposes. There
+        are two ways to go about this: Use Tailwind classes a whole conditionally, like <code class="bg-zinc-800"><%= 'bg-red-500' if true %></code>.
+        Other method would be to add the classes in safelist under tailwind.config.js'

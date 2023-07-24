@@ -199,3 +199,172 @@
             # A clean directive to remove binary and object files.
             clean:
               rm -rf $(BINARY) $(OBJECTS)
+- title: Elixir
+  notes:
+    - title: Basics
+      paragraphs:
+      - text: |
+          <ul class="list-inside list-disc">
+            <li>Elixir is a functional programming language</li>
+            <li>The notation for represent a functions is like this <code class="bg-zinc-800">foo/4</code>. The notation means there is a <code class="bg-zinc-800">foo</code> function with 4 arguments.</li>
+            <li>Numbers can be written in binary, octal or hex form, like <code class="bg-zinc-800">0x0110, 0o231, 0x1F</code></li>
+            <li>Atoms are similar to Ruby symbols. In elixir, the module names (either from erlang or custom) are atoms, so are booleans.</li>
+            <li>Integer divison can be done by <code class="bg-zinc-800">div/2</code>, and modulos can be calculated using <code class="bg-zinc-800">rem/2</code> method.</li>
+            <li><code class="bg-zinc-800">==</code> compares values, <code class="bg-zinc-800">===</code> compares value and the type.</li>
+            <li><code class="bg-zinc-800"><></code> is a concatenation operator.
+          </ul>
+        has_code_snippet: false
+    - title: Collections
+      paragraphs:
+      - text: |
+          <ul class="list-inside list-disc">
+            <li>Lists in Elixir are linked lists.</li>
+            <li><code class="bg-zinc-800">++/2</code> is an operator for list concatenation.</li>
+            <li><code class="bg-zinc-800">hd/1</code> method extracts the head of the list.</li>
+            <li><code class="bg-zinc-800">tl/1</code> method extracts the tail of the list.</li>
+            <li>Tuples are declared like this: <code class="bg-zinc-800">{item1, item2}</code>. Tuples are quite useful when it comes to pattern matching.</li>
+            <li>Maps are declared like this: <code class="bg-zinc-800">%{key: value}</code> or <code class="bg-zinc-800">%{key => value}</code></li>
+            <li><code class="bg-zinc-800">Map.put/3</code> is used to add a new key-value pair to a map.</li>
+          </ul>
+        has_code_snippet: false
+    - title: Enum
+      paragraphs:
+      - text: 'Some of the methods provided by <code class="bg-zinc-800">Enum</code> module are as following:'
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            _map = Enum.map([1, 2, 3], fn(n) -> n + 3 end)
+            _filter = Enum.filter([1, 2, 3], fn(n) -> n - 1 == 0 end)
+            _map_two = Enum.map([1, 2, 3], &(&1 + 10))
+            _reduce = Enum.reduce([1, 2, 3], 6, &(&1 + &2))
+    - title: Pattern Matching
+      paragraphs:
+      - text: The <code class="bg-zinc-800">=</code> is more of a match operator than an assignment operator. The following
+          code snippet show cases what pattern matching looks like. The pin operator makes the reassignment impossible for a variable.
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            {:ok, value} = {:ok, "Successful"} # value = "Successful"
+            x = 1
+            1 = x
+            2 = x # Invalid
+            ^x = 2 # Invalid because of pin operator
+    - title: Control Structures
+      paragraphs:
+      - text: There are many ways for writing control structures in Elixir.
+        has_code_snippet: false
+      - text: <code class="bg-zinc-800">if do; else</code> are the if-else statements for elixir. There is <code class="bg-zinc-800">unless</code>
+          too like in Ruby.
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            if 1 < 2 do
+              x = 30
+            else
+              x = 40
+            end
+
+            x = if 1 < 2, do: 2, else: 2 # Ternary-like one liner for Elixir
+      - text: <code class="bg-zinc-800">case</code> allows us to match against multiple patterns. A <code class="bg-zinc-800">case</code> always
+          requires a default (_) case.
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            result = 30
+
+            x = case {1, 2} do
+              {1, ^result} -> result
+              _ -> 3
+            end
+
+            IO.puts x # 3
+      - text: <code class="bg-zinc-800">cond</code> is a more verbose way to return value based on the given conditions. It is different from 
+          <code class="bg-zinc-800">case</code> because <code class="bg-zinc-800">case</code> uses pattern matching while
+          <code class="bg-zinc-800">cond</code> checks multiple conditions (like if, else if, ... else).
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            x = cond do
+              1 < 2 -> 3
+              true -> 4
+            end
+    - title: Functions
+      paragraphs:
+      - text: 'Elixir has anonymous functions. They can be declared with something like this:'
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            sum = &(&1 + &2)
+            sum.(1, 2) # 3
+
+            diff = fn(a, b) -> a - b end
+            diff.(1, 2) # -1
+      - text: |
+          <ul class="list-disc list-inside">
+            <li>Named functions are declared using the <code class="bg-zinc-800">def</code> keyword with a <code class="bg-zinc-800">do</code> block.</li> 
+            <li>To create a private function for a module, <code class="bg-zinc-800">defp</code> keyword is for the module.</li>
+            <li>
+              Pattern matching happens for the arity (arguments) of the functions too. Functions can be polymorphic too based on the number of arguments,
+              and using the guards (with the <code class="bg-zinc-800">when</code> keyword.)
+            </li>
+            <li>Default arguments can be passed using <code class="bg-zinc-800">//</code></li>
+          </ul>
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            defmodule Foos do
+
+              # Named argument
+              def hello() do
+                IO.puts "Hello"
+              end
+
+              # One-Liner
+              def hello_two(), do: 0
+
+              # Polymorphic
+              def poly() do
+                1
+              end
+
+              def poly(one) do
+                2
+              end
+
+              # With Guards
+              def poly_guard(n) when is_integer(n) do
+                n
+              end
+
+              def poly_guard(n) when is_float(n) do
+                n + 1.0
+              end
+
+              # Default Arguments
+              def poly_default(n \\ 10) do
+                n + 32
+              end
+
+              # Private Function
+              defp hello_private() do
+                IO.puts "Private Hello"
+              end
+            end
+    - title: Pipe Operator
+      paragraphs:
+        - text: The pipe operator <code class="bg-zinc-800">|></code> allows to link multiple functions step-by-step cleanly.
+          has_code_snippet: true
+          code_snippet:
+            language: elixir
+            code: |
+              x = [1, 2, 3, 4, 5, 6]
+                    |> Enum.filter(&(rem(&1, 2) == 0))
+                    |> Enum.map(fn(n) -> n*2 end)
+

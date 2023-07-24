@@ -9,9 +9,15 @@ import { motion, AnimatePresence } from "framer-motion"
 // One single entry component of Diary
 export default function DiaryEntry({ title, type, updatedOn, description, solution }) {
   const [isExpanded, setExpanded] = useState(false)
+
   const typeTag = typeName => {
-    if (typeName === 'Bug') { return <button className="bg-red-600 px-1.5 py-0.5 rounded font-semibold">{typeName}</button> }
-    if (typeName === 'Feature') { return <button className="bg-green-600 px-1.5 py-0.5 rounded font-semibold">{typeName}</button> }
+    const typeTagColorHash = {
+      'Bug': 'bg-red-600',
+      'Feature': 'bg-green-600',
+      'Small Issue': 'bg-yellow-600'
+    }
+    
+    return <button className={`${typeTagColorHash[typeName]} px-1.5 py-0.5 rounded font-semibold`}>{typeName}</button>    
   }
   return (
     <motion.div
