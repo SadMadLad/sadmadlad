@@ -145,13 +145,36 @@
   - title: String interpolation classes
     type: Bug
     updated_on: 23 July, 2023
-    description: | 
+    description: |
       "I was trying to use Tailwind classes conditionally using interpolation like
       <code class="bg-zinc-800"><%= "bg-#{activity.good? ? 'yellow' : 'purple'}-500" %></code>"
     solution:
       has_steps: false
       has_code_snippet: false
-      text: | 
+      text: |
         Tailwind does not really allow interpolation in its classes for safety purposes. There
         are two ways to go about this: Use Tailwind classes a whole conditionally, like <code class="bg-zinc-800"><%= 'bg-red-500' if true %></code>.
         Other method would be to add the classes in safelist under tailwind.config.js'
+- title: Miscellaneous
+  entries:
+  - title: Open AI Function Calling - Array parameters
+    type: Small Issue
+    updated_on: 24 July, 2023
+    description: |
+        When working on remark's comms-api, I found an error where OpenAI was called for function calling.
+        The error had description with something like: <b>Invalid Schema for function <function-name></b>.
+        The error was for the parameters that had array in them.
+    solution:
+      has_steps: false
+      has_code_snippet: true
+      text: The error was a minute one. Basically, for the array parameter, you would also need to send in type of array parameters
+        (i.e. either they are strings or numbers etc.)
+      code_snippet:
+        language: json
+        code: |
+          "service_data": {
+            "type": "array",
+            "description": "the comma separated list of required service slugs",
+            "items": {
+              "type": "string"
+            }

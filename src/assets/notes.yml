@@ -282,7 +282,7 @@
             end
 
             IO.puts x # 3
-      - text: <code class="bg-zinc-800">cond</code> is a more verbose way to return value based on the given conditions. It is different from 
+      - text: <code class="bg-zinc-800">cond</code> is a more verbose way to return value based on the given conditions. It is different from
           <code class="bg-zinc-800">case</code> because <code class="bg-zinc-800">case</code> uses pattern matching while
           <code class="bg-zinc-800">cond</code> checks multiple conditions (like if, else if, ... else).
         has_code_snippet: true
@@ -307,7 +307,7 @@
             diff.(1, 2) # -1
       - text: |
           <ul class="list-disc list-inside">
-            <li>Named functions are declared using the <code class="bg-zinc-800">def</code> keyword with a <code class="bg-zinc-800">do</code> block.</li> 
+            <li>Named functions are declared using the <code class="bg-zinc-800">def</code> keyword with a <code class="bg-zinc-800">do</code> block.</li>
             <li>To create a private function for a module, <code class="bg-zinc-800">defp</code> keyword is for the module.</li>
             <li>
               Pattern matching happens for the arity (arguments) of the functions too. Functions can be polymorphic too based on the number of arguments,
@@ -324,6 +324,11 @@
               # Named argument
               def hello() do
                 IO.puts "Hello"
+              end
+
+              # Pattern Matching on arguments
+              def pattern_boi(%{name: person_name}) do
+                person_name
               end
 
               # One-Liner
@@ -367,4 +372,28 @@
               x = [1, 2, 3, 4, 5, 6]
                     |> Enum.filter(&(rem(&1, 2) == 0))
                     |> Enum.map(fn(n) -> n*2 end)
+    - title: Modules
+      paragraphs:
+        - text: |
+            <ul class="list-disc list-inside">
+              Elixir has modules that allow you to group functions within a module cleanly. Modules are declared using the <code class="bg-zinc-800">defmodule</code> keyword.
+              <li><code class="bg-zinc-800">defstruct</code> allows us to create structures in a module. These structures are special maps and are mainly used within modules (same or the other).</li>
+              <li>Module attributes are declared using <code class="bg-zinc-800">@attribute</code>. These are basically constants.</li>
+              <li></li>
+            </ul>
+          has_code_snippet: true
+          code_snippet:
+            language: elixir
+            code: |
+              defmodule Person.Head do
+                # Now, we can use Person.Employee as Employee only.
+                @greeting "Hello Boy"
 
+                # Structure for modules
+                defstruct name: "Edgar Kalou", age: 32
+
+                def say, do: Person.Employee.say_hello
+                def say_greeting, do: "#{@greeting} World!"
+
+                def lumps_boy, do: %Person.Head{name: "Phelps"}
+              end
