@@ -305,19 +305,41 @@ end
 `}}]},{title:"Modules",paragraphs:[{text:`<ul class="list-disc list-inside">
   Elixir has modules that allow you to group functions within a module cleanly. Modules are declared using the <code class="bg-zinc-800">defmodule</code> keyword.
   <li><code class="bg-zinc-800">defstruct</code> allows us to create structures in a module. These structures are special maps and are mainly used within modules (same or the other).</li>
+  <li><code class="bg-zinc-800">@derive</code> feature allows to hide certain keys of a structure to keep it private.</li>
   <li>Module attributes are declared using <code class="bg-zinc-800">@attribute</code>. These are basically constants.</li>
-  <li></li>
 </ul>
 `,has_code_snippet:!0,code_snippet:{language:"elixir",code:`defmodule Person.Head do
   # Now, we can use Person.Employee as Employee only.
   @greeting "Hello Boy"
 
   # Structure for modules
+  @derive {Inspect, only: [:name]}
   defstruct name: "Edgar Kalou", age: 32
 
   def say, do: Person.Employee.say_hello
   def say_greeting, do: "#{@greeting} World!"
 
   def lumps_boy, do: %Person.Head{name: "Phelps"}
+end
+`}},{text:`<ul class="list-disc list-inside">
+  <li>The <code class="bg-zinc-800">alias</code> keyword allows us to namespace modules</li>
+  <li><code class="bg-zinc-800">require</code> allows to use macros from a module.</li>
+</ul>
+`,has_code_snippet:!0,code_snippet:{language:"elixir",code:`import List, only: [last: 1]
+`}},{text:`<ul class="list-disc list-inside">
+  <li><code class="bg-zinc-800">use</code> helps in extending a module using macros. Using <code class="bg-zinc-800">defmacro</code>, <code class="bg-zinc-800">__using__</code>, <code class="bg-zinc-800">quote</code> and <code class="bg-zinc-800">unquote</code>, you can create nice customizable, extended modules.</li>
+</ul>
+`,has_code_snippet:!0,code_snippet:{language:"elixir",code:`defmodule BigBrain do
+  defmacro __using__(opts) do
+    attributes = Keyword.get(opts, :attributes, [])
+
+    quote do
+      def enlist_attributes, do: Enum.each(unquote(attributes), &(IO.puts &1))
+    end
+  end
+end
+
+defmodule MyAttribute do
+  use BigBrain, attributes: [:name, :age]
 end
 `}}]}]}];function CF(){const e=vF.sort((t,n)=>t.title>n.title);return O.jsxs("div",{className:"flex flex-col items-center pb-6",children:[O.jsx(Ho,{}),O.jsx(im,{title:"Notes",heroCaption:"This page has some notes, tips and some resources that I learnt about on my way."}),O.jsx("div",{className:"w-full md:w-3/4 flex flex-col gap-2.5",children:e.map((t,n)=>O.jsx(RF,{title:t.title,notes:t.notes},n))})]})}function NF(){return O.jsx("div",{children:"Will Make Later"})}function yF(){return O.jsx(aA,{basename:"/sadmadlad",children:O.jsxs(JI,{children:[O.jsx(ir,{path:"/",element:O.jsx(FA,{})}),O.jsx(ir,{path:"/diary",element:O.jsx(fF,{})}),O.jsx(ir,{path:"/command-lines",element:O.jsx(hF,{})}),O.jsx(ir,{path:"/notes",element:O.jsx(CF,{})}),O.jsx(ir,{path:"/projects",element:O.jsx(NF,{})})]})})}Rd.createRoot(document.getElementById("root")).render(O.jsx(lt.StrictMode,{children:O.jsx(yF,{})}));
