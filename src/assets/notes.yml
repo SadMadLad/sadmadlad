@@ -378,8 +378,8 @@
             <ul class="list-disc list-inside">
               Elixir has modules that allow you to group functions within a module cleanly. Modules are declared using the <code class="bg-zinc-800">defmodule</code> keyword.
               <li><code class="bg-zinc-800">defstruct</code> allows us to create structures in a module. These structures are special maps and are mainly used within modules (same or the other).</li>
+              <li><code class="bg-zinc-800">@derive</code> feature allows to hide certain keys of a structure to keep it private.</li>
               <li>Module attributes are declared using <code class="bg-zinc-800">@attribute</code>. These are basically constants.</li>
-              <li></li>
             </ul>
           has_code_snippet: true
           code_snippet:
@@ -390,6 +390,7 @@
                 @greeting "Hello Boy"
 
                 # Structure for modules
+                @derive {Inspect, only: [:name]}
                 defstruct name: "Edgar Kalou", age: 32
 
                 def say, do: Person.Employee.say_hello
@@ -397,3 +398,15 @@
 
                 def lumps_boy, do: %Person.Head{name: "Phelps"}
               end
+        - text: |
+            <ul class="list-disc list-inside">
+              <li>The <code class="bg-zinc-800">alias</code> keyword allows us to namespace modules</li>
+              <li><code class="bg-zinc-800">require</code> allows to use macros from a module.</li>
+              <li><code class="bg-zinc-800">use</code> helps in extending a module using macros.</li>
+            </ul>
+
+          has_code_snippet: true
+          code_snippet:
+            language: elixir
+            code: |
+              d
