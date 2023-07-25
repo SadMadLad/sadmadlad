@@ -402,11 +402,30 @@
             <ul class="list-disc list-inside">
               <li>The <code class="bg-zinc-800">alias</code> keyword allows us to namespace modules</li>
               <li><code class="bg-zinc-800">require</code> allows to use macros from a module.</li>
-              <li><code class="bg-zinc-800">use</code> helps in extending a module using macros.</li>
             </ul>
-
           has_code_snippet: true
           code_snippet:
             language: elixir
             code: |
-              d
+              import List, only: [last: 1]
+        - text: |
+            <ul class="list-disc list-inside">
+              <li><code class="bg-zinc-800">use</code> helps in extending a module using macros. Using <code class="bg-zinc-800">defmacro</code>, <code class="bg-zinc-800">__using__</code>, <code class="bg-zinc-800">quote</code> and <code class="bg-zinc-800">unquote</code>, you can create nice customizable, extended modules.</li>
+            </ul>
+          has_code_snippet: true
+          code_snippet:
+            language: elixir
+            code: |
+              defmodule BigBrain do
+                defmacro __using__(opts) do
+                  attributes = Keyword.get(opts, :attributes, [])
+
+                  quote do
+                    def enlist_attributes, do: Enum.each(unquote(attributes), &(IO.puts &1))
+                  end
+                end
+              end
+
+              defmodule MyAttribute do
+                use BigBrain, attributes: [:name, :age]
+              end
