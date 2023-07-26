@@ -408,14 +408,8 @@
             language: elixir
             code: |
               import List, only: [last: 1]
-        - text: |
-            <ul class="list-disc list-inside">
-              <li><code class="bg-zinc-800">use</code> helps in extending a module using macros. Using <code class="bg-zinc-800">defmacro</code>, <code class="bg-zinc-800">__using__</code>, <code class="bg-zinc-800">quote</code> and <code class="bg-zinc-800">unquote</code>, you can create nice customizable, extended modules.</li>
-            </ul>
-          has_code_snippet: true
-          code_snippet:
-            language: elixir
-            code: |
+              require List
+
               defmodule BigBrain do
                 defmacro __using__(opts) do
                   attributes = Keyword.get(opts, :attributes, [])
@@ -429,3 +423,25 @@
               defmodule MyAttribute do
                 use BigBrain, attributes: [:name, :age]
               end
+    - title: Sigils
+      paragraphs:
+        - text: |
+            <ul class="list-disc list-inside">
+              Sigils allow us to display or store data in a more verbose way. The capital ones do not allow string interpolation while smaller ones do.
+              <li><code class="bg-zinc-800">~c</code> are used for character list.</li>
+              <li><code class="bg-zinc-800">~r</code> is for regular expressions.</li>
+              <li><code class="bg-zinc-800">~s</code> is for strings.</li>
+              <li><code class="bg-zinc-800">~W</code> is for word lists.</li>
+            </ul>
+          has_code_snippet: false
+    - title: Documentation
+      paragraphs:
+        - text: <code class="bg-zinc-800">#</code> is for inline comments. <code class="bg-zinc-800">@doc</code> is for functional level documentation. <code class="bg-zinc-800">@moduledoc</code> is for module level documentation.
+          has_code_snippet: false
+    - title: Comprehension
+      paragraphs:
+        - text: The <code class="bg-zinc-800">for</code> keyword with <code class="bg-zinc-800"><-</code> is used for list comprehension.
+          has_code_snippet: true
+          code_snippet:
+            language: elixir
+            code: |
