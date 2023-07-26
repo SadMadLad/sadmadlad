@@ -164,7 +164,7 @@
       has_code_snippet: false
 - title: Miscellaneous
   notes:
-    - title: What is a Makefile?
+    - title: Makefile?
       paragraphs:
       - text: 'Makefiles allow us to build files where re-build is needed. Makefiles are intelligent enough to detect if build is needed
           or not. They consist of variables, dependencies and commands in their files. Headers are not included generally in the makefile.
@@ -199,6 +199,16 @@
             # A clean directive to remove binary and object files.
             clean:
               rm -rf $(BINARY) $(OBJECTS)
+    - title: UTF-8?
+      paragraphs:
+      - text: First came ASCII. It was simple enough to store english alphabets. Then the number of bytes was increased for internationalization which created
+          a whole lot of mess when exchanging information via emails and stuff. But the management of bytes was atrocious and was never viable for many characters.
+          Then came Unicode, which consisted of <i>code point</i> (U+0639) where U+ was Unicode while +0639 was the hexadecimal number. This added support for more
+          characters. But this system had a lot of unused bytes (with lots of 00s like U+0066, U+0041 etc.), which was incovenient for English alphabets. Then came UTF-8
+          for using less bytes for English characters. When the character code goes beyond 127, all bets are off and we would need to know which encoding was it, either it was
+          ASCII, UTF-8, UTF-16, Latin etc. (The information is not completely true and ambiguous and I would need to read it a little more.) That's why we have charset=UTF-8 in our HTML to
+          ensure that the encoding is in UTF-8.
+        has_code_snippet: false
 - title: Elixir
   notes:
     - title: Basics
@@ -402,6 +412,7 @@
             <ul class="list-disc list-inside">
               <li>The <code class="bg-zinc-800">alias</code> keyword allows us to namespace modules</li>
               <li><code class="bg-zinc-800">require</code> allows to use macros from a module.</li>
+              <li>With the use of <code class="bg-zinc-800">use</code>, <code class="bg-zinc-800">quote</code> and <code class="bg-zinc-800">unquote</code>, we can extend and generate cool modules via meta-programming.</li>
             </ul>
           has_code_snippet: true
           code_snippet:
@@ -445,3 +456,46 @@
           code_snippet:
             language: elixir
             code: |
+              list = for x <- [1, 2, 3], do: x*x
+
+              d = %{"a" => "b", "c" => "d"}
+              d = for {k, v} <- d, do: {k, v}
+    - title: Strings and Characters
+      paragraphs:
+        - text: |
+            <ul class="list-inside list-disc">
+              <li>Anything between <<>> shows that it is a sequence of bytes.</li>
+              <li>String is declared with double quotes while char list uses single quotes.</li>
+              <li>Strings are represented with a sequence of bytes while char list is array of characters.</li>
+              <li>Each character in char is Unicode code point of a character while in binary, the codepoints are encoded as UTF-8.</li>
+              <li>Primarily, strings should be used. Charlists are needed for support for erlang modules mainly.</li>
+              <li><code class="bg-zinc-800">?</code> can give us the code point of a character</li>
+            </ul>
+          has_code_snippet: true
+          code_snippet:
+            language: elixir
+            code: |
+              string = "hełło" # <<104, 101, 197, 130, 197, 130, 111>>
+              # Because string is UTF-8, the 255+ characters are translated with two separate bytes.
+              # This has happened for ł
+
+              charlist = 'hełło' #[104, 101, 322, 322, 111]
+              # Meanwhile for charlist, this is not needed, as they are unicodes with two or more than two bytes designated.
+
+              # 322 is ł. For string, it is encoded in two different UTF-8 bytes, but not in charlist.
+
+              ?Z # 90
+        - text: |
+            <ul class="list-inside list-disc">
+              <li>Codepoints are characters that take one or more bytes. <code class="bg-zinc-800">String.codepoints</code> will split a 'heavy' character (that uses multiple bytes) into its composite bytes.</li>
+              <li>Graphemes combine the bytes into a single character. <code class="bg-zinc-800">String.graphemes</code> is for this job.</li>
+              <li>The unicode characters can be written in a string using <code class="bg-zinc-800">\uXXXX</code> keyword.</li>
+            </ul>
+          has_code_snippet: true
+          code_snippet:
+            language: elixir
+            code: |
+              string = "\u0061\u0301"
+
+              IO.inspect String.codepoints(string) # ["a", "́"]
+              IO.inspect String.graphemes(string) # ["á"]
