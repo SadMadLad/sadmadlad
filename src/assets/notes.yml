@@ -1,3 +1,20 @@
+- title: C++
+  notes:
+    - title: Preprocessors
+      paragraphs:
+        - text: "Preprocessors in a C++ file are basically commands or files executed before the file does. They start with a #."
+          has_code_snippet: false
+    - title: Header Guards
+      paragraphs:
+        - text: Header Guards ensure us to include our file only once in our file and avoid redeclaration.
+          has_code_snippet: false
+        - text: |
+            There are two ways to define header guards. One is by using <code class="bg-zinc-800"><b>#pragma once</b></code> and the other is <code class="bg-zinc-800"><b>#ifndef, #define, #endif</b></code>. Both of these do the same thing and make sure to include the file only once.
+            The <code class="bg-zinc-800">#ifndef</code> method allows us to create a tag for file and make sure it is defined once. <code class="bg-zinc-800">#pragma once</code> is a shorthand for this.
+          has_code_snippet: false
+    - title: Static in C++
+      paragraphs:
+        - text:
 - title: Ruby on Rails
   notes:
   - title: How do Turbo Frames work seemingly
