@@ -20,6 +20,7 @@
               <li>In separate files, if a function or a variable is declared <code class="bg-zinc-800">static</code>, it remains private for that file.</li>
               <li>Class methods or instance variables if declared <code class="bg-zinc-800">static</code>, are shared among all the instance among that specific class. If we draw similarity with Ruby classes, the <code class="bg-zinc-800">static</code> method will be a class method (using <code class="bg-zinc-800">self.method_name</code>) and static variable will be declared using <code class="bg-zinc-800">@@</code>.</li>
               <li><code class="bg-zinc-800">static</code> method cannot access non-static class methods or variables.</li>
+              <li><code class="bg-zinc-800">static</code> methods and variables of a class are accessed using <code class="bg-zinc-800>ClassName::MethodOrVariableName</code></li>
             </ul>
         - has_code_snippet: false
 - title: Ruby on Rails
