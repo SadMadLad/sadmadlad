@@ -23,6 +23,31 @@
               <li><code class="bg-zinc-800">static</code> methods and variables of a class are accessed using <code class="bg-zinc-800>ClassName::MethodOrVariableName</code></li>
             </ul>
         - has_code_snippet: false
+    - title: Enums
+      paragraphs:
+        - text: Enums are declared using the <code class="bg-zinc-800">enum</code> keyword. They can also be declared as Enum classes for more verbosity. On their own, enums behave exactly like array of integers. When declared with class, they are more verbose
+            and need to be namespaced if they need to be accessed.
+          has_code_snippet: true
+          code_snippet:
+            language: cpp
+            code: |
+              enum Size {
+                Small, Medium, Large
+              };
+
+              enum class SizeClass {
+                Small, Medium, Large
+              };
+
+              int main() {
+                if (SizeClass::Large > SizeClass::Medium) {
+                  std::cout << "Nice" << std::endl;
+                }
+
+                if (Large > Medium) {
+                  std::cout << "Nice" << std::endl;
+                }
+              }
 - title: Ruby on Rails
   notes:
   - title: How do Turbo Frames work seemingly
