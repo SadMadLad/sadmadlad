@@ -568,5 +568,5 @@
     paragraphs:
     - text: |
         A database can look like this:
-        <code class="bg-zinc-800">DATABASE_URL=postgresql://username:password>@host/database-name</code>
+        <code class="bg-zinc-800">DATABASE_URL=postgresql://username:password@host/database-name</code>
       has_code_snippet: false
