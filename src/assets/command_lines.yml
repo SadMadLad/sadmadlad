@@ -17,6 +17,15 @@
 - command: man <command-name>
   description: Displays a manual related to the command in terminal.
 
+# Elixir
+- command: mix new <project-name>
+  description: Initializes a new mix project with the given project name.
+- command: mix deps.get
+  description: Gets all out of date dependencies, i.e. dependencies that are not available or have an invalid lock.
+- command: mix compile
+  description: The main entry point for the project. It runs the compilers in the project and returns a tuple with the compilation status
+    and a list of diagnostics. Before compiling the code, it runs all the dependencies and performs a series of checks.
+
 # Rust
 - command: cargo build
   description: Builds the project, creates an executable file under <code class="bg-zinc-800">./target/debug/project-name</code>.

@@ -91,6 +91,19 @@
         intercept the link and try to fetch the frame of the same id from the newer
         page. The behavior of links can be controlled using different attributes like
         <code class="bg-zinc-800">data-turbo-frame</code> etc.
+- title: Ruby
+  notes:
+  - title: '&. operator'
+    paragraphs:
+    - text: This operator is called safe navigation operator. It allows to us to have <code class="bg-zinc-800">nil</code> check on the variables before we
+        execute any method (or check for an attribute) for the variable.
+      has_code_snippet: true
+      code_snippet:
+        language: ruby
+        code: |
+          # Both the expressions below behave the same.
+          @person&.spouse&.name
+          @person.spouse.name if @person && @person.spouse
 - title: Rust
   notes:
   - title: What is a Macro in Rust?
