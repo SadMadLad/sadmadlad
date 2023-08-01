@@ -410,5 +410,5 @@ charlist = 'hełło' #[104, 101, 322, 322, 111]
 IO.inspect String.codepoints(string) # ["a", "́"]
 IO.inspect String.graphemes(string) # ["á"]
 `}}]}]},{title:"PostgreSQL",notes:[{title:"Interpret database links",paragraphs:[{text:`A database can look like this:
-DATABASE_URL=postgresql://<username>:<password>@<host>/<database-name>
+<code class="bg-zinc-800">DATABASE_URL=postgresql://username:password@host/database-name</code>
 `,has_code_snippet:!1}]}]}];function CF(){const e=vF.sort((t,n)=>t.title>n.title);return O.jsxs("div",{className:"flex flex-col items-center pb-6",children:[O.jsx(Ho,{}),O.jsx(im,{title:"Notes",heroCaption:"This page has some notes, tips and some resources that I learnt about on my way."}),O.jsx("div",{className:"w-full md:w-3/4 flex flex-col gap-2.5",children:e.map((t,n)=>O.jsx(RF,{title:t.title,notes:t.notes},n))})]})}function NF(){return O.jsx("div",{children:"Will Make Later"})}function yF(){return O.jsx(aA,{basename:"/sadmadlad",children:O.jsxs(JI,{children:[O.jsx(ir,{path:"/",element:O.jsx(FA,{})}),O.jsx(ir,{path:"/diary",element:O.jsx(fF,{})}),O.jsx(ir,{path:"/command-lines",element:O.jsx(hF,{})}),O.jsx(ir,{path:"/notes",element:O.jsx(CF,{})}),O.jsx(ir,{path:"/projects",element:O.jsx(NF,{})})]})})}Rd.createRoot(document.getElementById("root")).render(O.jsx(lt.StrictMode,{children:O.jsx(yF,{})}));
