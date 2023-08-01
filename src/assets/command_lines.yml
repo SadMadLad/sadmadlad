@@ -16,6 +16,9 @@
     flag allows that file to be executable.
 - command: man <command-name>
   description: Displays a manual related to the command in terminal.
+- command: script <file-name>
+  description: Starts a script in terminal. Now whatever is written on the terminal, will be saved in the
+    <code class="bg-zinc-800">file-name</code> after the <code class="bg-zinc-800">exit</code> command.
 
 # Elixir
 - command: mix new <project-name>
