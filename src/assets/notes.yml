@@ -562,3 +562,11 @@
 
               IO.inspect String.codepoints(string) # ["a", "́"]
               IO.inspect String.graphemes(string) # ["á"]
+- title: PostgreSQL
+  notes:
+  - title: Interpret database links
+    paragraphs:
+    - text: |
+        A database can look like this:
+        DATABASE_URL=postgresql://<username>:<password>@<host>/<database-name>
+      has_code_snippet: false
