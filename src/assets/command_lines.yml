@@ -10,7 +10,7 @@
 - command: cargo new <project-name> --vcs=git
   description: Creates a new rust project with the given name. The --vcs flag allows
     to use Version Control System optionally.
-- command: chmod +x <file-name>.sh
+- command: chmod +x <file-name>
   description: <code class="bg-zinc-800">chmod</code> is short for Change Mode. It allows us to
     change the access of file permissions and directiories. The <code class="bg-zinc-800">+x</code>
     flag allows that file to be executable.
