@@ -3,13 +3,24 @@
 @tailwind utilities;
 
 @layer utilities {
-    /* Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    .no-scrollbar {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
-    }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Markdown */
+  .markdown h1 { @apply text-4xl font-bold text-center my-4; }
+  .markdown h2 { @apply text-3xl font-bold my-3; }
+  .markdown h3 { @apply text-2xl font-bold my-2; }
+  .markdown h4 { @apply text-xl font-bold my-1; }
+  .markdown h5 { @apply text-lg font-bold; }
+  .markdown h6 { @apply text-base font-bold; }
+  .markdown ul { @apply list-disc list-inside; }
+  .markdown pre { @apply bg-zinc-800 p-4; }
+  .markdown code { @apply bg-zinc-800; }
 }

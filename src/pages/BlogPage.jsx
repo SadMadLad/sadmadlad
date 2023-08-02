@@ -16,8 +16,8 @@ export default function BlogPage() {
 
 console.log(markdown)
   return (
-    <div>
+    <article className="markdown">
       <ReactMarkdown>{ markdown }</ReactMarkdown>
-    </div>
+    </article>
   )
 }
