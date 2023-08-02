@@ -140,6 +140,19 @@
       has_steps: false
       has_code_snippet: false
       text: <code class="bg-zinc-800">IO.inspect</code> was what I needed.
+- title: Ruby
+  entries:
+  - title: Safe Navigation Operator (&.) on Hash.
+    type: Small Issue
+    updated_on: 2 August, 2023
+    description: I tried to use the &. operator on a hash for null check on key value pair to fetch the required value, but couldn't.
+      I tried <code class="bg-zinc-800">my_hash['response']&.['call']</code> but this was not the way to go.
+    solution:
+      has_steps: false
+      has_code_snippet: false
+      text: |
+        The syntax needed to solve this was something like this: <code class="bg-zinc-800">my_hash&.[]('response')&.[]('call')</code>. Ugly syntax, but does the job.
+        <b>Reference:</b> <a class="underline" href="https://stackoverflow.com/questions/47018206/safe-navigation-operator-lonely-operator-not-working-for-hash">Stackoverflow Question.</a>
 - title: Tailwind
   entries:
   - title: String interpolation classes
