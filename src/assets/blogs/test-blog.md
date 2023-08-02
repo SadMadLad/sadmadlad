@@ -1,5 +1,10 @@
 # A demo of `react-markdown`
 
+## Table of Contents
+
+* [Bravo](#bravo)
+* [Alpha Bravo](#alpha_bravo)
+
 `react-markdown` is a markdown component for React.
 
 👉 Changes are re-rendered as you type.
@@ -20,12 +25,14 @@ Here is an example of a plugin in action
 ([`remark-toc`](https://github.com/remarkjs/remark-toc)).
 This section is replaced by an actual table of contents.
 
+# Bravo
+
 ## Syntax highlighting
 
 Here is an example of a plugin to highlight code:
 [`rehype-highlight`](https://github.com/rehypejs/rehype-highlight).
 
-```js
+```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactMarkdown from 'react-markdown'
@@ -35,6 +42,23 @@ ReactDOM.render(
   <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{'# Your markdown here'}</ReactMarkdown>,
   document.querySelector('#content')
 )
+```
+# Alpha Bravo
+
+```ruby
+class Hello < ApplicationRecord
+  def initialize(string:)
+    @string = string
+  end
+end
+```
+
+```ruby
+class Hello < ApplicationRecord
+  def initialize(string:)
+    @string = string
+  end
+end
 ```
 
 Pretty neat, eh?
@@ -75,27 +99,6 @@ You should probably combine it with
 ## Components
 
 You can pass components to change things:
-
-```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import ReactMarkdown from 'react-markdown'
-import MyFancyRule from './components/my-fancy-rule.js'
-
-ReactDOM.render(
-  <ReactMarkdown
-    components={{
-      // Use h2s instead of h1s
-      h1: 'h2',
-      // Use a component instead of hrs
-      hr: ({node, ...props}) => <MyFancyRule {...props} />
-    }}
-  >
-    # Your markdown here
-  </ReactMarkdown>,
-  document.querySelector('#content')
-)
-```
 
 ## More info?
 
