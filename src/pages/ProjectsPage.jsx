@@ -1,5 +1,5 @@
 export default function ProjectsPage() {
   return (
-    <div>Will Make Later</div>
+    <div>Coming Soon.</div>
   )
 }

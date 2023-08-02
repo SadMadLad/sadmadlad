@@ -6,16 +6,20 @@ import DiaryPage from './pages/DiaryPage'
 import CommandLinesPage from './pages/CommandLinesPage'
 import NotesPage from './pages/NotesPage'
 import ProjectsPage from './pages/ProjectsPage'
+import BlogsPage from './pages/BlogsPage'
+import BlogPage from './pages/BlogPage'
 
 function App() {
   return (
     <BrowserRouter basename='/sadmadlad'>
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='/diary' element={<DiaryPage />} />
-        <Route path='/command-lines' element={<CommandLinesPage />} />
-        <Route path='/notes' element={<NotesPage />} />
-        <Route path='/projects' element={<ProjectsPage />} />
+        <Route exact path='/diary' element={<DiaryPage />} />
+        <Route exact path='/command-lines' element={<CommandLinesPage />} />
+        <Route exact path='/notes' element={<NotesPage />} />
+        <Route exact path='/projects' element={<ProjectsPage />} />
+        <Route exact path='/blogs' element={<BlogsPage />} />
+        <Route path='/blog/:name' element={<BlogPage />} />
       </Routes>
     </BrowserRouter>
   )
