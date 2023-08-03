@@ -2,7 +2,6 @@ import { motion, useIsPresent } from "framer-motion"
 
 export default function TransitionDiv() {
   const isPresent = useIsPresent()
-  // const randomNumber = Math.floor(Math.random() * 11)
 
   return (
     <motion.div
