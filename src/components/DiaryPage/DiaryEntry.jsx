@@ -12,12 +12,12 @@ export default function DiaryEntry({ title, type, updatedOn, description, soluti
 
   const typeTag = typeName => {
     const typeTagColorHash = {
-      'Bug': 'bg-red-600',
-      'Feature': 'bg-green-600',
-      'Small Issue': 'bg-yellow-600'
+      "Bug": "bg-red-600",
+      "Feature": "bg-green-600",
+      "Small Issue": "bg-yellow-600"
     }
-    
-    return <button className={`${typeTagColorHash[typeName]} px-1.5 py-0.5 rounded font-semibold`}>{typeName}</button>    
+
+    return <button className={`${typeTagColorHash[typeName]} px-1.5 py-0.5 rounded font-semibold`}>{typeName}</button>
   }
   return (
     <motion.div
@@ -28,7 +28,7 @@ export default function DiaryEntry({ title, type, updatedOn, description, soluti
     >
       <div className="flex flex-row gap-2 items-center border-b border-b-lite">
         <h5 className="font-bold text-lg">{title}</h5>
-        <motion.div animate={{ rotate: isExpanded ? 180 : 0, cursor: 'pointer' }} onClick={() => setExpanded(!isExpanded)}><ChevronDownIcon className="w-6 h-6" /></motion.div>
+        <motion.div animate={{ rotate: isExpanded ? 180 : 0, cursor: "pointer" }} onClick={() => setExpanded(!isExpanded)}><ChevronDownIcon className="w-6 h-6" /></motion.div>
       </div>
       <AnimatePresence>
         {isExpanded &&

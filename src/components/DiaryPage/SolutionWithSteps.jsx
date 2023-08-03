@@ -1,5 +1,5 @@
 // My Component
-import CodeParagraph from '../shared/CodeParagraph'
+import CodeParagraph from "../shared/CodeParagraph"
 
 // To render those solutions that have multiple steps
 export default function SolutionWithSteps({ solution }) {

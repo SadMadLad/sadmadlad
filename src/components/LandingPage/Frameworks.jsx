@@ -28,10 +28,10 @@ import BeautifulSoup4 from "/technologies/BeautifulSoup4.png"
 // Frameworks that I have worked with
 export default function Frameworks() {
   const techCardsData = [
-    { heading: 'Frontend', leadingIcon: Frontend, description: 'Experienced with many frontend technologies, ranging from CSS frameworks to JavaScript ones.', techStacks: [React, Vite, Tailwind, Hotwired] },
-    { heading: 'Backend', leadingIcon: Backend, description: 'Have worked with different databases with different backend frameworks.', techStacks: [NodeJS, PostgreSQL, MongoDB, RubyOnRails] },
-    { heading: 'ML', leadingIcon: Ml, description: 'Delved in the areas of machine learning and worked with related frameworks. Created NNs, Classifiers, GANs, Autoencoders etc.', techStacks: [TensorFlow, PyTorch, Pandas] },
-    { heading: 'Miscellaneous', leadingIcon: Miscellaneous, description: 'Web Scraping as a hobby. Always enjoy and eager to learn new frameworks and programming languages.', techStacks: [Figma, Rust, Unity, BeautifulSoup4] }
+    { heading: "Frontend", leadingIcon: Frontend, description: "Experienced with many frontend technologies, ranging from CSS frameworks to JavaScript ones.", techStacks: [React, Vite, Tailwind, Hotwired] },
+    { heading: "Backend", leadingIcon: Backend, description: "Have worked with different databases with different backend frameworks.", techStacks: [NodeJS, PostgreSQL, MongoDB, RubyOnRails] },
+    { heading: "ML", leadingIcon: Ml, description: "Delved in the areas of machine learning and worked with related frameworks. Created NNs, Classifiers, GANs, Autoencoders etc.", techStacks: [TensorFlow, PyTorch, Pandas] },
+    { heading: "Miscellaneous", leadingIcon: Miscellaneous, description: "Web Scraping as a hobby. Always enjoy and eager to learn new frameworks and programming languages.", techStacks: [Figma, Rust, Unity, BeautifulSoup4] }
   ]
 
   return (

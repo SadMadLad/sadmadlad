@@ -1,14 +1,14 @@
 // Node Imports
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
 // Hero section of the landing page
 export default function Hero() {
   const links = [
-    { route: '/projects', name: 'Projects' },
-    { route: '/diary', name: 'Diary' },
-    { route: '/notes', name: 'Notes' },
-    { route: '/command-lines', name: 'Command Lines' },
-    { route: '/blogs', name: 'Blogs' }
+    { route: "/projects", name: "Projects" },
+    { route: "/diary", name: "Diary" },
+    { route: "/notes", name: "Notes" },
+    { route: "/command-lines", name: "Command Lines" },
+    { route: "/blogs", name: "Blogs" }
   ]
 
   return (

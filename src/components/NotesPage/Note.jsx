@@ -18,7 +18,7 @@ export default function Note({ title, paragraphs }) {
     >
       <div className="flex flex-row gap-2 items-center border-b border-b-lite">
         <h5 className="font-bold text-lg">{title}</h5>
-        <motion.div animate={{ rotate: isExpanded ? 180 : 0, cursor: 'pointer' }} onClick={() => setExpanded(!isExpanded)}><ChevronDownIcon className="w-6 h-6" /></motion.div>
+        <motion.div animate={{ rotate: isExpanded ? 180 : 0, cursor: "pointer" }} onClick={() => setExpanded(!isExpanded)}><ChevronDownIcon className="w-6 h-6" /></motion.div>
       </div>
       <AnimatePresence>
         {isExpanded &&

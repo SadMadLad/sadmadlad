@@ -1,8 +1,8 @@
 // Assets
-import CommandLines from '../../assets/command_lines.yml'
+import CommandLines from "../../assets/command_lines.yml"
 // Node Imports
 import SyntaxHighlighter from "react-syntax-highlighter"
-import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { atomOneDarkReasonable } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 // List of all the Command Lines
 export default function Main() {
