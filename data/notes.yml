@@ -1,3 +1,4 @@
+# <code class="bg-zinc-800"></code>
 - title: C++
   notes:
     - title: Preprocessors
@@ -48,6 +49,13 @@
                   std::cout << "Nice" << std::endl;
                 }
               }
+- title: React
+  notes:
+  - title: 'useLocation hook in react-router-dom'
+    paragraphs:
+    - text: <code class="bg-zinc-800">useLocation</code> is used to fetch the current 'location' of the user. The location of a user is
+        entry in the history stack, which is analogous to page or screen. The location can be used to extensively the URL (like fetching the base path, search, state, key and hash of the page.)
+      has_code_snippet: false
 - title: Ruby on Rails
   notes:
   - title: How do Turbo Frames work seemingly
