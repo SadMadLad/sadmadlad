@@ -1,17 +1,26 @@
 import { useState } from "react"
 import { useParams } from "react-router-dom"
-import { ReactMarkdown } from "react-markdown/lib/react-markdown"
+import { motion, useScroll, useSpring, useIsPresent } from "framer-motion"
+
 import { anOldHope } from "react-syntax-highlighter/dist/esm/styles/hljs"
 import SyntaxHighlighter from "react-syntax-highlighter"
 
+import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 
 import { getBlogData } from "../helpers/BlogHelpers"
-
 import testBlog from "../assets/blogs/test-blog.md"
 
 export default function BlogPage() {
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
+  const isPresent = useIsPresent()
+
   const { identifier } = useParams()
   const [markdown, setMarkdown] = useState("")
 
@@ -49,6 +58,10 @@ export default function BlogPage() {
               )
             }
           }}
+        />
+        <motion.div
+          className="bg-accent h-2 w-full fixed bottom-20 text-center"
+          style={{ scaleX }}
         />
       </article>
     )

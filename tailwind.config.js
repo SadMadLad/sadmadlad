@@ -17,6 +17,7 @@ export default {
         darklite: "#4F4557",
         darklitelite: "#6D5D6E",
         lite: "#F4EEE0",
+        accent: "#A8DADC",
       }
     },
   },
