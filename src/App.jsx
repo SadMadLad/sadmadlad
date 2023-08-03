@@ -19,7 +19,7 @@ function App() {
         <Route exact path='/notes' element={<NotesPage />} />
         <Route exact path='/projects' element={<ProjectsPage />} />
         <Route exact path='/blogs' element={<BlogsPage />} />
-        <Route path='/blog/:name' element={<BlogPage />} />
+        <Route path='/blog/:identifier' element={<BlogPage />} />
       </Routes>
     </BrowserRouter>
   )
