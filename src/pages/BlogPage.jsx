@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import { anOldHope } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import SyntaxHighlighter from "react-syntax-highlighter"
-import remarkGfm from "remark-gfm"
-import remarkToc from "remark-toc"
 
+import remarkGfm from "remark-gfm"
+import rehypeRaw from "rehype-raw"
 import testBlog from "../assets/blogs/test-blog.md"
 
 export default function BlogPage() {
@@ -15,13 +15,13 @@ export default function BlogPage() {
   import(testBlog).then(res => {
     fetch(res.default)
     .then(response => response.text())
-    .then(text => setMarkdown(text.process(remarkToc)))
+    .then(text => setMarkdown(text))
 })
 
   return (
     <article className="markdown">
       <ReactMarkdown
-      rehypePlugins={[remarkGfm, remarkToc]}
+      rehypePlugins={[remarkGfm, rehypeRaw]}
       children={markdown}
       components={{
         code({node, inline, className, children, ...props}) {
