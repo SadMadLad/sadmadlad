@@ -5,6 +5,7 @@ import Diary from "../assets/diary.json"
 // Shared
 import SharedHero from "../components/shared/SharedHero"
 import NavBar from "../components/shared/NavBar"
+import TransitionDiv from "../components/shared/TransitionDiv"
 
 export default function DiaryPage() {
   const sortedDiary = Diary.sort((a, b) => a.title > b.title)
@@ -16,6 +17,7 @@ export default function DiaryPage() {
       <div className="w-full md:w-3/4">
         {sortedDiary.map((diarySection, index) => <Section key={index} title={diarySection.title} entries={diarySection.entries} />)}
       </div>
+      <TransitionDiv />
     </div>
   )
 }

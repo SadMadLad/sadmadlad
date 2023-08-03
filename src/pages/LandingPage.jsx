@@ -4,6 +4,7 @@ import ProgrammingLanguages from "../components/LandingPage/ProgrammingLanguages
 import Frameworks from "../components/LandingPage/Frameworks"
 // Shared
 import NavBar from "../components/shared/NavBar"
+import TransitionDiv from "../components/shared/TransitionDiv"
 
 export default function LandingPage() {
   return (
@@ -12,6 +13,7 @@ export default function LandingPage() {
       <Hero />
       <ProgrammingLanguages />
       <Frameworks />
+      <TransitionDiv />
     </div>
   )
 }
