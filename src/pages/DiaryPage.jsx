@@ -1,7 +1,7 @@
 // DiaryPage
 import Section from "../components/DiaryPage/Section"
 // Assets
-import Diary from "../assets/diary.yml"
+import Diary from "../assets/diary.json"
 // Shared
 import SharedHero from "../components/shared/SharedHero"
 import NavBar from "../components/shared/NavBar"
