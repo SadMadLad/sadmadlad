@@ -1,4 +1,69 @@
+# <code class="bg-zinc-800"></code>
 ---
+- title: React
+  entries:
+  - title: Animated Page Transitions
+    type: Feature
+    updated_on: 4th August, 2023.
+    description: Wanted to have cook framer motion page transitions from one to the other.
+      Like <a class="underline" href="https://codesandbox.io/s/framer-motion-screen-wipe-page-transitions-with-react-router-6-yo38bu?from-embed=&file=/src/template/Gallery.tsx:1296-1334">this</a>
+    solution:
+      has_steps: true
+      has_intro: true
+      has_outro: false
+      intro:
+        has_code_snippet: false
+        text: The page transitions using framer motion requires use of <code class="bg-zinc-800">useLocation</code>, <code class="bg-zinc-800">AnimatePresence</code>,
+          <code class="bg-zinc-800">useIsPresent</code> along with the <code class="bg-zinc-800">react-router-dom</code>
+      steps:
+      - text: | 
+          Create a component which wraps all the <code class="bg-zinc-800">Routes</code> (and the <code class="bg-zinc-800">Switch</code> or <code class="bg-zinc-800">Router</code> alongwith.)
+            The component that wraps all of this is <code class="bg-zinc-800">AnimatePresence</code>, provided by framer motion. Use the <code class="bg-zinc-800">useLocation</code> to get the pathname, and pass
+            the <code class="bg-zinc-800">location</code> to the <code class="bg-zinc-800">Router</code> (or <code class="bg-zinc-800">Switch</code>, whichever you are using.) as the <code class="bg-zinc-800">key</code> prop.
+            <code class="bg-zinc-800">AnimatePresence</code> is for the animation when the new prop is selected. The <code class="bg-zinc-800">location</code> helps us to uniquely identify each route and is important for triggering
+            exit animations. My <code class="bg-zinc-800">AnimatedRoutes</code> looked like these:
+        has_code_snippet: true
+        code_snippet:
+          language: javascript
+          code: |
+          export default function AnimatedRoutes() {
+            const location = useLocation()
+
+            return (
+              <AnimatePresence mode="wait" initial={false}>
+                <Routes location={location} key={location.pathname}>
+                  <Route path="/" element={<LandingPage />} />
+                  <Route path="/diary" element={<DiaryPage />} />
+                  <Route path="/command-lines" element={<CommandLinesPage />} />
+                  <Route path="/notes" element={<NotesPage />} />
+                  <Route path="/projects" element={<ProjectsPage />} />
+                  <Route path="/blogs" element={<BlogsPage />} />
+                  <Route path="/blog/:identifier" element={<BlogPage />} />
+                </Routes>
+              </AnimatePresence>
+            )
+          }
+      - text: |
+          The important part is done. Now, it is your choice how you want to animate the transitions. You can wrap the pages in <code class="bg-zinc-800">motion.div</code> and apply the
+          initial, animate and exit props to your div with the CSS of your choice. In my case, there was a div which would take the whole screen and scale down during animation. The transition dive
+          was something like this:
+        has_code_snippet: true
+        code_snippet:
+          language: javascript
+          code: |
+          export default function TransitionDiv() {
+            const isPresent = useIsPresent()
+
+            return (
+              <motion.div
+                className="fixed w-full h-full top-0 bottom-0 right-0 bg-white"
+                initial={{ scaleX: 1 }}
+                animate={{ scaleX: 0, transition: { duration: 1, ease: "circOut" } }}
+                exit={{ scaleX: 1, transition: { duration: 1, ease: "circIn" } }}
+                style={{ originX: isPresent ? 0 : 1 }}
+              />
+            )
+          }
 - title: Ruby on Rails
   entries:
   - title: Complex Validation for Password in Devise
