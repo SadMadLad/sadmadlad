@@ -1,5 +1,5 @@
-# <code class="bg-zinc-800"></code>
 ---
+# <code class="bg-zinc-800"></code>
 - title: React
   entries:
   - title: Animated Page Transitions
@@ -26,44 +26,45 @@
         code_snippet:
           language: javascript
           code: |
-          export default function AnimatedRoutes() {
-            const location = useLocation()
+            export default function AnimatedRoutes() {
+              const location = useLocation()
 
-            return (
-              <AnimatePresence mode="wait" initial={false}>
-                <Routes location={location} key={location.pathname}>
-                  <Route path="/" element={<LandingPage />} />
-                  <Route path="/diary" element={<DiaryPage />} />
-                  <Route path="/command-lines" element={<CommandLinesPage />} />
-                  <Route path="/notes" element={<NotesPage />} />
-                  <Route path="/projects" element={<ProjectsPage />} />
-                  <Route path="/blogs" element={<BlogsPage />} />
-                  <Route path="/blog/:identifier" element={<BlogPage />} />
-                </Routes>
-              </AnimatePresence>
-            )
-          }
+              return (
+                <AnimatePresence mode="wait" initial={false}>
+                  <Routes location={location} key={location.pathname}>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/diary" element={<DiaryPage />} />
+                    <Route path="/command-lines" element={<CommandLinesPage />} />
+                    <Route path="/notes" element={<NotesPage />} />
+                    <Route path="/projects" element={<ProjectsPage />} />
+                    <Route path="/blogs" element={<BlogsPage />} />
+                    <Route path="/blog/:identifier" element={<BlogPage />} />
+                  </Routes>
+                </AnimatePresence>
+              )
+            }
       - text: |
           The important part is done. Now, it is your choice how you want to animate the transitions. You can wrap the pages in <code class="bg-zinc-800">motion.div</code> and apply the
-          initial, animate and exit props to your div with the CSS of your choice. In my case, there was a div which would take the whole screen and scale down during animation. The transition dive
+          initial, animate and exit props to your div with the CSS of your choice. In my case, there was a div which would take the whole screen and scale down during animation. The transition div
           was something like this:
         has_code_snippet: true
         code_snippet:
           language: javascript
           code: |
-          export default function TransitionDiv() {
-            const isPresent = useIsPresent()
+            export default function TransitionDiv() {
+              const isPresent = useIsPresent()
 
-            return (
-              <motion.div
-                className="fixed w-full h-full top-0 bottom-0 right-0 bg-white"
-                initial={{ scaleX: 1 }}
-                animate={{ scaleX: 0, transition: { duration: 1, ease: "circOut" } }}
-                exit={{ scaleX: 1, transition: { duration: 1, ease: "circIn" } }}
-                style={{ originX: isPresent ? 0 : 1 }}
-              />
-            )
-          }
+              return (
+                <motion.div
+                  className="fixed w-full h-full top-0 bottom-0 right-0 bg-white"
+                  initial={{ scaleX: 1 }}
+                  animate={{ scaleX: 0, transition: { duration: 1, ease: "circOut" } }}
+                  exit={{ scaleX: 1, transition: { duration: 1, ease: "circIn" } }}
+                  style={{ originX: isPresent ? 0 : 1 }}
+                />
+              )
+            }
+          
 - title: Ruby on Rails
   entries:
   - title: Complex Validation for Password in Devise

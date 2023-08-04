@@ -1,5 +1,5 @@
 import Section from "../components/NotesPage/Section"
-import Notes from "../assets/notes.json"
+import Notes from "../assets/notes.yml"
 import NavBar from "../components/shared/NavBar"
 import SharedHero from "../components/shared/SharedHero"
 import TransitionDiv from "../components/shared/TransitionDiv"
