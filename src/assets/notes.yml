@@ -280,6 +280,64 @@
           ASCII, UTF-8, UTF-16, Latin etc. (The information is not completely true and ambiguous and I would need to read it a little more.) That's why we have charset=UTF-8 in our HTML to
           ensure that the encoding is in UTF-8.
         has_code_snippet: false
+    - title: Unix, Linux and everything is a file.
+      paragraphs:
+      - text: Both Unix and Linux are very similar OS, there are differences in licensing, foundations and being closed-source and open source respectively.
+        has_code_snippet: false
+      - text: Now, on 'everything is a file'. A <b>file descriptor</b> is an unsigned integer used by a process to identify which file is open.
+          Unix does any sort of I/O operation using the file descriptor. This file can be anything, a real on-disk file, a network connection, a terminal etc.
+          So yes, everything on Unix is a file.
+        has_code_snippet: false
+- title: Networking
+  notes:
+    - title: Socket and Types
+      paragraphs:
+      - text: Socket is a 'way to speak with other programs using Unix file descriptors'. We can use the <code class="bg-zinc-800">socket()</code> system routing using calls
+          like <code class="bg-zinc-800">send</code> and <code class="bg-zinc-800">recv</code>. There are two types of sockets - <b>SOCK_STREAM</b> (Stream Sockets) and <b>SOCK_DGRAM</b>
+          (Datagram Sockets, also connectionless sockets). Stream Sockets use TCP protocol while Datagram Sockets use UDP protocol.
+    - title: Subnetting 
+      paragraphs:
+      - text: Subnetting allows us to divide our into smaller networks. Lets say, our internet address is something like 200.10.20.32. We can use the last octet to host a lot hosts.
+          The last octet can have its Most Significant fixed, divided into two subnets. The first subnet can have available addresses from 200.10.20.0 to 200.10.20.127. The second
+          subnet will have the addresses from 200.10.32.128 to 200.10.32.255. Each subnet has 126 usable addresses.
+        has_code_snippet: false
+    - title: Layered Network Model
+      paragraphs:
+      - text: |
+          In layered network model, the peer layers of the hosts are responsible for the similar encapsulation / decapsulation. The main layers are:
+          <ol class="list-inside list-decimal">
+            <li>Application Layer</li>
+            <li>Presentation Layer</li>
+            <li>Session Layer</li>
+            <li>Transport Layer</li>
+            <li>Network Layer</li>
+            <li>Data Link Layer</li>
+            <li>Physical Layer</li>
+          </ol>
+        has_code_snippet: false
+    - title: Port Numbers
+      paragraphs:
+      - text: Port Numbers (are 16-bit numbers) are used to identify (along with the transport protocal, TCP and UDP) which process should receive the packet. Kind of like, IP (Internet Protocol) address is the address to the hotel
+          but Port Numbers indicate the room number of the hotel.
+        has_code_snippet: false
+- title: Operating Systems
+  notes:
+    - title: Process
+      paragraphs:
+      - text: A process is basically a program in execution. When a program is loaded into the memory, it becomes a process and has its own stack, heap, data and text.
+        has_code_snippet: false
+    - title: Routine
+      paragraphs:
+      - text: A routine is a sequence of code that is meant to be called and run repeatedly during the execution of a program. It can be a part of many processes.
+        has_code_snippet: false
+    - title: Endianness
+      paragraphs:
+      - text: (Came up with the concept when learning about processors and how they store data, when sockets communicate and bytes (packets) are coming in.)
+        has_code_snippet: false
+      - text: If we have a 32 bit-value in hexadecimal (0x00ffee2a) to store in 4 2-byte memory allocations, we can store it as 00|ff|ee||2a. This would be called Big Endian.
+        has_code_snippet: false
+      - text: On the other hand, if we store this value in the reverse order, that is |2a|ee|ff|00, this would be called little endian.
+        has_code_snippet: false
 - title: Elixir
   notes:
     - title: Basics

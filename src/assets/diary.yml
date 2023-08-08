@@ -63,8 +63,7 @@
                   style={{ originX: isPresent ? 0 : 1 }}
                 />
               )
-            }
-          
+            }     
 - title: Ruby on Rails
   entries:
   - title: Complex Validation for Password in Devise
