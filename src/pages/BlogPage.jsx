@@ -10,13 +10,10 @@ import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 
 import { getBlog } from "../helpers/BlogHelpers"
-// import testBlog from "/sadmadlad/src/assets/blogs/os-william-stallings.md"
 
 // /sadmadlad/src/assets/blogs/image.jpeg - Image Path
 
 export default function BlogPage() {
-  // console.log(testBlog)
-
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
