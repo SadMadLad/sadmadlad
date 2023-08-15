@@ -13,7 +13,6 @@
 
 ## Overview
 
-![Image](/sadmadlad/src/assets/blogs/image.jpeg)
 * Follows [CommonMark](https://commonmark.org)
 * Optionally follows [GitHub Flavored Markdown](https://github.github.com/gfm/)
 * Renders actual React elements instead of using `dangerouslySetInnerHTML`

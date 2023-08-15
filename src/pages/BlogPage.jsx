@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { motion, useScroll, useSpring, useIsPresent } from "framer-motion"
+import { motion, useScroll, useSpring } from "framer-motion"
 
 import { anOldHope } from "react-syntax-highlighter/dist/esm/styles/hljs"
 import SyntaxHighlighter from "react-syntax-highlighter"
@@ -9,61 +9,72 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 
-import { getBlogData } from "../helpers/BlogHelpers"
-import testBlog from "../assets/blogs/test-blog.md"
+import { getBlog } from "../helpers/BlogHelpers"
+// import testBlog from "/sadmadlad/src/assets/blogs/os-william-stallings.md"
+
+// /sadmadlad/src/assets/blogs/image.jpeg - Image Path
 
 export default function BlogPage() {
+  // console.log(testBlog)
+
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   })
-  const isPresent = useIsPresent()
 
   const { identifier } = useParams()
+
+  const [blogExists, setBlogExists] = useState(false)
   const [markdown, setMarkdown] = useState("")
 
-  const blogData = getBlogData(identifier)
-  if (blogData === undefined) {
-    return <div>Not Found</div>
-  }
-  else {
-    import(/* @vite-ignore */ testBlog).then(blog => {
-      fetch(blog.default)
-        .then(blog => blog.text())
-        .then(blog => setMarkdown(blog))
-    })
 
-    return (
-      <article className="markdown">
-        <ReactMarkdown
-          rehypePlugins={[rehypeRaw]}
-          remarkPlugins={[remarkGfm]}
-          children={markdown}
-          components={{
-            code({ node, inline, className, children, ...props }) {
-              const match = /language-(\w+)/.exec(className || "")
-              return !inline && match ? (
-                <SyntaxHighlighter
-                  {...props}
-                  children={String(children).replace(/\n$/, "")}
-                  style={anOldHope}
-                  language={match[1]}
-                />
-              ) : (
-                <code {...props} className={className}>
-                  {children}
-                </code>
-              )
-            }
-          }}
-        />
-        <motion.div
-          className="bg-accent h-2 w-full fixed bottom-20 text-center"
-          style={{ scaleX }}
-        />
-      </article>
-    )
-  }
+  useEffect(() => {
+    const fetchBlog = async (blog_identifier) => {
+      const { blogFound, blog } = await getBlog(blog_identifier)
+      if (blogFound) { setMarkdown(blog) }
+      setBlogExists(blogFound)
+    }
+
+    fetchBlog(identifier)
+  }, [identifier])
+
+
+  return (
+    <>
+      {
+        blogExists ?
+          <article className="markdown">
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              remarkPlugins={[remarkGfm]}
+              children={markdown}
+              components={{
+                code({ node, inline, className, children, ...props }) {
+                  const match = /language-(\w+)/.exec(className || "")
+                  return !inline && match ? (
+                    <SyntaxHighlighter
+                      {...props}
+                      children={String(children).replace(/\n$/, "")}
+                      style={anOldHope}
+                      language={match[1]}
+                    />
+                  ) : (
+                    <code {...props} className={className}>
+                      {children}
+                    </code>
+                  )
+                }
+              }}
+            />
+            <motion.div
+              className="bg-accent h-2 w-full fixed bottom-20 text-center"
+              style={{ scaleX }}
+            />
+          </article>
+          : <div>Not Found</div>
+      }
+    </>
+  )
 }
