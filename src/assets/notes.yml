@@ -85,7 +85,19 @@
           <Button />
           <Button text="Don't Click Me!" color="red" />
           <Button fontSize={20} />
+    - text: 'A better way to achieve this would be:'
+      has_code_snippet: true
+      code_snippet:
+        language: javascript
+        code: |
+          function Button({ text = "Click Me!", color = "blue", fontSize = 12 }) {
+            const buttonStyle = {
+              color: color,
+              fontSize: fontSize + "px"
+            };
 
+            return <button style={buttonStyle}>{text}</button>;
+          }
 - title: Ruby on Rails
   notes:
   - title: How do Turbo Frames work seemingly
