@@ -20,6 +20,12 @@
   description: Starts a script in terminal. Now whatever is written on the terminal, will be saved in the
     <code class="bg-zinc-800">file-name</code> after the <code class="bg-zinc-800">exit</code> command.
 
+# Git
+- command: git remote add <name> <link>
+  description: Add a remote link to the repo. Can be github, bitbucket, heroku etc.
+- command: git push -u <remote-branch-name> <local-branch-name>
+  description: Push a local branch to remote one. The -u flag is used to set the upstream branch for the current branch you are pushing.
+
 # Elixir
 - command: mix new <project-name>
   description: Initializes a new mix project with the given project name.

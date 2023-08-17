@@ -56,6 +56,36 @@
     - text: <code class="bg-zinc-800">useLocation</code> is used to fetch the current 'location' of the user. The location of a user is
         entry in the history stack, which is analogous to page or screen. The location can be used to extensively the URL (like fetching the base path, search, state, key and hash of the page.)
       has_code_snippet: false
+  - title: Default Props
+    paragraphs:
+    - text: 'Default props can be declared for a component in order to avoid repetition. Say, we have a button like this:'
+      has_code_snippet: true
+      code_snippet:
+        language: javascript
+        code: |
+          function Button({ text, color, fontSize }) {
+            const buttonStyle = {
+              color: color,
+              fontSize: fontSize + "px"
+            };
+
+            return <button style={buttonStyle}>{text}</button>;
+          }
+
+          Button.defaultProps = {
+            text: "Click Me!",
+            color: "blue",
+            fontSize: 12
+          };
+    - text: The default props have been declared for the button and can be custom ones can be passed accordingly.
+      has_code_snippet: true
+      code_snippet:
+        language: javascript
+        code: |
+          <Button />
+          <Button text="Don't Click Me!" color="red" />
+          <Button fontSize={20} />
+
 - title: Ruby on Rails
   notes:
   - title: How do Turbo Frames work seemingly
