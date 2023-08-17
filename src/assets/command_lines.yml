@@ -29,6 +29,12 @@
   description: The main entry point for the project. It runs the compilers in the project and returns a tuple with the compilation status
     and a list of diagnostics. Before compiling the code, it runs all the dependencies and performs a series of checks.
 
+# Node
+- command: npm create vite@latest project-name -- --template <react | vue | svelte>
+  description: Initialize a project using vite with the provided template.
+- command: npm install -D package-name
+  description: Install a package as dev dependency.
+
 # Rust
 - command: cargo build
   description: Builds the project, creates an executable file under <code class="bg-zinc-800">./target/debug/project-name</code>.

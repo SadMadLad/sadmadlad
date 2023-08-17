@@ -295,7 +295,7 @@
       - text: Socket is a 'way to speak with other programs using Unix file descriptors'. We can use the <code class="bg-zinc-800">socket()</code> system routing using calls
           like <code class="bg-zinc-800">send</code> and <code class="bg-zinc-800">recv</code>. There are two types of sockets - <b>SOCK_STREAM</b> (Stream Sockets) and <b>SOCK_DGRAM</b>
           (Datagram Sockets, also connectionless sockets). Stream Sockets use TCP protocol while Datagram Sockets use UDP protocol.
-    - title: Subnetting 
+    - title: Subnetting
       paragraphs:
       - text: Subnetting allows us to divide our into smaller networks. Lets say, our internet address is something like 200.10.20.32. We can use the last octet to host a lot hosts.
           The last octet can have its Most Significant fixed, divided into two subnets. The first subnet can have available addresses from 200.10.20.0 to 200.10.20.127. The second
@@ -337,6 +337,10 @@
       - text: If we have a 32 bit-value in hexadecimal (0x00ffee2a) to store in 4 2-byte memory allocations, we can store it as 00|ff|ee||2a. This would be called Big Endian.
         has_code_snippet: false
       - text: On the other hand, if we store this value in the reverse order, that is |2a|ee|ff|00, this would be called little endian.
+        has_code_snippet: false
+    - title: System Bus
+      paragraphs:
+      - text: System Bus provides for communication between processors, main memory and I/O modules.
         has_code_snippet: false
 - title: Elixir
   notes:
@@ -635,4 +639,12 @@
     - text: |
         A database can look like this:
         <code class="bg-zinc-800">DATABASE_URL=postgresql://username:password@host/database-name</code>
+      has_code_snippet: false
+- title: Node
+  notes:
+  - title: npm vs npx
+    paragraphs:
+    - text: <code class="bg-zinc-800">npm</code> is used to install packages.
+      has_code_snippet: false
+    - text: <code class="bg-zinc-800">npx</code> is used to execute packages.
       has_code_snippet: false
