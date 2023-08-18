@@ -49,6 +49,19 @@
                   std::cout << "Nice" << std::endl;
                 }
               }
+    - title: Abstract Method
+      paragraphs:
+      - text: 'Abstract Methods in C++ can be declared with something like this:'
+        has_code_snippet: true
+        code_snippet:
+          language: cpp
+          code_snippet: |
+            virtual function_type function_name(function_args) = 0;
+    - title: Namespaces
+      paragraphs:
+      - text: Namespaces in C++ allow us to group up methods under a single namespace, and use them. The keyword <code class="bg-zinc-800">using</code> allows us to use and scope certain namespaces (like <code class="bg-zinc-800">using namespace std</code> allows us to use <code class="bg-zinc-800">std</code> methods like <code class="bg-zinc-800">cout</code>).
+          In comparison to Ruby, they feel like modules. 
+        has_code_snippet: false
 - title: React
   notes:
   - title: 'useLocation hook in react-router-dom'
