@@ -114,7 +114,6 @@
 - title: Ruby on Rails
   notes:
   - title: How do Turbo Frames work seemingly
-    updated_on: 17 July, 2023
     paragraphs:
     - text: On a surface level, turbo frames allow to target certain frames from other
         or within the same pages. They do this by intercepting the link and targetting
@@ -154,6 +153,66 @@
         intercept the link and try to fetch the frame of the same id from the newer
         page. The behavior of links can be controlled using different attributes like
         <code class="bg-zinc-800">data-turbo-frame</code> etc.
+  - title: accepts_nested_attributes_for for creates and updates
+    paragraphs:
+    - text: | 
+        <code class="bg-zinc-800">accepts_nested_attributes_for</code> is used for easier creation and updates of associated
+          records. Let's say we have model named <code class="bg-zinc-800">ActivityRegistration</code> which has many <code class="bg-zinc-800">:activity_registration_units</code>.
+          so, the models look like these:
+      has_code_snippet: true
+      code_snippet:
+        language: ruby
+        code: |
+          class ActivityRegistration < ApplicationRecord
+            has_many :activity_registration_units
+            accepts_nested_attributes_for :activity_registration_units
+          end
+
+          class ActivityRegistrationUnit < ApplicationRecord
+            belongs_to :activity_registration
+          end
+    - text: 'The params in controller would like this to accept the nested attributes:'
+      has_code_snippet: true
+      code_snippet:
+        language: ruby
+        code: |
+            def activity_registration_params
+              params.require(:activity_registration).permit(
+                :payment,
+                activity_registration_units_attributes: %i[activity_registration_id]
+              )
+              # Passing the id is necessary.
+            end
+    - text: In the forms, updates to associated records are easier using <code class="bg-zinc-800">form.fields_for</code>.
+        Creation of new records is different, as it requires another attribute too.
+      has_code_snippet: true
+      code_snippet:
+        language: ruby
+        code: |
+          # Creation of new activity_registration_units
+
+          <%= form_with model: [@activity, @activity_registration] do |form| %>
+            <% @account_users.each do |account_user| %>
+              <%= form.fields_for :activity_registration_units, @activity_registration.activity_registration_units.build do |unit| %>
+                <%= unit.check_box :account_user_id, value: account_user.id %> <%= account_user.user.name %>
+                <br />
+              <% end %>
+            <% end %>
+
+            <%= form.submit %>
+          <% end %>
+
+          # Loop over associated models (when they are created or need to be updated)
+
+          <%= form_with model: [@activity, @activity_registration] do |form| %>
+    
+            <%= form.fields_for :activity_registration_units do |unit| %>
+              <%= unit.object.account_user_id %>
+              <br />
+            <% end %>
+
+            <%= form.submit %>
+          <% end %>
 - title: Ruby
   notes:
   - title: '&. operator'
