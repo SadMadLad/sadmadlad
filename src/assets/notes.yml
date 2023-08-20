@@ -1,67 +1,67 @@
 # <code class="bg-zinc-800"></code>
 - title: C++
   notes:
-    - title: Preprocessors
-      paragraphs:
-        - text: "Preprocessors in a C++ file are basically commands or files executed before the file does. They start with a #."
-          has_code_snippet: false
-    - title: Header Guards
-      paragraphs:
-        - text: Header Guards ensure us to include our file only once in our file and avoid redeclaration.
-          has_code_snippet: false
-        - text: |
-            There are two ways to define header guards. One is by using <code class="bg-zinc-800"><b>#pragma once</b></code> and the other is <code class="bg-zinc-800"><b>#ifndef, #define, #endif</b></code>. Both of these do the same thing and make sure to include the file only once.
-            The <code class="bg-zinc-800">#ifndef</code> method allows us to create a tag for file and make sure it is defined once. <code class="bg-zinc-800">#pragma once</code> is a shorthand for this.
-          has_code_snippet: false
-    - title: Static in C++
-      paragraphs:
-        - text: |
-            The <code class="bg-zinc-800">static</code> keyword works different in different contexts.
-            <ul class="list-inside list-disc">
-              <li>In separate files, if a function or a variable is declared <code class="bg-zinc-800">static</code>, it remains private for that file.</li>
-              <li>Class methods or instance variables if declared <code class="bg-zinc-800">static</code>, are shared among all the instance among that specific class. If we draw similarity with Ruby classes, the <code class="bg-zinc-800">static</code> method will be a class method (using <code class="bg-zinc-800">self.method_name</code>) and static variable will be declared using <code class="bg-zinc-800">@@</code>.</li>
-              <li><code class="bg-zinc-800">static</code> method cannot access non-static class methods or variables.</li>
-              <li><code class="bg-zinc-800">static</code> methods and variables of a class are accessed using <code class="bg-zinc-800>ClassName::MethodOrVariableName</code></li>
-            </ul>
-        - has_code_snippet: false
-    - title: Enums
-      paragraphs:
-        - text: Enums are declared using the <code class="bg-zinc-800">enum</code> keyword. They can also be declared as Enum classes for more verbosity. On their own, enums behave exactly like array of integers. When declared with class, they are more verbose
-            and need to be namespaced if they need to be accessed.
-          has_code_snippet: true
-          code_snippet:
-            language: cpp
-            code: |
-              enum Size {
-                Small, Medium, Large
-              };
-
-              enum class SizeClass {
-                Small, Medium, Large
-              };
-
-              int main() {
-                if (SizeClass::Large > SizeClass::Medium) {
-                  std::cout << "Nice" << std::endl;
-                }
-
-                if (Large > Medium) {
-                  std::cout << "Nice" << std::endl;
-                }
-              }
-    - title: Abstract Method
-      paragraphs:
-      - text: 'Abstract Methods in C++ can be declared with something like this:'
+  - title: Preprocessors
+    paragraphs:
+      - text: "Preprocessors in a C++ file are basically commands or files executed before the file does. They start with a #."
+        has_code_snippet: false
+  - title: Header Guards
+    paragraphs:
+      - text: Header Guards ensure us to include our file only once in our file and avoid redeclaration.
+        has_code_snippet: false
+      - text: |
+          There are two ways to define header guards. One is by using <code class="bg-zinc-800"><b>#pragma once</b></code> and the other is <code class="bg-zinc-800"><b>#ifndef, #define, #endif</b></code>. Both of these do the same thing and make sure to include the file only once.
+          The <code class="bg-zinc-800">#ifndef</code> method allows us to create a tag for file and make sure it is defined once. <code class="bg-zinc-800">#pragma once</code> is a shorthand for this.
+        has_code_snippet: false
+  - title: Static in C++
+    paragraphs:
+      - text: |
+          The <code class="bg-zinc-800">static</code> keyword works different in different contexts.
+          <ul class="list-inside list-disc">
+            <li>In separate files, if a function or a variable is declared <code class="bg-zinc-800">static</code>, it remains private for that file.</li>
+            <li>Class methods or instance variables if declared <code class="bg-zinc-800">static</code>, are shared among all the instance among that specific class. If we draw similarity with Ruby classes, the <code class="bg-zinc-800">static</code> method will be a class method (using <code class="bg-zinc-800">self.method_name</code>) and static variable will be declared using <code class="bg-zinc-800">@@</code>.</li>
+            <li><code class="bg-zinc-800">static</code> method cannot access non-static class methods or variables.</li>
+            <li><code class="bg-zinc-800">static</code> methods and variables of a class are accessed using <code class="bg-zinc-800>ClassName::MethodOrVariableName</code></li>
+          </ul>
+      - has_code_snippet: false
+  - title: Enums
+    paragraphs:
+      - text: Enums are declared using the <code class="bg-zinc-800">enum</code> keyword. They can also be declared as Enum classes for more verbosity. On their own, enums behave exactly like array of integers. When declared with class, they are more verbose
+          and need to be namespaced if they need to be accessed.
         has_code_snippet: true
         code_snippet:
           language: cpp
-          code_snippet: |
-            virtual function_type function_name(function_args) = 0;
-    - title: Namespaces
-      paragraphs:
-      - text: Namespaces in C++ allow us to group up methods under a single namespace, and use them. The keyword <code class="bg-zinc-800">using</code> allows us to use and scope certain namespaces (like <code class="bg-zinc-800">using namespace std</code> allows us to use <code class="bg-zinc-800">std</code> methods like <code class="bg-zinc-800">cout</code>).
+          code: |
+            enum Size {
+              Small, Medium, Large
+            };
+
+            enum class SizeClass {
+              Small, Medium, Large
+            };
+
+            int main() {
+              if (SizeClass::Large > SizeClass::Medium) {
+                std::cout << "Nice" << std::endl;
+              }
+
+              if (Large > Medium) {
+                std::cout << "Nice" << std::endl;
+              }
+            }
+  - title: Abstract Method
+    paragraphs:
+    - text: 'Abstract Methods in C++ can be declared with something like this:'
+      has_code_snippet: true
+      code_snippet:
+        language: cpp
+        code_snippet: |
+          virtual function_type function_name(function_args) = 0;
+  - title: Namespaces
+    paragraphs:
+    - text: Namespaces in C++ allow us to group up methods under a single namespace, and use them. The keyword <code class="bg-zinc-800">using</code> allows us to use and scope certain namespaces (like <code class="bg-zinc-800">using namespace std</code> allows us to use <code class="bg-zinc-800">std</code> methods like <code class="bg-zinc-800">cout</code>).
           In comparison to Ruby, they feel like modules. 
-        has_code_snippet: false
+      has_code_snippet: false
 - title: React
   notes:
   - title: 'useLocation hook in react-router-dom'
@@ -349,367 +349,396 @@
       has_code_snippet: false
 - title: Miscellaneous
   notes:
-    - title: Makefile?
-      paragraphs:
-      - text: 'Makefiles allow us to build files where re-build is needed. Makefiles are intelligent enough to detect if build is needed
-          or not. They consist of variables, dependencies and commands in their files. Headers are not included generally in the makefile.
-          A typical makefile looks like this:'
-        has_code_snippet: true
-        code_snippet:
-          language: makefile
-          code: |
-            CC=g++ # Variable for type of compile
-            CFLAGS=-g -Wall # Variable for flags to use
+  - title: Makefile?
+    paragraphs:
+    - text: 'Makefiles allow us to build files where re-build is needed. Makefiles are intelligent enough to detect if build is needed
+        or not. They consist of variables, dependencies and commands in their files. Headers are not included generally in the makefile.
+        A typical makefile looks like this:'
+      has_code_snippet: true
+      code_snippet:
+        language: makefile
+        code: |
+          CC=g++ # Variable for type of compile
+          CFLAGS=-g -Wall # Variable for flags to use
 
-            CFILES=main.cpp	# Files to build
-            OBJECTS=main.o	# Object files to be created from files
+          CFILES=main.cpp	# Files to build
+          OBJECTS=main.o	# Object files to be created from files
 
-            BINARY=bin	# Variable for command
+          BINARY=bin	# Variable for command
 
-            # A convention for makefiles to include an all: directive, which typically compiles all the files.
-            # Here, it runs the 'bin' command. But then it looks for, how can I build 'bin', for which it moves to next command.
-            all: $(BINARY)
+          # A convention for makefiles to include an all: directive, which typically compiles all the files.
+          # Here, it runs the 'bin' command. But then it looks for, how can I build 'bin', for which it moves to next command.
+          all: $(BINARY)
 
-            # The next directive creates the object files (as mentioned in OBJECTS variable). So far, to compile the bin directive, it has to create object files.
-            # The command for creating those files is $(CC) -o $@ $^. Here, CC is the compile, -o is the flag for creating object files. $@ means what is on the left side of the directive (bin). $^ means what is on the right side of the directive (here it is main.o)
-            # But now it needs to look for how to create those object files from the cpp files, and the command below tells it that.
-            $(BINARY): $(OBJECTS)
-              $(CC) -o $@ $^
+          # The next directive creates the object files (as mentioned in OBJECTS variable). So far, to compile the bin directive, it has to create object files.
+          # The command for creating those files is $(CC) -o $@ $^. Here, CC is the compile, -o is the flag for creating object files. $@ means what is on the left side of the directive (bin). $^ means what is on the right side of the directive (here it is main.o)
+          # But now it needs to look for how to create those object files from the cpp files, and the command below tells it that.
+          $(BINARY): $(OBJECTS)
+            $(CC) -o $@ $^
 
-            # Very similar to the directive above. One new thing here is the wildcard %.
-            # The directive can be read as: For creating a x.o file from each x.cpp file, run the command below.
-            %.o: %.cpp
-              $(CC) $(FLAGS) -c -o $@ $^
+          # Very similar to the directive above. One new thing here is the wildcard %.
+          # The directive can be read as: For creating a x.o file from each x.cpp file, run the command below.
+          %.o: %.cpp
+            $(CC) $(FLAGS) -c -o $@ $^
 
-            # A clean directive to remove binary and object files.
-            clean:
-              rm -rf $(BINARY) $(OBJECTS)
-    - title: UTF-8?
-      paragraphs:
-      - text: First came ASCII. It was simple enough to store english alphabets. Then the number of bytes was increased for internationalization which created
-          a whole lot of mess when exchanging information via emails and stuff. But the management of bytes was atrocious and was never viable for many characters.
-          Then came Unicode, which consisted of <i>code point</i> (U+0639) where U+ was Unicode while +0639 was the hexadecimal number. This added support for more
-          characters. But this system had a lot of unused bytes (with lots of 00s like U+0066, U+0041 etc.), which was incovenient for English alphabets. Then came UTF-8
-          for using less bytes for English characters. When the character code goes beyond 127, all bets are off and we would need to know which encoding was it, either it was
-          ASCII, UTF-8, UTF-16, Latin etc. (The information is not completely true and ambiguous and I would need to read it a little more.) That's why we have charset=UTF-8 in our HTML to
-          ensure that the encoding is in UTF-8.
-        has_code_snippet: false
-    - title: Unix, Linux and everything is a file.
-      paragraphs:
-      - text: Both Unix and Linux are very similar OS, there are differences in licensing, foundations and being closed-source and open source respectively.
-        has_code_snippet: false
-      - text: Now, on 'everything is a file'. A <b>file descriptor</b> is an unsigned integer used by a process to identify which file is open.
+          # A clean directive to remove binary and object files.
+          clean:
+            rm -rf $(BINARY) $(OBJECTS)
+  - title: UTF-8?
+    paragraphs:
+    - text: First came ASCII. It was simple enough to store english alphabets. Then the number of bytes was increased for internationalization which created
+        a whole lot of mess when exchanging information via emails and stuff. But the management of bytes was atrocious and was never viable for many characters.
+        Then came Unicode, which consisted of <i>code point</i> (U+0639) where U+ was Unicode while +0639 was the hexadecimal number. This added support for more
+        characters. But this system had a lot of unused bytes (with lots of 00s like U+0066, U+0041 etc.), which was incovenient for English alphabets. Then came UTF-8
+        for using less bytes for English characters. When the character code goes beyond 127, all bets are off and we would need to know which encoding was it, either it was
+        ASCII, UTF-8, UTF-16, Latin etc. (The information is not completely true and ambiguous and I would need to read it a little more.) That's why we have charset=UTF-8 in our HTML to
+        ensure that the encoding is in UTF-8.
+      has_code_snippet: false
+  - title: Unix, Linux and everything is a file.
+    paragraphs:
+    - text: Both Unix and Linux are very similar OS, there are differences in licensing, foundations and being closed-source and open source respectively.
+      has_code_snippet: false
+    - text: Now, on 'everything is a file'. A <b>file descriptor</b> is an unsigned integer used by a process to identify which file is open.
           Unix does any sort of I/O operation using the file descriptor. This file can be anything, a real on-disk file, a network connection, a terminal etc.
           So yes, everything on Unix is a file.
-        has_code_snippet: false
+      has_code_snippet: false
 - title: Networking
   notes:
-    - title: Socket and Types
-      paragraphs:
-      - text: Socket is a 'way to speak with other programs using Unix file descriptors'. We can use the <code class="bg-zinc-800">socket()</code> system routing using calls
-          like <code class="bg-zinc-800">send</code> and <code class="bg-zinc-800">recv</code>. There are two types of sockets - <b>SOCK_STREAM</b> (Stream Sockets) and <b>SOCK_DGRAM</b>
-          (Datagram Sockets, also connectionless sockets). Stream Sockets use TCP protocol while Datagram Sockets use UDP protocol.
-    - title: Subnetting
-      paragraphs:
-      - text: Subnetting allows us to divide our into smaller networks. Lets say, our internet address is something like 200.10.20.32. We can use the last octet to host a lot hosts.
-          The last octet can have its Most Significant fixed, divided into two subnets. The first subnet can have available addresses from 200.10.20.0 to 200.10.20.127. The second
-          subnet will have the addresses from 200.10.32.128 to 200.10.32.255. Each subnet has 126 usable addresses.
-        has_code_snippet: false
-    - title: Layered Network Model
-      paragraphs:
-      - text: |
-          In layered network model, the peer layers of the hosts are responsible for the similar encapsulation / decapsulation. The main layers are:
-          <ol class="list-inside list-decimal">
-            <li>Application Layer</li>
-            <li>Presentation Layer</li>
-            <li>Session Layer</li>
-            <li>Transport Layer</li>
-            <li>Network Layer</li>
-            <li>Data Link Layer</li>
-            <li>Physical Layer</li>
-          </ol>
-        has_code_snippet: false
-    - title: Port Numbers
-      paragraphs:
-      - text: Port Numbers (are 16-bit numbers) are used to identify (along with the transport protocal, TCP and UDP) which process should receive the packet. Kind of like, IP (Internet Protocol) address is the address to the hotel
+  - title: Socket and Types
+    paragraphs:
+    - text: Socket is a 'way to speak with other programs using Unix file descriptors'. We can use the <code class="bg-zinc-800">socket()</code> system routing using calls
+        like <code class="bg-zinc-800">send</code> and <code class="bg-zinc-800">recv</code>. There are two types of sockets - <b>SOCK_STREAM</b> (Stream Sockets) and <b>SOCK_DGRAM</b>
+        (Datagram Sockets, also connectionless sockets). Stream Sockets use TCP protocol while Datagram Sockets use UDP protocol.
+  - title: Subnetting
+    paragraphs:
+    - text: Subnetting allows us to divide our into smaller networks. Lets say, our internet address is something like 200.10.20.32. We can use the last octet to host a lot hosts.
+        The last octet can have its Most Significant fixed, divided into two subnets. The first subnet can have available addresses from 200.10.20.0 to 200.10.20.127. The second
+        subnet will have the addresses from 200.10.32.128 to 200.10.32.255. Each subnet has 126 usable addresses.
+      has_code_snippet: false
+  - title: Layered Network Model
+    paragraphs:
+    - text: |
+        In layered network model, the peer layers of the hosts are responsible for the similar encapsulation / decapsulation. The main layers are:
+        <ol class="list-inside list-decimal">
+          <li>Application Layer</li>
+          <li>Presentation Layer</li>
+          <li>Session Layer</li>
+          <li>Transport Layer</li>
+          <li>Network Layer</li>
+          <li>Data Link Layer</li>
+          <li>Physical Layer</li>
+        </ol>
+      has_code_snippet: false
+  - title: Port Numbers
+    paragraphs:
+    - text: Port Numbers (are 16-bit numbers) are used to identify (along with the transport protocal, TCP and UDP) which process should receive the packet. Kind of like, IP (Internet Protocol) address is the address to the hotel
           but Port Numbers indicate the room number of the hotel.
-        has_code_snippet: false
+      has_code_snippet: false
+- title: Cybersecurity
+  notes:
+  - title: PII
+    paragraphs:
+    - text: PII stands for Personally Identifiable Information. It is "any information used to identify a person's identity".
+        SPII is Sensitive PII which involves stuff like security numbers, bank accounts and biometric data.
+      has_code_snippet: false
+  - title: SIEM Tools
+    paragraphs:
+    - text: SIEM stands for Security Information and Event Management. These tools are used for auditing.
+  - title: CERTs
+    paragraphs:
+    - text: CERTs stands for Computer Emergency and Response Teams.
+      has_code_snippet: false
+  - title: Brain Virus
+    paragraphs:
+    - text: Developed in Lahore, Pakistan in 1986 by Alvi Brothers, the virus was meant to track the illegal copies of floppy disk and not meant for
+        malicious reasons. But in actuality, the infected floppy disk would infect the computer and any floppy disk insert would get infected.
+      has_code_snippet: false
+  - title: Morris Virus
+    paragraphs:
+    - text: Robert Morris in 1988 developed a 'software' to keep track of how many computers were connected to the internet. The software would get installed
+        in the computer, re-installing till the memory crashed, and crawled through the internet to affect the computers.
+      has_code_snippet: false
+  - title: Social Engineering
+    paragraphs:
+    - text: Social Engineering is a manipulative technique that requires human error in order to get access to the private information. An example would be the LoveLetter
+        malware by Onel De Guzman in 2000.
+      has_code_snippet: false
 - title: Operating Systems
   notes:
-    - title: Process
-      paragraphs:
-      - text: A process is basically a program in execution. When a program is loaded into the memory, it becomes a process and has its own stack, heap, data and text.
-        has_code_snippet: false
-    - title: Routine
-      paragraphs:
-      - text: A routine is a sequence of code that is meant to be called and run repeatedly during the execution of a program. It can be a part of many processes.
-        has_code_snippet: false
-    - title: Endianness
-      paragraphs:
-      - text: (Came up with the concept when learning about processors and how they store data, when sockets communicate and bytes (packets) are coming in.)
-        has_code_snippet: false
-      - text: If we have a 32 bit-value in hexadecimal (0x00ffee2a) to store in 4 2-byte memory allocations, we can store it as 00|ff|ee||2a. This would be called Big Endian.
-        has_code_snippet: false
-      - text: On the other hand, if we store this value in the reverse order, that is |2a|ee|ff|00, this would be called little endian.
-        has_code_snippet: false
-    - title: System Bus
-      paragraphs:
-      - text: System Bus provides for communication between processors, main memory and I/O modules.
-        has_code_snippet: false
+  - title: Process
+    paragraphs:
+    - text: A process is basically a program in execution. When a program is loaded into the memory, it becomes a process and has its own stack, heap, data and text.
+      has_code_snippet: false
+  - title: Routine
+    paragraphs:
+    - text: A routine is a sequence of code that is meant to be called and run repeatedly during the execution of a program. It can be a part of many processes.
+      has_code_snippet: false
+  - title: Endianness
+    paragraphs:
+    - text: (Came up with the concept when learning about processors and how they store data, when sockets communicate and bytes (packets) are coming in.)
+      has_code_snippet: false
+    - text: If we have a 32 bit-value in hexadecimal (0x00ffee2a) to store in 4 2-byte memory allocations, we can store it as 00|ff|ee||2a. This would be called Big Endian.
+      has_code_snippet: false
+    - text: On the other hand, if we store this value in the reverse order, that is |2a|ee|ff|00, this would be called little endian.
+      has_code_snippet: false
+  - title: System Bus
+    paragraphs:
+    - text: System Bus provides for communication between processors, main memory and I/O modules.
+      has_code_snippet: false
 - title: Elixir
   notes:
-    - title: Basics
-      paragraphs:
-      - text: |
-          <ul class="list-inside list-disc">
-            <li>Elixir is a functional programming language</li>
-            <li>The notation for represent a functions is like this <code class="bg-zinc-800">foo/4</code>. The notation means there is a <code class="bg-zinc-800">foo</code> function with 4 arguments.</li>
-            <li>Numbers can be written in binary, octal or hex form, like <code class="bg-zinc-800">0x0110, 0o231, 0x1F</code></li>
-            <li>Atoms are similar to Ruby symbols. In elixir, the module names (either from erlang or custom) are atoms, so are booleans.</li>
-            <li>Integer divison can be done by <code class="bg-zinc-800">div/2</code>, and modulos can be calculated using <code class="bg-zinc-800">rem/2</code> method.</li>
-            <li><code class="bg-zinc-800">==</code> compares values, <code class="bg-zinc-800">===</code> compares value and the type.</li>
-            <li><code class="bg-zinc-800"><></code> is a concatenation operator.
-          </ul>
-        has_code_snippet: false
-    - title: Collections
-      paragraphs:
-      - text: |
-          <ul class="list-inside list-disc">
-            <li>Lists in Elixir are linked lists.</li>
-            <li><code class="bg-zinc-800">++/2</code> is an operator for list concatenation.</li>
-            <li><code class="bg-zinc-800">hd/1</code> method extracts the head of the list.</li>
-            <li><code class="bg-zinc-800">tl/1</code> method extracts the tail of the list.</li>
-            <li>Tuples are declared like this: <code class="bg-zinc-800">{item1, item2}</code>. Tuples are quite useful when it comes to pattern matching.</li>
-            <li>Maps are declared like this: <code class="bg-zinc-800">%{key: value}</code> or <code class="bg-zinc-800">%{key => value}</code></li>
-            <li><code class="bg-zinc-800">Map.put/3</code> is used to add a new key-value pair to a map.</li>
-          </ul>
-        has_code_snippet: false
-    - title: Enum
-      paragraphs:
-      - text: 'Some of the methods provided by <code class="bg-zinc-800">Enum</code> module are as following:'
-        has_code_snippet: true
-        code_snippet:
-          language: elixir
-          code: |
-            _map = Enum.map([1, 2, 3], fn(n) -> n + 3 end)
-            _filter = Enum.filter([1, 2, 3], fn(n) -> n - 1 == 0 end)
-            _map_two = Enum.map([1, 2, 3], &(&1 + 10))
-            _reduce = Enum.reduce([1, 2, 3], 6, &(&1 + &2))
-    - title: Pattern Matching
-      paragraphs:
-      - text: The <code class="bg-zinc-800">=</code> is more of a match operator than an assignment operator. The following
-          code snippet show cases what pattern matching looks like. The pin operator makes the reassignment impossible for a variable.
-        has_code_snippet: true
-        code_snippet:
-          language: elixir
-          code: |
-            {:ok, value} = {:ok, "Successful"} # value = "Successful"
-            x = 1
-            1 = x
-            2 = x # Invalid
-            ^x = 2 # Invalid because of pin operator
-    - title: Control Structures
-      paragraphs:
-      - text: There are many ways for writing control structures in Elixir.
-        has_code_snippet: false
-      - text: <code class="bg-zinc-800">if do; else</code> are the if-else statements for elixir. There is <code class="bg-zinc-800">unless</code>
-          too like in Ruby.
-        has_code_snippet: true
-        code_snippet:
-          language: elixir
-          code: |
-            if 1 < 2 do
-              x = 30
-            else
-              x = 40
+  - title: Basics
+    paragraphs:
+    - text: |
+        <ul class="list-inside list-disc">
+          <li>Elixir is a functional programming language</li>
+          <li>The notation for represent a functions is like this <code class="bg-zinc-800">foo/4</code>. The notation means there is a <code class="bg-zinc-800">foo</code> function with 4 arguments.</li>
+          <li>Numbers can be written in binary, octal or hex form, like <code class="bg-zinc-800">0x0110, 0o231, 0x1F</code></li>
+          <li>Atoms are similar to Ruby symbols. In elixir, the module names (either from erlang or custom) are atoms, so are booleans.</li>
+          <li>Integer divison can be done by <code class="bg-zinc-800">div/2</code>, and modulos can be calculated using <code class="bg-zinc-800">rem/2</code> method.</li>
+          <li><code class="bg-zinc-800">==</code> compares values, <code class="bg-zinc-800">===</code> compares value and the type.</li>
+          <li><code class="bg-zinc-800"><></code> is a concatenation operator.
+        </ul>
+      has_code_snippet: false
+  - title: Collections
+    paragraphs:
+    - text: |
+        <ul class="list-inside list-disc">
+          <li>Lists in Elixir are linked lists.</li>
+          <li><code class="bg-zinc-800">++/2</code> is an operator for list concatenation.</li>
+          <li><code class="bg-zinc-800">hd/1</code> method extracts the head of the list.</li>
+          <li><code class="bg-zinc-800">tl/1</code> method extracts the tail of the list.</li>
+          <li>Tuples are declared like this: <code class="bg-zinc-800">{item1, item2}</code>. Tuples are quite useful when it comes to pattern matching.</li>
+          <li>Maps are declared like this: <code class="bg-zinc-800">%{key: value}</code> or <code class="bg-zinc-800">%{key => value}</code></li>
+          <li><code class="bg-zinc-800">Map.put/3</code> is used to add a new key-value pair to a map.</li>
+        </ul>
+      has_code_snippet: false
+  - title: Enum
+    paragraphs:
+    - text: 'Some of the methods provided by <code class="bg-zinc-800">Enum</code> module are as following:'
+      has_code_snippet: true
+      code_snippet:
+        language: elixir
+        code: |
+          _map = Enum.map([1, 2, 3], fn(n) -> n + 3 end)
+          _filter = Enum.filter([1, 2, 3], fn(n) -> n - 1 == 0 end)
+          _map_two = Enum.map([1, 2, 3], &(&1 + 10))
+          _reduce = Enum.reduce([1, 2, 3], 6, &(&1 + &2))
+  - title: Pattern Matching
+    paragraphs:
+    - text: The <code class="bg-zinc-800">=</code> is more of a match operator than an assignment operator. The following
+        code snippet show cases what pattern matching looks like. The pin operator makes the reassignment impossible for a variable.
+      has_code_snippet: true
+      code_snippet:
+        language: elixir
+        code: |
+          {:ok, value} = {:ok, "Successful"} # value = "Successful"
+          x = 1
+          1 = x
+          2 = x # Invalid
+          ^x = 2 # Invalid because of pin operator
+  - title: Control Structures
+    paragraphs:
+    - text: There are many ways for writing control structures in Elixir.
+      has_code_snippet: false
+    - text: <code class="bg-zinc-800">if do; else</code> are the if-else statements for elixir. There is <code class="bg-zinc-800">unless</code>
+        too like in Ruby.
+      has_code_snippet: true
+      code_snippet:
+        language: elixir
+        code: |
+          if 1 < 2 do
+            x = 30
+          else
+            x = 40
+          end
+
+          x = if 1 < 2, do: 2, else: 2 # Ternary-like one liner for Elixir
+    - text: <code class="bg-zinc-800">case</code> allows us to match against multiple patterns. A <code class="bg-zinc-800">case</code> always
+        requires a default (_) case.
+      has_code_snippet: true
+      code_snippet:
+        language: elixir
+        code: |
+          result = 30
+
+          x = case {1, 2} do
+            {1, ^result} -> result
+            _ -> 3
+          end
+
+          IO.puts x # 3
+    - text: <code class="bg-zinc-800">cond</code> is a more verbose way to return value based on the given conditions. It is different from
+        <code class="bg-zinc-800">case</code> because <code class="bg-zinc-800">case</code> uses pattern matching while
+        <code class="bg-zinc-800">cond</code> checks multiple conditions (like if, else if, ... else).
+      has_code_snippet: true
+      code_snippet:
+        language: elixir
+        code: |
+          x = cond do
+            1 < 2 -> 3
+            true -> 4
+          end
+  - title: Functions
+    paragraphs:
+    - text: 'Elixir has anonymous functions. They can be declared with something like this:'
+      has_code_snippet: true
+      code_snippet:
+        language: elixir
+        code: |
+          sum = &(&1 + &2)
+          sum.(1, 2) # 3
+
+          diff = fn(a, b) -> a - b end
+          diff.(1, 2) # -1
+    - text: |
+        <ul class="list-disc list-inside">
+          <li>Named functions are declared using the <code class="bg-zinc-800">def</code> keyword with a <code class="bg-zinc-800">do</code> block.</li>
+          <li>To create a private function for a module, <code class="bg-zinc-800">defp</code> keyword is for the module.</li>
+          <li>
+            Pattern matching happens for the arity (arguments) of the functions too. Functions can be polymorphic too based on the number of arguments,
+            and using the guards (with the <code class="bg-zinc-800">when</code> keyword.)
+          </li>
+          <li>Default arguments can be passed using <code class="bg-zinc-800">//</code></li>
+        </ul>
+      has_code_snippet: true
+      code_snippet:
+        language: elixir
+        code: |
+          defmodule Foos do
+
+            # Named argument
+            def hello() do
+              IO.puts "Hello"
             end
 
-            x = if 1 < 2, do: 2, else: 2 # Ternary-like one liner for Elixir
-      - text: <code class="bg-zinc-800">case</code> allows us to match against multiple patterns. A <code class="bg-zinc-800">case</code> always
-          requires a default (_) case.
-        has_code_snippet: true
-        code_snippet:
-          language: elixir
-          code: |
-            result = 30
-
-            x = case {1, 2} do
-              {1, ^result} -> result
-              _ -> 3
+            # Pattern Matching on arguments
+            def pattern_boi(%{name: person_name}) do
+              person_name
             end
 
-            IO.puts x # 3
-      - text: <code class="bg-zinc-800">cond</code> is a more verbose way to return value based on the given conditions. It is different from
-          <code class="bg-zinc-800">case</code> because <code class="bg-zinc-800">case</code> uses pattern matching while
-          <code class="bg-zinc-800">cond</code> checks multiple conditions (like if, else if, ... else).
-        has_code_snippet: true
-        code_snippet:
-          language: elixir
-          code: |
-            x = cond do
-              1 < 2 -> 3
-              true -> 4
-            end
-    - title: Functions
-      paragraphs:
-      - text: 'Elixir has anonymous functions. They can be declared with something like this:'
-        has_code_snippet: true
-        code_snippet:
-          language: elixir
-          code: |
-            sum = &(&1 + &2)
-            sum.(1, 2) # 3
+            # One-Liner
+            def hello_two(), do: 0
 
-            diff = fn(a, b) -> a - b end
-            diff.(1, 2) # -1
+            # Polymorphic
+            def poly() do
+              1
+            end
+
+            def poly(one) do
+              2
+            end
+
+            # With Guards
+            def poly_guard(n) when is_integer(n) do
+              n
+            end
+
+            def poly_guard(n) when is_float(n) do
+              n + 1.0
+            end
+
+            # Default Arguments
+            def poly_default(n \\ 10) do
+              n + 32
+            end
+
+            # Private Function
+            defp hello_private() do
+              IO.puts "Private Hello"
+            end
+          end
+  - title: Pipe Operator
+    paragraphs:
+      - text: The pipe operator <code class="bg-zinc-800">|></code> allows to link multiple functions step-by-step cleanly.
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            x = [1, 2, 3, 4, 5, 6]
+                  |> Enum.filter(&(rem(&1, 2) == 0))
+                  |> Enum.map(fn(n) -> n*2 end)
+  - title: Modules
+    paragraphs:
       - text: |
           <ul class="list-disc list-inside">
-            <li>Named functions are declared using the <code class="bg-zinc-800">def</code> keyword with a <code class="bg-zinc-800">do</code> block.</li>
-            <li>To create a private function for a module, <code class="bg-zinc-800">defp</code> keyword is for the module.</li>
-            <li>
-              Pattern matching happens for the arity (arguments) of the functions too. Functions can be polymorphic too based on the number of arguments,
-              and using the guards (with the <code class="bg-zinc-800">when</code> keyword.)
-            </li>
-            <li>Default arguments can be passed using <code class="bg-zinc-800">//</code></li>
+            Elixir has modules that allow you to group functions within a module cleanly. Modules are declared using the <code class="bg-zinc-800">defmodule</code> keyword.
+            <li><code class="bg-zinc-800">defstruct</code> allows us to create structures in a module. These structures are special maps and are mainly used within modules (same or the other).</li>
+            <li><code class="bg-zinc-800">@derive</code> feature allows to hide certain keys of a structure to keep it private.</li>
+            <li>Module attributes are declared using <code class="bg-zinc-800">@attribute</code>. These are basically constants.</li>
           </ul>
         has_code_snippet: true
         code_snippet:
           language: elixir
           code: |
-            defmodule Foos do
+            defmodule Person.Head do
+              # Now, we can use Person.Employee as Employee only.
+              @greeting "Hello Boy"
 
-              # Named argument
-              def hello() do
-                IO.puts "Hello"
-              end
+              # Structure for modules
+              @derive {Inspect, only: [:name]}
+              defstruct name: "Edgar Kalou", age: 32
 
-              # Pattern Matching on arguments
-              def pattern_boi(%{name: person_name}) do
-                person_name
-              end
+              def say, do: Person.Employee.say_hello
+              def say_greeting, do: "#{@greeting} World!"
 
-              # One-Liner
-              def hello_two(), do: 0
-
-              # Polymorphic
-              def poly() do
-                1
-              end
-
-              def poly(one) do
-                2
-              end
-
-              # With Guards
-              def poly_guard(n) when is_integer(n) do
-                n
-              end
-
-              def poly_guard(n) when is_float(n) do
-                n + 1.0
-              end
-
-              # Default Arguments
-              def poly_default(n \\ 10) do
-                n + 32
-              end
-
-              # Private Function
-              defp hello_private() do
-                IO.puts "Private Hello"
-              end
+              def lumps_boy, do: %Person.Head{name: "Phelps"}
             end
-    - title: Pipe Operator
-      paragraphs:
-        - text: The pipe operator <code class="bg-zinc-800">|></code> allows to link multiple functions step-by-step cleanly.
-          has_code_snippet: true
-          code_snippet:
-            language: elixir
-            code: |
-              x = [1, 2, 3, 4, 5, 6]
-                    |> Enum.filter(&(rem(&1, 2) == 0))
-                    |> Enum.map(fn(n) -> n*2 end)
-    - title: Modules
-      paragraphs:
-        - text: |
-            <ul class="list-disc list-inside">
-              Elixir has modules that allow you to group functions within a module cleanly. Modules are declared using the <code class="bg-zinc-800">defmodule</code> keyword.
-              <li><code class="bg-zinc-800">defstruct</code> allows us to create structures in a module. These structures are special maps and are mainly used within modules (same or the other).</li>
-              <li><code class="bg-zinc-800">@derive</code> feature allows to hide certain keys of a structure to keep it private.</li>
-              <li>Module attributes are declared using <code class="bg-zinc-800">@attribute</code>. These are basically constants.</li>
-            </ul>
-          has_code_snippet: true
-          code_snippet:
-            language: elixir
-            code: |
-              defmodule Person.Head do
-                # Now, we can use Person.Employee as Employee only.
-                @greeting "Hello Boy"
+      - text: |
+          <ul class="list-disc list-inside">
+            <li>The <code class="bg-zinc-800">alias</code> keyword allows us to namespace modules</li>
+            <li><code class="bg-zinc-800">require</code> allows to use macros from a module.</li>
+            <li>With the use of <code class="bg-zinc-800">use</code>, <code class="bg-zinc-800">quote</code> and <code class="bg-zinc-800">unquote</code>, we can extend and generate cool modules via meta-programming.</li>
+          </ul>
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            import List, only: [last: 1]
+            require List
 
-                # Structure for modules
-                @derive {Inspect, only: [:name]}
-                defstruct name: "Edgar Kalou", age: 32
+            defmodule BigBrain do
+              defmacro __using__(opts) do
+                attributes = Keyword.get(opts, :attributes, [])
 
-                def say, do: Person.Employee.say_hello
-                def say_greeting, do: "#{@greeting} World!"
-
-                def lumps_boy, do: %Person.Head{name: "Phelps"}
-              end
-        - text: |
-            <ul class="list-disc list-inside">
-              <li>The <code class="bg-zinc-800">alias</code> keyword allows us to namespace modules</li>
-              <li><code class="bg-zinc-800">require</code> allows to use macros from a module.</li>
-              <li>With the use of <code class="bg-zinc-800">use</code>, <code class="bg-zinc-800">quote</code> and <code class="bg-zinc-800">unquote</code>, we can extend and generate cool modules via meta-programming.</li>
-            </ul>
-          has_code_snippet: true
-          code_snippet:
-            language: elixir
-            code: |
-              import List, only: [last: 1]
-              require List
-
-              defmodule BigBrain do
-                defmacro __using__(opts) do
-                  attributes = Keyword.get(opts, :attributes, [])
-
-                  quote do
-                    def enlist_attributes, do: Enum.each(unquote(attributes), &(IO.puts &1))
-                  end
+                quote do
+                  def enlist_attributes, do: Enum.each(unquote(attributes), &(IO.puts &1))
                 end
               end
+            end
 
-              defmodule MyAttribute do
-                use BigBrain, attributes: [:name, :age]
-              end
-    - title: Sigils
-      paragraphs:
-        - text: |
-            <ul class="list-disc list-inside">
-              Sigils allow us to display or store data in a more verbose way. The capital ones do not allow string interpolation while smaller ones do.
-              <li><code class="bg-zinc-800">~c</code> are used for character list.</li>
-              <li><code class="bg-zinc-800">~r</code> is for regular expressions.</li>
-              <li><code class="bg-zinc-800">~s</code> is for strings.</li>
-              <li><code class="bg-zinc-800">~W</code> is for word lists.</li>
-            </ul>
-          has_code_snippet: false
-    - title: Documentation
-      paragraphs:
-        - text: <code class="bg-zinc-800">#</code> is for inline comments. <code class="bg-zinc-800">@doc</code> is for functional level documentation. <code class="bg-zinc-800">@moduledoc</code> is for module level documentation.
-          has_code_snippet: false
-    - title: Comprehension
-      paragraphs:
-        - text: The <code class="bg-zinc-800">for</code> keyword with <code class="bg-zinc-800"><-</code> is used for list comprehension.
-          has_code_snippet: true
-          code_snippet:
-            language: elixir
-            code: |
-              list = for x <- [1, 2, 3], do: x*x
+            defmodule MyAttribute do
+              use BigBrain, attributes: [:name, :age]
+            end
+  - title: Sigils
+    paragraphs:
+      - text: |
+          <ul class="list-disc list-inside">
+            Sigils allow us to display or store data in a more verbose way. The capital ones do not allow string interpolation while smaller ones do.
+            <li><code class="bg-zinc-800">~c</code> are used for character list.</li>
+            <li><code class="bg-zinc-800">~r</code> is for regular expressions.</li>
+            <li><code class="bg-zinc-800">~s</code> is for strings.</li>
+            <li><code class="bg-zinc-800">~W</code> is for word lists.</li>
+          </ul>
+        has_code_snippet: false
+  - title: Documentation
+    paragraphs:
+      - text: <code class="bg-zinc-800">#</code> is for inline comments. <code class="bg-zinc-800">@doc</code> is for functional level documentation. <code class="bg-zinc-800">@moduledoc</code> is for module level documentation.
+        has_code_snippet: false
+  - title: Comprehension
+    paragraphs:
+      - text: The <code class="bg-zinc-800">for</code> keyword with <code class="bg-zinc-800"><-</code> is used for list comprehension.
+        has_code_snippet: true
+        code_snippet:
+          language: elixir
+          code: |
+            list = for x <- [1, 2, 3], do: x*x
 
-              d = %{"a" => "b", "c" => "d"}
-              d = for {k, v} <- d, do: {k, v}
-    - title: Strings and Characters
-      paragraphs:
-        - text: |
+            d = %{"a" => "b", "c" => "d"}
+            d = for {k, v} <- d, do: {k, v}
+  - title: Strings and Characters
+    paragraphs:
+    - text: |
             <ul class="list-inside list-disc">
               <li>Anything between <<>> shows that it is a sequence of bytes.</li>
               <li>String is declared with double quotes while char list uses single quotes.</li>
@@ -718,10 +747,10 @@
               <li>Primarily, strings should be used. Charlists are needed for support for erlang modules mainly.</li>
               <li><code class="bg-zinc-800">?</code> can give us the code point of a character</li>
             </ul>
-          has_code_snippet: true
-          code_snippet:
-            language: elixir
-            code: |
+      has_code_snippet: true
+      code_snippet:
+        language: elixir
+        code: |
               string = "hełło" # <<104, 101, 197, 130, 197, 130, 111>>
               # Because string is UTF-8, the 255+ characters are translated with two separate bytes.
               # This has happened for ł
@@ -732,16 +761,16 @@
               # 322 is ł. For string, it is encoded in two different UTF-8 bytes, but not in charlist.
 
               ?Z # 90
-        - text: |
+    - text: |
             <ul class="list-inside list-disc">
               <li>Codepoints are characters that take one or more bytes. <code class="bg-zinc-800">String.codepoints</code> will split a 'heavy' character (that uses multiple bytes) into its composite bytes.</li>
               <li>Graphemes combine the bytes into a single character. <code class="bg-zinc-800">String.graphemes</code> is for this job.</li>
               <li>The unicode characters can be written in a string using <code class="bg-zinc-800">\uXXXX</code> keyword.</li>
             </ul>
-          has_code_snippet: true
-          code_snippet:
-            language: elixir
-            code: |
+      has_code_snippet: true
+      code_snippet:
+        language: elixir
+        code: |
               string = "\u0061\u0301"
 
               IO.inspect String.codepoints(string) # ["a", "́"]
