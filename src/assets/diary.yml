@@ -5,7 +5,7 @@
   - title: Animated Page Transitions
     type: Feature
     updated_on: 4th August, 2023.
-    description: Wanted to have cook framer motion page transitions from one to the other.
+    description: Wanted to have a framer motion page transition from one to the other.
       Like <a class="underline" href="https://codesandbox.io/s/framer-motion-screen-wipe-page-transitions-with-react-router-6-yo38bu?from-embed=&file=/src/template/Gallery.tsx:1296-1334">this</a>
     solution:
       has_steps: true
@@ -16,7 +16,7 @@
         text: The page transitions using framer motion requires use of <code class="bg-zinc-800">useLocation</code>, <code class="bg-zinc-800">AnimatePresence</code>,
           <code class="bg-zinc-800">useIsPresent</code> along with the <code class="bg-zinc-800">react-router-dom</code>
       steps:
-      - text: | 
+      - text: |
           Create a component which wraps all the <code class="bg-zinc-800">Routes</code> (and the <code class="bg-zinc-800">Switch</code> or <code class="bg-zinc-800">Router</code> alongwith.)
             The component that wraps all of this is <code class="bg-zinc-800">AnimatePresence</code>, provided by framer motion. Use the <code class="bg-zinc-800">useLocation</code> to get the pathname, and pass
             the <code class="bg-zinc-800">location</code> to the <code class="bg-zinc-800">Router</code> (or <code class="bg-zinc-800">Switch</code>, whichever you are using.) as the <code class="bg-zinc-800">key</code> prop.
@@ -63,7 +63,7 @@
                   style={{ originX: isPresent ? 0 : 1 }}
                 />
               )
-            }     
+            }
 - title: Ruby on Rails
   entries:
   - title: Complex Validation for Password in Devise
@@ -197,9 +197,75 @@
   - title: Nested Attributes, Params and Other Stuff
     type: Bug
     updated_on: 24 August, 2023
-    description: Trying to get comfortable with <code class="bg-zinc-800">accepts_nested_attributes_for</code>
+    description: Trying to get comfortable with <code class="bg-zinc-800">accepts_nested_attributes_for</code>.
     solution:
-      has_steps: 
+      has_intro: false
+      has_outro: false
+      has_steps: true
+      steps:
+      - has_code_snippet: true
+        text: |
+          The first problem was to build new records using nested attributes. For that, the form's <code class="bg-zinc-800">fields_for :associated_records</code> field should have the <code class="bg-zinc-800">@parent_record.associated_records.build</code> option
+          so that new associated records can be created (if the association is <code class="bg-zinc-800">:has_many</code>). The params should permit like <code class="bg-zinc-800">params.require(:parent_record).permit(associated_record_attributes: [...attributes])</code>.
+        code_snippet:
+          language: ruby
+          code: |
+            # Form
+
+            <%= form_with model: [@activity, @activity_registration] do |form| %>
+              <%# <%= form.check_box :units_ids, {multiple: true}, account_user.id, nil %>
+              <% @account_users.each do |account_user| %>
+                <%= form.fields_for :activity_registration_units, @activity_registration.activity_registration_units.build do |unit| %>
+                    <%= unit.check_box :account_user_id, {}, account_user.id, nil %> <%= account_user.user.name %>
+                  <br />
+                <% end %>
+              <% end %>
+
+              <%= form.submit %>
+            <% end %>
+
+            # Controller
+            UNIT_PARAMS = %i[id activity_registration_id account_user_id participant_age
+                   participant_grade].freeze
+
+            params.require(:activity_registration).permit(
+              :payment,
+              activity_registration_units_attributes: UNIT_PARAMS
+            )
+      - has_code_snippet: true
+        text: |
+          For some reason, in my case, the validations were not working properly. The validations would apply when associated records were getting created but not
+          when they were being updated. The solution was simpler than I thought as I then had to simply use <code class="bg-zinc-800">validates_associated</code>.
+        code_snippet:
+          language: ruby
+          code: |
+            validates_associated :activity_registration_units
+  - title: JSONB, Forms and Params
+    type: Feature
+    updated_on: 24 August, 2023
+    description: I was not sure how can I fill in my JSONB field using forms and params.
+    solution:
+      has_steps: false
+      has_code_snippet: true
+      text: |
+        Initially, it looked hard, but it was fairly simple. <code class="bg-zinc-800">form.fields_for</code> are the way to go.
+        The attributes within <code class="bg-zinc-800">fields_for</code> are sent back as nested params and can be used as such.
+      code_snippet:
+        language: ruby
+        code: |
+          # Form
+          <%= form_with model: @activity_registration do |form| %>
+            <%= form.fields_for :equipment do |e| %>
+              <%= e.text_field :data, value: 'Value' %> # Will be passed in params as equipment: { data: 'Value' }
+            <% end %>
+
+            <%= form.submit %>
+          <% end %>
+
+          # Controller
+          # Equipment field is JSONB
+          params.require(:activity_registration).permit(equipment: {})
+
 - title: Elixir
   entries:
   - title: Print list in Elixir
