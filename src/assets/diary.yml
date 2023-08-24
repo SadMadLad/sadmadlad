@@ -194,6 +194,12 @@
         language: erb
         code: '<%= link_to "Checkout the Activity", activity_path(activity), data:
           { turbo_frame: ''_top'' } %>'
+  - title: Nested Attributes, Params and Other Stuff
+    type: Bug
+    updated_on: 24 August, 2023
+    description: Trying to get comfortable with <code class="bg-zinc-800">accepts_nested_attributes_for</code>
+    solution:
+      has_steps: 
 - title: Elixir
   entries:
   - title: Print list in Elixir
