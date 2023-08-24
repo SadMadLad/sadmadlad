@@ -460,9 +460,105 @@
       has_code_snippet: false
   - title: Social Engineering
     paragraphs:
-    - text: Social Engineering is a manipulative technique that requires human error in order to get access to the private information. An example would be the LoveLetter
-        malware by Onel De Guzman in 2000.
+    - text: "Social Engineering is a manipulative technique that requires human error in order to get access to the private information. An example would be the LoveLetter
+        malware by Onel De Guzman in 2000. Attacks related to social engineering fall under <b>Security and Risk Management Domain</b>. Some common techinques of social engineering are:"
       has_code_snippet: false
+    - text: |
+        <ul class="list-inside list-disc">
+          <li><b>Social Media Phishing:</b> The threat actor collects detailed information of the victim and initiates an attack.</li>
+          <li><b>Watering Hole Attack:</b> Frequent attacks from the threat actor to target specific group of users.</li>
+          <li><b>USB Baiting:</b> Use USB stick as bait to install malicious software.</li>
+          <li><b>Physical Social Engineering:</b> Impersonate a customer, employee to obtain unauthorized access to location.</li>
+        </ul>
+  - title: Phishing
+    paragraphs:
+    - text: Phishing is the use of digital software to trick people into deploying malicious software and exposing their sensitive data.
+      has_code_snippet: false
+    - text: "Some types of fishing attacks are:"
+      has_code_snippet: false
+    - text: |
+        <ul class="list-inside list-disc">
+          <li><b>Business Email Compromise:</b> A threat actor sends a malicious email that invokes the user to send information, in order to get financial benefit. The email seems from a known source.</li>
+          <li><b>Spear Phishing:</b> The threat actor sends malicious email to a specific user or groups of users. The email seems to be appear from a trusted source.</li>
+          <li><b>Whaling:</b> Type of SPear Phishing to target company executives.</li>
+          <li><b>Vishing:</b> Exploitation of Electronic Voice communication to impersonate a known source and obtain information.</li>
+          <li><b>Smishing:</b> Use of text messages for phishing.</li>
+        </ul>
+      has_code_snippet: false
+  - title: ILOVEYOU Malware
+    paragraphs:
+    - text: A Phillipine Hacker, Onel De Guzman developed a malware named ILOVEYOU in 2000 to send malicious email to the victims. On opening the attached file, the malware would inspect
+        the victim's address and steal the login credentials and other sensitive data.
+  - title: The Equifax Breach
+    paragraphs:
+    - text: Over 143 million records were stolen in Equifax Breach in 2017, because of multiple vulnerabilities that Equifax had.
+  - title: Malware and some of its types
+    paragraphs:
+    - text: "A malware is software to harm devices and networks. Some of the types are:"
+      has_code_snippet: false
+    - text: |
+        <ul class="list-disc list-inside">
+          <li><b>Virus:</b> Malicious code that once initiated, destroys or damages data.</li>
+          <li><b>Worms:</b> Self-replicating software that spreads from one infected system to the other.</li>
+          <li><b>Ransomware:</b> The threat actor encrypts data and asks for payment to decrypt it.</li>
+          <li><b>Spyware:</b> The act of stealing and selling user's sensitive information without consent through a malicious software installed on user's computer.</li>
+        </ul>
+  - title: CISSP and the security domains.
+    paragraphs:
+    - text: "CISSP stands for Certified Information Systems Security Professional. It's eight domains are:"
+      has_code_snippet: false
+    - text: |
+        <ul class="list-inside list-disc">
+          <li><b>Security and Risk Management: </b>Defines security risks and objectives, risk mitigation, compliance. business continuity and the law, like updating policies of company etc.</li>          
+          <li><b>Asset Security: </b>Securing digital and physical assets. Also related to storage, maintenance, retention and destruction of data.</li>
+          <li><b>Security Architecture and Engineering: </b>Focus on optimizing security by ensuring effective tools, processes and software, like configuring a firewall.</li>
+          <li><b>Communication and Network Security: </b>Manage and secure physical networks and wireless communications, like making sure that the users connect to secure hotspots.</li>
+          <li><b>Identity and Acces Management: </b>Keeps data secure by making sure that the members of organization follow specific policies to use assets, like setting keycard access for employees.</li>
+          <li><b>Security Assessment and Testing: </b>Conducting security threats, auditing softwares, and looking for vulnerabilities, like regularly auditing payroll.</li>
+          <li><b>Security Operations: </b>Conducting security investigations and implementing preventative measures.</li>
+          <li><b>Software Development Security: </b>Making sure that the development team is following secure coding practices for the software.</li>
+        </ul>
+  - title: Password Attack
+    paragraphs:
+    - text: Attempt to access password-secured devices. Two types of such attacks are the <b>Brute Force</b> and the <b>Rainbow Table</b>.
+        Such attacks fall under <b>Communication and Network Security Domain</b>
+      has_code_snippet: false
+  - title: Physical Attack
+    paragraphs:
+    - text: Attacks that not only impact the digital software, but also the physical hard-drive. Like Malicious USB stick. Such attacks come under
+        <b>Asset Security Domain</b>.
+      has_code_snippet: false
+  - title: Supply-Chain Attack
+    paragraphs:
+    - text: Such an attack targets different aspects of a whole system where vulnerability can be exploited, ranging from devices, to third party softwares to applications.
+        Such an attack falls under many domains.
+      has_code_snippet: false
+  - title: Cryptographic Attacks
+    paragraphs:
+    - text: Cryptographic Attacks affect the forms of communications between sender and intended recipient. Some types are <b>Birthday</b>, <b>Collision</b> and <b>Downgrade</b>.
+        These Attacks come under the domain of <b>Communication and Network Security</b>.
+      has_code_snippet: false
+  - title: Threat Actors and their types
+    paragraphs:
+    - text: 'Any person or group that presents a security risk is a Threat actors. Some of the types are:'
+      has_code_snippet: false
+    - text: |
+        <ul class="list-inside list-disc">
+          <li><b>Advanced Persistent Threats<b> are those threat actors that have a lot of expertise in their domain and stay for longer periods of time for more benefit.</li>
+          <li><b>Insider Threats</b> usually use their personal authorized roles for their own benefit and corruption.</li>
+          <li><b>Hacktivists</b> are usually driven by a political agenda and use it for their own purpose.</li>
+        </ul>
+      has_code_snippet: false
+  - title: Hackers and Types
+    paragraphs:
+    - text: 'Hacker is someone that uses computer to access the networks and other assets. Types of hackers are:'
+      has_code_snippet: false
+    - text: |
+        <ul class="list-inside list-disc">
+          <li><b>Authorized Hackers</b> are ethical hackers that are allowed to track and fix vulnerabilities.</li>
+          <li><b>Semiauthorized Hackers</b> are meant to only diagnose the vulnerabilities and not fix them.</li>
+          <li><b>Unauthorized Hackers</b> use their expertise to exploit vulnerabilities</li>
+        </ul>
 - title: Operating Systems
   notes:
   - title: Process
