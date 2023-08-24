@@ -6,7 +6,7 @@ import { atomOneDarkReasonable } from "react-syntax-highlighter/dist/esm/styles/
 
 // List of all the Command Lines
 export default function Main() {
-  const sortedCommandLines = CommandLines.sort((a, b) => a.command > b.command)
+  const sortedCommandLines = CommandLines.sort((a, b) => a.command.localeCompare(b.command))
 
   return (
     <main className="px-5">
