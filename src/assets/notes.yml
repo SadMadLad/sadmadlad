@@ -544,7 +544,7 @@
       has_code_snippet: false
     - text: |
         <ul class="list-inside list-disc">
-          <li><b>Advanced Persistent Threats<b> are those threat actors that have a lot of expertise in their domain and stay for longer periods of time for more benefit.</li>
+          <li><b>Advanced Persistent Threats</b> are those threat actors that have a lot of expertise in their domain and stay for longer periods of time for more benefit.</li>
           <li><b>Insider Threats</b> usually use their personal authorized roles for their own benefit and corruption.</li>
           <li><b>Hacktivists</b> are usually driven by a political agenda and use it for their own purpose.</li>
         </ul>
@@ -559,6 +559,40 @@
           <li><b>Semiauthorized Hackers</b> are meant to only diagnose the vulnerabilities and not fix them.</li>
           <li><b>Unauthorized Hackers</b> use their expertise to exploit vulnerabilities</li>
         </ul>
+  - title: CIA Triad
+    paragraphs:
+    - text: The CIA (Confidentiality, Integrity and Availability) Triad is the model that helps inform organizations consider risk
+        when setting up system and security policies.
+      has_code_snippet: false
+  - title: Security Frameworks
+    paragraphs:
+    - text: Security frameworks are guidelines for data protection and privacy. Frameworks involve setting up guidelines and security goals,
+        implementing security goals
+      has_code_snippet: false
+    - text: The National University of Standards and Technology (NIST) has produced some frameworks like NIST-CSF (Cybersecurity Framework) and
+        NIST-RMF (Risk Management Framework) and many others.
+      has_code_snippet: false
+    - text: 'Some other regulations and controls are'
+      has_code_snippet: false
+    - text: |
+        <ul class="list-inside list-disc">
+          <li>Federal Energy Regulatory Comission - North American Reliability Corporation (FERC-NARC)</li>
+          <li>Center of Information Security (CIS)</li>
+          <li>General Data Protection Regulation (GDPR)</li>
+          <li>Payment Card Industry Data Security Standard (PCI DSS)</li>
+          and many more.. 
+        </ul>
+    - title: SIEM tools
+      has_code_snippet: false
+      text: SIEM stands for Security Information and Event Management. The SIEM tool are used to capture evidences and logs during an cyber attack.
+    - title: Packet Sniffer
+      has_code_snippet: false
+      text: Packet Sniffer is used to visualize the traffic of data through a medium (like modem).
+    - title: Playbook
+      has_code_snippet: false
+      text: Playbook is a manual that guides you about the operational action during a cyber attack, like how to respond to an attack.
+        The first type of playbook you might consult is playbook of <b>chain of custody</b>. It is the process of documenting the possession of evidence
+        and control during the lifecycle of an attack. The other major playbook can be <b>protecting and preserving evidence</b>. 
 - title: Operating Systems
   notes:
   - title: Process
