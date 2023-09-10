@@ -19,6 +19,8 @@
 - command: script <file-name>
   description: Starts a script in terminal. Now whatever is written on the terminal, will be saved in the
     <code class="bg-zinc-800">file-name</code> after the <code class="bg-zinc-800">exit</code> command.
+- command: lsb_release -a
+  description: Get Ubuntu's version and other details
 
 # Git
 - command: git remote add <name> <link>
