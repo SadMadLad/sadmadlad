@@ -52,3 +52,9 @@
   description: Does not execute the code but makes sure that the code compiles.
 - command: cargo build --release
   description: Compiles and optimizes the code and prepares to release the product.
+
+# Python
+- command: django-admin startproject <project-name>
+  description: Start a new Django project
+- command: django-admin startapp <app-name>
+  description: Create an app in the Django project
