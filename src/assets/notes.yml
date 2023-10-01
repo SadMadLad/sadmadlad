@@ -226,6 +226,14 @@
           # Both the expressions below behave the same.
           @person&.spouse&.name
           @person.spouse.name if @person && @person.spouse
+  - title: 'Get terminal size'
+    paragraphs:
+    - text: We can get the terminal size with <code class="bg-zinc-800">io/console</code> gem in Ruby (<code class="bg-zinc-800">$stdin.winsize</code>).
+      has_code_snippet: false
+  - title: Readline.line_buffer
+    paragraphs:
+    - text: <code class="bg-zinc-800">Readline.line_buffer</code> represents the current input line in the Readline library. It retrieves the text entered by the user up to the current cursor position.
+      has_code_snippet: false
 - title: Rust
   notes:
   - title: What is a Macro in Rust?
@@ -596,7 +604,7 @@
   - title: Playbook
     paragraphs: 
     - text: A manual to guide through how to respond in case of an attack. Usually contains the chain of custody
-      to document the evidence during an attack. Playbook can also contain the order of volatility and the procedure to preserve evidence and logs.
+        to document the evidence during an attack. Playbook can also contain the order of volatility and the procedure to preserve evidence and logs.
     - has_code_snippet: false
   - title: Basic Cryptographic Terms
     paragraphs:
@@ -605,7 +613,17 @@
   - title: Penetration Testing
     paragraphs:
     - text: The act of participating in a simulated attack that helps identify vulnerabilities in systems, networks, websites, applications and processes.
-
+  - title: URI Encode vs URI Encode Component
+    paragraphs:
+    - text: URI Encode assumes that the input is a complete URI that might have some characters that need encoding.
+      has_code_snippet: false
+    - text: URI will encode everything with special meaning, so you use it for components of URIs
+      has_code_snippet: false
+  - title: SAML
+    paragraphs:
+    - text: SAML stands for Security Assertion Markup Language. It is an XML-based open standard for authentication and authorization data between parties,
+        typically between identity provider (IdP) and server provider (SP).
+      has_code_snippet: false
 - title: Operating Systems
   notes:
   - title: Process

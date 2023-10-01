@@ -1,0 +1,5 @@
+# WILT: What I Learned Today
+
+- date: October 1, 2023.
+  entry: Learnt how we can do tab autocompletion using Readline in Ruby. Learnt how gems like colorize and ctf-party add more functionality to strings.
+  
