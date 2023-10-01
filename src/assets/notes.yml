@@ -593,6 +593,19 @@
       text: Playbook is a manual that guides you about the operational action during a cyber attack, like how to respond to an attack.
         The first type of playbook you might consult is playbook of <b>chain of custody</b>. It is the process of documenting the possession of evidence
         and control during the lifecycle of an attack. The other major playbook can be <b>protecting and preserving evidence</b>. 
+  - title: Playbook
+    paragraphs: 
+    - text: A manual to guide through how to respond in case of an attack. Usually contains the chain of custody
+      to document the evidence during an attack. Playbook can also contain the order of volatility and the procedure to preserve evidence and logs.
+    - has_code_snippet: false
+  - title: Basic Cryptographic Terms
+    paragraphs:
+    - text: <b>Plaintext</b> is unencrypted information. <b>Ciphertext</b> is the result of encryption. <b>Encoding is the process of converting plaintext to ciphertext.</b>
+    - has_code_snippet: false
+  - title: Penetration Testing
+    paragraphs:
+    - text: The act of participating in a simulated attack that helps identify vulnerabilities in systems, networks, websites, applications and processes.
+
 - title: Operating Systems
   notes:
   - title: Process

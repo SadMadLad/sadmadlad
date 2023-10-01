@@ -18,5 +18,22 @@
   { "word": "Epitomize", "meanings": ["Be a perfect example"] },
   { "word": "Quibble", "meanings": ["Object", "Criticize"] },
   { "word": "Tailor-made", "meanings": ["Made or suitable for a particular reason"] },
-  { "word": "Supplanted", "meanings": ["Superseded", "Replaced"] }
+  { "word": "Supplanted", "meanings": ["Superseded", "Replaced"] },
+  { "word": "Plunder", "meanings": ["Steal"] },
+  { "word": "Retinue", "meanings": ["A group of advisors or assistants"] },
+  { "word": "Onerous", "meanings": ["Involving heavy regulations", "Involving a lot of effort", "Burdensome"] },
+  { "word": "Auspice", "meanings": ["A divine or prophetic token"] },
+  { "word": "Larger-than-life", "meanings": ["Attracting special attention because of unsual or flamboyant appearance or behavior"] },
+  { "word": "Coronation", "meanings": ["Act of placement or bestowal of a crown upon a monarch's head."] },
+  { "word": "Embargo", "meanings": ["An official ban on trade"] },
+  { "word": "Cajole", "meanings": ["Persuade", "Coax", "Talk into"] },
+  { "word": "Heed", "meanings": ["Pay attention to", "Take note of"] },
+  { "word": "Preamble", "meanings": ["Introduction", "Preface", "Prelude"] },
+  { "word": "Coalesce", "meanings": ["Come together to form one mass", "Unite", "Combine"] },
+  { "word": "Sordid", "meanings": ["Involving immoralm motives", "Seedy", "Sleazy"] },
+  { "word": "Magnaminous", "meanings": ["Polite, especially coming from an opponent"] },
+  { "word": "Fudge", "meanings": ["Compromise", "To conceal the truth in an issue"] },
+  { "word": "Espouse", "meanings": ["Adopt or support a cause, belief or way of life", "Embrace"] },
+  { "word": "Egalitarian", "meanings": ["Believing in or based on the principle that all people are equal and deserve equal rights."] },
+  { "word": "Inimical", "meanings": ["Tending to obstruct or harm", "Injurious", "Detrimental", "Pernicious"] }
 ]
