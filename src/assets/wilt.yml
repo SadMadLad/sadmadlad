@@ -4,4 +4,11 @@
   entries:
     - Learnt how we can do tab autocompletion using Readline in Ruby.
     - Learnt how gems like colorize and ctf-party add more functionality to strings.
+- date: October 2, 2023.
+  entries:
+    - What is Uni-Assist
+- date: October 3, 2023.
+  entries:
+    - How messaging service can be created and phone numbers can be added via API.
+
 
