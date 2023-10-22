@@ -18,10 +18,11 @@ export default function AnimatedRoutes() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/diary" element={<DiaryPage />} />
         <Route path="/command-lines" element={<CommandLinesPage />} />
-        <Route path="/notes" element={<NotesPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/blogs" element={<BlogsPage />} />
-        <Route path="/blog/:identifier" element={<BlogPage />} />
+        
+        {/* <Route path="/notes" element={<NotesPage />} /> */}
+        {/* <Route path="/blogs" element={<BlogsPage />} /> */}
+        {/* <Route path="/blog/:identifier" element={<BlogPage />} /> */}
       </Routes>
     </AnimatePresence>
   )
