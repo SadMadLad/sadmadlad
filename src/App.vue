@@ -1,10 +1,17 @@
 <script setup>
-import { onMounted, ref, onUnmounted } from 'vue';
+import { onMounted, ref, onUnmounted, watch } from 'vue';
 
 const FftSize = 256;
 const bufferLength = 128;
 
-const songName = ref('/songs/GTA V Theme.mp3');
+const songs = [
+  'GTA V Theme',
+  'HOTD Overkill - Jasper & Brutus',
+  'HOTD Overkill - Torn Out Twisted',
+];
+
+const currentSongIndex = ref(0);
+
 const songElement = ref(null);
 const songContext = ref(new AudioContext());
 const songAnalyser = ref(null);
@@ -25,6 +32,8 @@ onMounted(() => {
 
   songTrack.connect(songAnalyser.value);
   songAnalyser.value.connect(songContext.value.destination);
+
+  songElement.value.addEventListener('ended', () => {})
 });
 
 const playAudio = () => {
@@ -63,18 +72,27 @@ const startFetchingAudioData = () => {
   update();
 };
 
-onUnmounted(() => {
-  cancelAnimationFrame(animationFrameId);
+function moveToNext() {
+  currentSongIndex.value = (currentSongIndex.value + 1) % songs.length
+}
+
+onUnmounted(() => cancelAnimationFrame(animationFrameId));
+
+watch(currentSongIndex, () => {
+  songElement.value.addEventListener('canplay', () => {
+    playAudio();
+  }, { once: true });
 });
 </script>
 
 <template>
-  <audio ref="songElement" :src="songName"></audio>
+  <h1>{{ songs[currentSongIndex] }}</h1>
+  <audio ref="songElement" @ended="moveToNext" :src="`/songs/${songs[currentSongIndex]}.mp3`"></audio>
   <div class="flex flex-col">
     <button @click="playAudio">Play</button>
     <button @click="console.log(songContext.value.state)">Check State</button>
     <button @click="pauseAudio">Pause</button>
-    <button @click="getLiveAudioData">Get Live Audio Data</button>
+    <button @click="moveToNext">Next</button>
 
     <ul class="flex flex-row gap-0.5 h-60 scale-y-[-1]">
       <li v-for="bar in refFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
