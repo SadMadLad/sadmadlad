@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, onUnmounted, watch } from 'vue';
+import { onMounted, ref, onUnmounted, watch, computed } from 'vue';
 
 const FftSize = 256;
 const bufferLength = 128;
@@ -12,14 +12,18 @@ const songs = [
 
 const currentSongIndex = ref(0);
 
+
 const songElement = ref(null);
 const songContext = ref(new AudioContext());
 const songAnalyser = ref(null);
 
 let frequencyBuffer = new Uint8Array(bufferLength);
 const refFrequencyBuffer = ref([]);
+const computedFrequencyBuffer = computed(() => refFrequencyBuffer.value.filter(freq => freq > 0));
+
 let amplitudeBuffer = new Uint8Array(bufferLength);
 const refAmplitudeBuffer = ref([]);
+const computedAmplitudeBuffer = computed(() => refAmplitudeBuffer.value.filter(amp => amp > 0));
 
 let isPlaying = ref(false);
 let animationFrameId = null;
@@ -95,11 +99,11 @@ watch(currentSongIndex, () => {
     <button @click="moveToNext">Next</button>
 
     <ul class="flex flex-row gap-0.5 h-60 scale-y-[-1]">
-      <li v-for="bar in refFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
+      <li v-for="bar in computedFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
       </li>
     </ul>
     <ul class="flex flex-row gap-0.5 h-60">
-      <li v-for="bar in refFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
+      <li v-for="bar in computedFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
       </li>
     </ul>
   </div>
