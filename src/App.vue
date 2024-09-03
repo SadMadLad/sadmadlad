@@ -1,39 +1,48 @@
 <script setup>
-import { onMounted, ref, onUnmounted, watch, computed } from 'vue';
+import { onMounted, ref, onUnmounted, watch, computed } from "vue";
 
-const FftSize = 256;
-const bufferLength = 128;
-const loop = ref(false);
+const FFT_SIZE = 256;
+const BUFFER_LENGTH = 128;
+const POWER_FACTOR = 1.25;
+const LOWER_FACTOR = 10;
 
 const songs = [
-  'GTA V Theme',
-  'HOTD Overkill - Jasper & Brutus',
-  'HOTD Overkill - Torn Out Twisted',
-  'Marly - You Never Know'
+  "GTA V Theme",
+  "HOTD Overkill - Jasper & Brutus",
+  "HOTD Overkill - Torn Out Twisted",
+  "Marly - You Never Know",
+  "GTA VCS - Phil Collins - In the Air Tonight",
 ];
 
 const currentSongIndex = ref(0);
 
+const loop = ref(false);
 const songElement = ref(null);
 const songContext = ref(new AudioContext());
 const songAnalyser = ref(null);
 
-let frequencyBuffer = new Uint8Array(bufferLength);
+let frequencyBuffer = new Uint8Array(BUFFER_LENGTH);
 const refFrequencyBuffer = ref([]);
-const computedFrequencyBuffer = computed(() => refFrequencyBuffer.value.filter(freq => freq > 0));
+const computedFrequencyBuffer = computed(() =>
+  refFrequencyBuffer.value.filter((freq) => freq > 0),
+);
 
-let amplitudeBuffer = new Uint8Array(bufferLength);
+let amplitudeBuffer = new Uint8Array(BUFFER_LENGTH);
 const refAmplitudeBuffer = ref([]);
-const computedAmplitudeBuffer = computed(() => refAmplitudeBuffer.value.filter(amp => amp > 0));
+const computedAmplitudeBuffer = computed(() =>
+  refAmplitudeBuffer.value.filter((amp) => amp > 0),
+);
 
 let isPlaying = ref(false);
 let animationFrameId = null;
 
 onMounted(() => {
-  const songTrack = songContext.value.createMediaElementSource(songElement.value);
+  const songTrack = songContext.value.createMediaElementSource(
+    songElement.value,
+  );
 
   songAnalyser.value = songContext.value.createAnalyser();
-  songAnalyser.value.fftSize = FftSize;
+  songAnalyser.value.fftSize = FFT_SIZE;
 
   songTrack.connect(songAnalyser.value);
   songAnalyser.value.connect(songContext.value.destination);
@@ -56,33 +65,37 @@ const pauseAudio = () => {
 };
 
 const getLiveAudioData = () => {
-  if (songAnalyser.value) {
-    songAnalyser.value.getByteFrequencyData(frequencyBuffer);
-    songAnalyser.value.getByteTimeDomainData(amplitudeBuffer);
+  if (!songAnalyser.value) return;
 
-    refFrequencyBuffer.value = Array.from(frequencyBuffer);
-    refAmplitudeBuffer.value = Array.from(amplitudeBuffer);
-  }
+  songAnalyser.value.getByteFrequencyData(frequencyBuffer);
+  songAnalyser.value.getByteTimeDomainData(amplitudeBuffer);
+
+  refFrequencyBuffer.value = Array.from(frequencyBuffer);
+  refAmplitudeBuffer.value = Array.from(amplitudeBuffer);
 };
 
 const startFetchingAudioData = () => {
   const update = () => {
-    if (isPlaying.value) {
-      getLiveAudioData();
-      animationFrameId = requestAnimationFrame(update);
-    }
+    if (!isPlaying.value) return;
+    
+    getLiveAudioData();
+    animationFrameId = requestAnimationFrame(update);
   };
   update();
 };
 
 function moveToNext() {
-  currentSongIndex.value = (currentSongIndex.value + 1) % songs.length
+  currentSongIndex.value = (currentSongIndex.value + 1) % songs.length;
 }
 
 function canPlay() {
-  songElement.value.addEventListener('canplay', () => {
-    playAudio();
-  }, { once: true });
+  songElement.value.addEventListener(
+    "canplay",
+    () => {
+      playAudio();
+    },
+    { once: true },
+  );
 }
 
 function handleOnEnd() {
@@ -107,12 +120,26 @@ watch(currentSongIndex, () => canPlay());
     <button @click="moveToNext">Next</button>
   </div>
 
-  <ul class="flex flex-row gap-0.5 h-60 scale-y-[-1]">
-    <li v-for="bar in computedFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
-    </li>
-  </ul>
-  <ul class="flex flex-row gap-0.5 h-60">
-    <li v-for="bar in computedFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
-    </li>
-  </ul>
+  <div class="overflow-x-hidden flex justify-center gap-px">
+    <div class="scale-x-[-1]">
+      <ul class="inline-flex flex-row h-60 scale-y-[-1] gap-px">
+        <li v-for="bar in computedFrequencyBuffer" class="w-1 bg-fuchsia-500"
+          :style="{ height: Math.pow(bar, POWER_FACTOR) / LOWER_FACTOR + 'px' }"></li>
+      </ul>
+      <ul class="flex flex-row gap-px h-60">
+        <li v-for="bar in computedFrequencyBuffer" class="w-1 bg-blue-500"
+          :style="{ height: Math.pow(bar, POWER_FACTOR) / LOWER_FACTOR + 'px' }"></li>
+      </ul>
+    </div>
+    <div>
+      <ul class="inline-flex flex-row gap-px h-60 scale-y-[-1]">
+        <li v-for="bar in computedFrequencyBuffer" class="w-1 bg-fuchsia-500"
+          :style="{ height: Math.pow(bar, POWER_FACTOR) / LOWER_FACTOR + 'px' }"></li>
+      </ul>
+      <ul class="flex flex-row gap-px h-60">
+        <li v-for="bar in computedFrequencyBuffer" class="w-1 bg-blue-500"
+          :style="{ height: Math.pow(bar, POWER_FACTOR) / LOWER_FACTOR + 'px' }"></li>
+      </ul>
+    </div>
+  </div>
 </template>
