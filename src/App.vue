@@ -3,15 +3,16 @@ import { onMounted, ref, onUnmounted, watch, computed } from 'vue';
 
 const FftSize = 256;
 const bufferLength = 128;
+const loop = ref(false);
 
 const songs = [
   'GTA V Theme',
   'HOTD Overkill - Jasper & Brutus',
   'HOTD Overkill - Torn Out Twisted',
+  'Marly - You Never Know'
 ];
 
 const currentSongIndex = ref(0);
-
 
 const songElement = ref(null);
 const songContext = ref(new AudioContext());
@@ -36,8 +37,6 @@ onMounted(() => {
 
   songTrack.connect(songAnalyser.value);
   songAnalyser.value.connect(songContext.value.destination);
-
-  songElement.value.addEventListener('ended', () => {})
 });
 
 const playAudio = () => {
@@ -80,31 +79,40 @@ function moveToNext() {
   currentSongIndex.value = (currentSongIndex.value + 1) % songs.length
 }
 
-onUnmounted(() => cancelAnimationFrame(animationFrameId));
-
-watch(currentSongIndex, () => {
+function canPlay() {
   songElement.value.addEventListener('canplay', () => {
     playAudio();
   }, { once: true });
-});
+}
+
+function handleOnEnd() {
+  if (!loop.value) moveToNext();
+}
+
+onUnmounted(() => cancelAnimationFrame(animationFrameId));
+
+watch(currentSongIndex, () => canPlay());
 </script>
 
 <template>
   <h1>{{ songs[currentSongIndex] }}</h1>
-  <audio ref="songElement" @ended="moveToNext" :src="`/songs/${songs[currentSongIndex]}.mp3`"></audio>
-  <div class="flex flex-col">
+  <audio ref="songElement" @ended="handleOnEnd" :loop="loop" :src="`/songs/${songs[currentSongIndex]}.mp3`"></audio>
+  <div class="flex flex-col items-center">
+    <div class="flex items-center">
+      <span>Loop</span>
+      <input type="checkbox" v-model="loop" />
+    </div>
     <button @click="playAudio">Play</button>
-    <button @click="console.log(songContext.value.state)">Check State</button>
     <button @click="pauseAudio">Pause</button>
     <button @click="moveToNext">Next</button>
-
-    <ul class="flex flex-row gap-0.5 h-60 scale-y-[-1]">
-      <li v-for="bar in computedFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
-      </li>
-    </ul>
-    <ul class="flex flex-row gap-0.5 h-60">
-      <li v-for="bar in computedFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
-      </li>
-    </ul>
   </div>
+
+  <ul class="flex flex-row gap-0.5 h-60 scale-y-[-1]">
+    <li v-for="bar in computedFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
+    </li>
+  </ul>
+  <ul class="flex flex-row gap-0.5 h-60">
+    <li v-for="bar in computedFrequencyBuffer" class="w-1.5 bg-blue-500" :style="{ height: bar / 1.5 + 'px' }">
+    </li>
+  </ul>
 </template>
