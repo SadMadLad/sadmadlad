@@ -1,10 +1,16 @@
 <script setup>
 import { onMounted, ref, onUnmounted, watch, computed } from "vue";
+import ClapButton from "@/components/ClapButton.vue";
 
 const FFT_SIZE = 256;
 const BUFFER_LENGTH = 128;
 const POWER_FACTOR = 1.25;
 const LOWER_FACTOR = 6;
+
+const gtaClapPoints = [
+  ...Array.from({ length: 15 }, (_, i) => +(8.76 + i * 1.35).toFixed(2)),
+  ...Array.from({ length: 40 }, (_, i) => +(30.38 + i * 1.35).toFixed(2)),
+];
 
 const songs = [
   "HOTD Overkill - Torn Out Twisted",
@@ -13,6 +19,7 @@ const songs = [
   "Marly - You Never Know",
   "GTA VCS - Phil Collins - In the Air Tonight",
   "Queen - Radio Ga Ga",
+  "Gerudo Valley - The Legend of Zelda_ Ocarina Of Time",
 ];
 
 const currentSongIndex = ref(0);
@@ -143,7 +150,8 @@ onMounted(() => {
     @blur="isSliderInFocus = false"
     @mouseleave="isSliderInFocus = false"
   />
-  {{ songCurrentTimestamp }} / {{ Math.round(songDuration) }}
+  {{ songElement ? songElement.currentTime : 0 }} /
+  {{ Math.round(songDuration) }}
   <audio
     ref="songElement"
     @loadedmetadata="songDuration = songElement.duration"
@@ -167,7 +175,13 @@ onMounted(() => {
     v-if="currentSongIndex === 0 && isPlaying"
   >
     <Transition name="lyric">
-      <div class="absolute left-0 right-0 mx-auto" v-if="currentLyric" :key="currentLyric">{{ currentLyric }}</div>
+      <div
+        class="absolute left-0 right-0 mx-auto"
+        v-if="currentLyric"
+        :key="currentLyric"
+      >
+        {{ currentLyric }}
+      </div>
     </Transition>
   </div>
 
@@ -205,6 +219,11 @@ onMounted(() => {
       </ul>
     </div>
   </div>
+  <ClapButton
+    :clap-points="gtaClapPoints"
+    :current-timestamp="songElement.currentTime ?? 0"
+    v-if="currentSongIndex === 1"
+  />
 </template>
 
 <style scoped>
