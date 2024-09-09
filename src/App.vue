@@ -128,12 +128,32 @@ onMounted(() => {
   songAnalyser.value = songContext.value.createAnalyser();
   songAnalyser.value.fftSize = FFT_SIZE;
 
-  songTrack.connect(songAnalyser.value);
+  /** Testing Different Nodes **/
+
+  /* Biquad Filter Node */
+
+  // const filter = songContext.value.createBiquadFilter();
+  // filter.type = 'lowpass';
+  // filter.frequency.value = 500;
+
+  // songTrack.connect(filter);
+  // filter.connect(songAnalyser.value);
+
+  /* Gain Node */
+
+  const gainNode = songContext.value.createGain();
+  gainNode.gain.value = 0.1;
+  songTrack.connect(gainNode);
+  gainNode.connect(songAnalyser.value); 
+
+  // songTrack.connect(songAnalyser.value);
   songAnalyser.value.connect(songContext.value.destination);
 
   fetch("/lyrics/HOTD Overkill - Torn Out Twisted.json")
     .then((response) => response.json())
     .then((lyrics) => (varlaLyrics.value = lyrics));
+
+  debugger
 });
 </script>
 
