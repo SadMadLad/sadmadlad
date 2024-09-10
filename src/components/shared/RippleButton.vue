@@ -57,6 +57,6 @@ function createRipple() {
 .ripple {
   pointer-events: none;
   transform: scale(0);
-  z-index: -10;
+  z-index: -20;
 }
 </style>

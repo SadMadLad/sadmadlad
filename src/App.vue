@@ -97,8 +97,10 @@ const startFetchingAudioData = () => {
   update();
 };
 
-const moveToNext = () =>
-  (currentSongIndex.value = (currentSongIndex.value + 1) % songs.length);
+const moveToNext = () => {
+  currentSongIndex.value = (currentSongIndex.value + 1) % songs.length;
+  cancelAnimationFrame(animationFrameId);
+};
 
 function canPlay() {
   songElement.value.addEventListener("canplay", () => playAudio(), {
@@ -133,27 +135,31 @@ onMounted(() => {
   /* Biquad Filter Node */
 
   // const filter = songContext.value.createBiquadFilter();
-  // filter.type = 'lowpass';
-  // filter.frequency.value = 500;
+  // filter.type = 'highpass';
+  // filter.frequency.value = 1500;
 
   // songTrack.connect(filter);
   // filter.connect(songAnalyser.value);
 
   /* Gain Node */
 
-  const gainNode = songContext.value.createGain();
-  gainNode.gain.value = 0.1;
-  songTrack.connect(gainNode);
-  gainNode.connect(songAnalyser.value); 
+  // const gainNode = songContext.value.createGain();
+  // gainNode.gain.value = 1;
+  // songTrack.connect(gainNode);
+  // gainNode.connect(songAnalyser.value);
 
-  // songTrack.connect(songAnalyser.value);
+  /* Channel Splitter and Merger Node */
+
+  // const channelSplitter = songContext.value.createChannelSplitter(10);
+  // songTrack.connect(channelSplitter);
+  // channelSplitter.connect(songAnalyser.value, 1);
+
+  songTrack.connect(songAnalyser.value);
   songAnalyser.value.connect(songContext.value.destination);
 
   fetch("/lyrics/HOTD Overkill - Torn Out Twisted.json")
     .then((response) => response.json())
     .then((lyrics) => (varlaLyrics.value = lyrics));
-
-  debugger
 });
 </script>
 
@@ -188,6 +194,7 @@ onMounted(() => {
     <button @click="playAudio">Play</button>
     <button @click="pauseAudio">Pause</button>
     <button @click="moveToNext">Next</button>
+    <button @click=""></button>
   </div>
 
   <div
@@ -244,6 +251,7 @@ onMounted(() => {
     :current-timestamp="songElement.currentTime ?? 0"
     v-if="currentSongIndex === 1"
   />
+  <hr class="my-4" />
 </template>
 
 <style scoped>
