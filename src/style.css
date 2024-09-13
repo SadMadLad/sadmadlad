@@ -1,3 +1,102 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Geist";
+    font-weight: 100;
+    src: url("./assets/fonts/Geist-Thin.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Geist";
+    font-weight: 200;
+    src: url("./assets/fonts/Geist-UltraLight.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Geist";
+    font-weight: 300;
+    src: url("./assets/fonts/Geist-Light.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Geist";
+    font-weight: 400;
+    src: url("./assets/fonts/Geist-Regular.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Geist";
+    font-weight: 500;
+    src: url("./assets/fonts/Geist-Medium.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Geist";
+    font-weight: 600;
+    src: url("./assets/fonts/Geist-SemiBold.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Geist";
+    font-weight: 700;
+    src: url("./assets/fonts/Geist-Bold.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Geist";
+    font-weight: 800;
+    src: url("./assets/fonts/Geist-Black.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Geist";
+    font-weight: 900;
+    src: url("./assets/fonts/Geist-UltraBlack.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "GeistMono";
+    font-weight: 100;
+    src: url("./assets/fonts/GeistMono-Thin.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "GeistMono";
+    font-weight: 200;
+    src: url("./assets/fonts/GeistMono-UltraLight.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "GeistMono";
+    font-weight: 300;
+    src: url("./assets/fonts/GeistMono-Light.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "GeistMono";
+    font-weight: 400;
+    src: url("./assets/fonts/GeistMono-Regular.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "GeistMono";
+    font-weight: 500;
+    src: url("./assets/fonts/GeistMono-Medium.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "GeistMono";
+    font-weight: 600;
+    src: url("./assets/fonts/GeistMono-SemiBold.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "GeistMono";
+    font-weight: 700;
+    src: url("./assets/fonts/GeistMono-Bold.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "GeistMono";
+    font-weight: 800;
+    src: url("./assets/fonts/GeistMono-Black.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "GeistMono";
+    font-weight: 900;
+    src: url("./assets/fonts/GeistMono-UltraBlack.woff2") format("woff2");
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
