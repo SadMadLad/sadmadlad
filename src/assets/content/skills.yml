@@ -1,0 +1,145 @@
+- skill_title: Ruby
+  tags: ['Programming Language', 'Web Development', 'Metaprogramming']
+  description: >
+    <p>
+      Ruby is a programming language which promotes better developer experience, ease of use and productivity.
+      Everything (even the <code>Class</code> itself is an OOP based object). The ecosystem of gems (Ruby packages)
+      is excellent.
+    </p>
+    <p>Ruby is awesome at:</p>
+    <ul>
+      <li>Web Development (because of Ruby on Rails)</li>
+      <li>Writing Elegant and Readable Code</li>
+      <li>Metaprogramming</li>
+      <li>Scripting</li>
+      <li>Cybersecurity (because of the Metasploit project)</li>
+    </ul>
+- skill_title: Python
+  tags: ['Programming Language', 'Artificial Intelligence', 'Machine Learning', 'Data Science', 'Web Development']
+  description: >
+    <p>
+      Python is a high-level programming programming language. It has taken the world in the fields of Artificial
+      Intelligence and Data Science, thanks to ease of use, simple syntax and awesome ecosystem of libraries.
+    </p>
+    <p>Python excels in the fields of:</p>
+    <ul>
+      <li>Web Development (because of Django, FastAPI, Flask etc.)</li>
+      <li>Machine and Deep Learning (thanks to PyTorch, Tensorflow, Scikit-Learn etc.)</li>
+      <li>Web Scraping (with scrapy)</li>
+      <li>Data Science (with pandas, matplotlib and other libraries)</li>
+    </ul>
+- skill_title: C++
+  tags: ['Programming Language', 'Game Development', 'Game Engines', 'Databases', 'Networking']
+  description: >
+    <p>
+      C++ is a programming language, built on top of C, that supports Object Oriented Programming. It is the first
+      programming language I learnt. Though I have not used it extensively, I enjoy working in it from time to time.
+    </p>
+    <p>C++ is outstanding when it comes to:</p>
+    <ul>
+      <li>Game Engines (like Unreal Engine, Godot etc.)</li>
+      <li>Machine Learning (PyTorch is built on top of C++)</li>
+      <li>Databases (MongoDB utilizes C++)</li>
+      <li>Fast and Efficient tooling and processing</li>
+    </ul>
+- skill_title: JavaScript
+  tags: ['Web Development', 'Frontend', 'Frameworks', 'Programming Language']
+  description: >
+    <p>
+      When it comes to web, there is nothing remotely close to JavaScript. It has the biggest ecosystem when it comes to
+      frontend frameworks and tooling. Whenever you need something interactive in your web application, you have to
+      use JavaScript.
+    </p>
+    <p>Some famous frontend frameworks built with JavaScript are:</p>
+    <ul>
+      <li>Angular</li>
+      <li>React</li>
+      <li>Vue</li>
+      <li>Svelte</li>
+    </ul>
+- skill_title: Elixir
+  tags: ['Functional', 'BEAM', 'Erlang', 'Scalability', 'Programming Language']
+  description: >
+    <p>
+      My experience with Elixir is minimal (I have primarily used it in Phoenix Framework only), I love its nature, ideas
+      and features. I love its scalability, its modular structure for projects, and the concept of pattern matching. All in
+      all, an excellent language to work with.
+    </p>
+    <p>Elixir is awesome at:</p>
+    <ul>
+      <li>Web Development (thanks to the Phoenix Framework)</li>
+      <li>Scalability - the main selling point of Elixir</li>
+      <li>Elegant and Succinct</li>
+    </ul>
+- skill_title: Ruby on Rails
+  tags: ['Web Development', 'Ruby', 'Full Stack']
+  description: >
+    <p>
+      Ruby on Rails(RoR) is a web development framework built with Ruby. It is a batteries included,
+      full stack development framework. The latest Rails version (Rails 7) leverages the amazing hotwire stack for
+      interactivity and performance when it comes to frontend. GitHub, Shopify, Airbnb and many other websites
+      utilize this amazing framework.
+    </p>
+    <p>RoR is excellent at:</p>
+    <ul>
+      <li>Fast Development, Productivity and Developer Experience</li>
+      <li>Succinct and Elegant Code</li>
+      <li>Building excellent startups quickly and efficiently.</li>
+      <li>Easier testing and pushing applications to production.</li>
+    </ul>
+- skill_title: React
+  tags: ['Frontend', 'Virtual DOM', 'Web Development', 'JavaScript']
+  description: >
+    <p>
+      React is a frontend library built with JavaScript for building user interfaces with components and JSX templates.
+      While my experience with React is limited, I enjoy its declarative syntax, componentization and its ecosystem of
+      packages for frontend.
+    </p>
+- skill_title: Vue
+  tags: ['Frontend', 'Virtual DOM', 'JavaScript', 'Web Development']
+  description: >
+    <p>
+      Vue is a JavaScript framework which is also used for building user interface using components, powerful
+      templates and reactivity. I love its separation between script, template and style tags. I like pinia and vue-router.
+      I like the transition tag. I like how succinct it is. Personally, I enjoy it a little more than React, though my
+      opinion might change later.
+    </p>
+- skill_title: Node
+  tags: ['Frontend', 'Package Manager', 'JavaScript', 'JavaScript Runtime']
+  description: >
+    <p>
+      Node is a JavaScript runtime environment. It uses npm (Node Package Manager) for managing JavaScript packages.
+      We can create frontend (using any frontend framework) and backend (using ExpressJS or other packages). Node has its
+      competitors like deno and bun, but it is still the most starred runtime for JS on GitHub.
+    </p>
+- skill_title: TailwindCSS
+  tags: ['Frontend', 'CSS', 'Web Development']
+  description: >
+    <p>
+      TailwindCSS is a CSS framework. It is my personal favorite framework when it comes to CSS as it allows me to write
+      CSS quickly and it does not meddle with JS either (like some components of Bootstrap do). I like how explicit it
+      is. Overall, I prefer it over any other CSS framework I have worked with.
+    </p>
+- skill_title: Phoenix Framework
+  tags: ['Full Stack', 'Scalability', 'Erlang', 'Elixir', 'Web Development']
+  description: >
+    <p>
+      I have used Phoenix for personal projects only and my experience has been quite nice. I like its sockets, presence,
+      and channels.
+    </p>
+    <p>Phoenix is excellent at:</p>
+    <ul>
+      <li>Scalability, thanks to Elixir</li>
+      <li>Managing live sockets</li>
+      <li>Writing elegant code, again, thanks to Elixir</li>
+    </ul>
+- skill_title: ML/DS
+  tags: ['Machine Learning', 'Data Analysis', 'Python', 'Kaggle', 'Data Visualization', 'Deep Learning', 'Artificial Intelligence']
+  description: >
+    <p>
+      Before working as a Software Engineer, I was quite interested in the field of AI, ML and Data Science.
+      I had used libraries like seaborn, matplotlib, numpy and pandas for Data Visualization and Analysis, scikit-learn,
+      TensorFlow and PyTorch for Machine and Deep Learning. You can find some of my work on Kaggle.
+    </p>
+
+

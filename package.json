@@ -11,8 +11,10 @@
     "pretty": "npx prettier . --write"
   },
   "dependencies": {
+    "@modyfi/vite-plugin-yaml": "^1.1.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "pinia": "^2.2.2",
+    "vite-svg-loader": "^5.1.0",
     "vue": "^3.5.5",
     "vue-router": "^4.4.5"
   },

@@ -7,6 +7,7 @@ import HangoutPage from "@/pages/HangoutPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import NotesPage from "@/pages/NotesPage.vue";
 import NotFoundPage from "@/pages/errors/NotFoundPage.vue";
+import ProjectsPage from "@/pages/ProjectsPage.vue";
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
         name: "notes",
         component: NotesPage,
       },
+      {
+        path: "projects",
+        name: "projects",
+        component: ProjectsPage
+      }
     ],
   },
   {

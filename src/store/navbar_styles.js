@@ -10,7 +10,7 @@ const useNavbarStylesStore = defineStore("navbar_styles", () => {
   const finalHeaderClass = ref('');
   const headerClass = ref("bg-transparent text-white");
   const scrolledDownExactActiveClass = ref("font-black text-primary-500");
-  const scrolledDownHeaderClass = ref("bg-white/40 backdrop-blur border-b shadow-lg text-black");
+  const scrolledDownHeaderClass = ref("bg-white/70 backdrop-blur border-b shadow-lg text-black");
   const scrollThreshold = ref(20);
 
   const computedExactActiveClass = computed(() => exactActiveClass);
