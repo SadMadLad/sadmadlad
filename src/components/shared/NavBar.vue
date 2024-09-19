@@ -23,18 +23,18 @@ const links = [
   },
   {
     name: "projects",
-    text: "Projects"
-  }
+    text: "Projects",
+  },
 ];
 </script>
 
 <template>
   <header
     :class="computedFinalHeaderClass"
-    class="w-full fixed top-0 left-0 transition-all z-50"
+    class="fixed left-0 top-0 z-50 w-full transition-all"
   >
-    <nav class="p-4 flex-center transition-all">
-      <ul class="flex gap-6 flex-wrap items-center justify-center">
+    <nav class="flex-center p-4 transition-all">
+      <ul class="flex flex-wrap items-center justify-center gap-6">
         <li v-for="{ name, text } in links">
           <RouterLink
             :to="{ name }"

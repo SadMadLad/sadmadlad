@@ -1,6 +1,19 @@
 <script setup>
-import { onMounted, ref, onUnmounted, watch, computed } from "vue";
 import ClapButton from "@/components/ClapButton.vue";
+import {
+  computed,
+  onMounted,
+  onBeforeMount,
+  onUnmounted,
+  ref,
+  watch,
+  onUpdated,
+} from "vue";
+import Songs from "@/constants/songs";
+import useNavbarStylesStore from "@/store/navbar_styles";
+
+const { updateExactActiveClasses, updateHeaderClasses } =
+  useNavbarStylesStore();
 
 const FFT_SIZE = 256;
 const BUFFER_LENGTH = 128;
@@ -10,17 +23,6 @@ const LOWER_FACTOR = 6;
 const gtaClapPoints = [
   ...Array.from({ length: 15 }, (_, i) => +(8.76 + i * 1.35).toFixed(2)),
   ...Array.from({ length: 40 }, (_, i) => +(30.38 + i * 1.35).toFixed(2)),
-];
-
-const songs = [
-  "HOTD Overkill - Torn Out Twisted",
-  "GTA V Theme",
-  "HOTD Overkill - Jasper & Brutus",
-  "Marly - You Never Know",
-  "GTA VCS - Phil Collins - In the Air Tonight",
-  "Queen - Radio Ga Ga",
-  "Gerudo Valley - The Legend of Zelda_ Ocarina Of Time",
-  "Windy Day - Metal Slug 5",
 ];
 
 const currentSongIndex = ref(0);
@@ -34,9 +36,11 @@ const songElement = ref(null);
 const songAnalyser = ref(null);
 const songContext = ref(new AudioContext());
 
-const varlaLyrics = ref([]);
+const varlaLyrics = ref(Songs[0].lyrics);
 
 const currentLyric = computed(() => {
+  if (!songElement.value || !varlaLyrics.value) return;
+
   const lyric = varlaLyrics.value.find(
     ([_, ...[[lowerRange, upperRange]]]) =>
       songCurrentTimestamp.value >= lowerRange &&
@@ -51,13 +55,6 @@ let frequencyBuffer = new Uint8Array(BUFFER_LENGTH);
 const refFrequencyBuffer = ref([]);
 const computedFrequencyBuffer = computed(() =>
   refFrequencyBuffer.value.filter((freq) => freq > 0),
-);
-
-// Amplitude Buffer
-let amplitudeBuffer = new Uint8Array(BUFFER_LENGTH);
-const refAmplitudeBuffer = ref([]);
-const computedAmplitudeBuffer = computed(() =>
-  refAmplitudeBuffer.value.filter((amp) => amp > 0),
 );
 
 let animationFrameId = null;
@@ -82,10 +79,7 @@ const getLiveAudioData = () => {
   if (!songAnalyser.value) return;
 
   songAnalyser.value.getByteFrequencyData(frequencyBuffer);
-  songAnalyser.value.getByteTimeDomainData(amplitudeBuffer);
-
   refFrequencyBuffer.value = Array.from(frequencyBuffer);
-  refAmplitudeBuffer.value = Array.from(amplitudeBuffer);
 };
 
 const startFetchingAudioData = () => {
@@ -99,7 +93,7 @@ const startFetchingAudioData = () => {
 };
 
 const moveToNext = () => {
-  currentSongIndex.value = (currentSongIndex.value + 1) % songs.length;
+  currentSongIndex.value = (currentSongIndex.value + 1) % Songs.length;
   cancelAnimationFrame(animationFrameId);
 };
 
@@ -124,6 +118,9 @@ watch(currentSongIndex, () => canPlay());
 onUnmounted(() => cancelAnimationFrame(animationFrameId));
 
 onMounted(() => {
+  updateExactActiveClasses("text-red-500", "text-blue-500");
+  updateHeaderClasses("text-purple-500", "text-lime-500");
+
   const songTrack = songContext.value.createMediaElementSource(
     songElement.value,
   );
@@ -131,41 +128,13 @@ onMounted(() => {
   songAnalyser.value = songContext.value.createAnalyser();
   songAnalyser.value.fftSize = FFT_SIZE;
 
-  /** Testing Different Nodes **/
-
-  /* Biquad Filter Node */
-
-  // const filter = songContext.value.createBiquadFilter();
-  // filter.type = 'highpass';
-  // filter.frequency.value = 1500;
-
-  // songTrack.connect(filter);
-  // filter.connect(songAnalyser.value);
-
-  /* Gain Node */
-
-  // const gainNode = songContext.value.createGain();
-  // gainNode.gain.value = 1;
-  // songTrack.connect(gainNode);
-  // gainNode.connect(songAnalyser.value);
-
-  /* Channel Splitter and Merger Node */
-
-  // const channelSplitter = songContext.value.createChannelSplitter(10);
-  // songTrack.connect(channelSplitter);
-  // channelSplitter.connect(songAnalyser.value, 1);
-
   songTrack.connect(songAnalyser.value);
   songAnalyser.value.connect(songContext.value.destination);
-
-  fetch("/lyrics/HOTD Overkill - Torn Out Twisted.json")
-    .then((response) => response.json())
-    .then((lyrics) => (varlaLyrics.value = lyrics));
 });
 </script>
 
 <template>
-  <h1>{{ songs[currentSongIndex] }}</h1>
+  <h1 class="mt-20">{{ Songs[currentSongIndex].title }}</h1>
   <input
     v-model="songCurrentTimestamp"
     type="range"
@@ -177,6 +146,7 @@ onMounted(() => {
     @blur="isSliderInFocus = false"
     @mouseleave="isSliderInFocus = false"
   />
+  <img :src="Songs[currentSongIndex].cover" />
   {{ songElement ? songElement.currentTime : 0 }} /
   {{ Math.round(songDuration) }}
   <audio
@@ -185,7 +155,7 @@ onMounted(() => {
     @ended="handleOnEnd"
     @timeupdate="updateTimestamp"
     :loop="loop"
-    :src="`/songs/${songs[currentSongIndex]}.mp3`"
+    :src="Songs[currentSongIndex].audio"
   ></audio>
   <div class="flex flex-col items-center">
     <div class="flex items-center">
@@ -199,7 +169,7 @@ onMounted(() => {
   </div>
 
   <div
-    class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 w-full text-center"
+    class="fixed bottom-20 left-1/2 z-50 w-full -translate-x-1/2 text-center"
     v-if="currentSongIndex === 0 && isPlaying"
   >
     <Transition name="lyric">
@@ -213,16 +183,16 @@ onMounted(() => {
     </Transition>
   </div>
 
-  <div class="overflow-x-hidden flex justify-center gap-px">
+  <div class="flex justify-center gap-px overflow-x-hidden">
     <div class="scale-x-[-1]">
-      <ul class="inline-flex flex-row h-60 scale-y-[-1] gap-px">
+      <ul class="inline-flex h-60 scale-y-[-1] flex-row gap-px">
         <li
           v-for="bar in computedFrequencyBuffer"
           class="w-1 bg-fuchsia-500"
           :style="{ height: Math.pow(bar, POWER_FACTOR) / LOWER_FACTOR + 'px' }"
         ></li>
       </ul>
-      <ul class="flex flex-row gap-px h-60">
+      <ul class="flex h-60 flex-row gap-px">
         <li
           v-for="bar in computedFrequencyBuffer"
           class="w-1 bg-blue-500"
@@ -231,14 +201,14 @@ onMounted(() => {
       </ul>
     </div>
     <div>
-      <ul class="inline-flex flex-row gap-px h-60 scale-y-[-1]">
+      <ul class="inline-flex h-60 scale-y-[-1] flex-row gap-px">
         <li
           v-for="bar in computedFrequencyBuffer"
           class="w-1 bg-fuchsia-500"
           :style="{ height: Math.pow(bar, POWER_FACTOR) / LOWER_FACTOR + 'px' }"
         ></li>
       </ul>
-      <ul class="flex flex-row gap-px h-60">
+      <ul class="flex h-60 flex-row gap-px">
         <li
           v-for="bar in computedFrequencyBuffer"
           class="w-1 bg-blue-500"

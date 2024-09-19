@@ -46,7 +46,7 @@ function createRipple() {
   <div class="button-container">
     <button
       ref="rippleButton"
-      class="fixed right-10 bottom-10 bg-blue-500 white px-2.5 py-5 rounded"
+      class="white fixed bottom-10 right-10 rounded bg-blue-500 px-2.5 py-5"
     >
       Click Me
     </button>

@@ -99,4 +99,31 @@
   .flex-center {
     @apply flex items-center justify-center;
   }
+
+  .tag {
+    @apply bg-red-500;
+  }
+
+  .floating {
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  .animate-slow-spin {
+    animation: spin 7s linear infinite;
+  }
+
+  @keyframes floating {
+    0% {
+      transform: translate(0, 0px);
+    }
+    50% {
+      transform: translate(0, 15px);
+    }
+    100% {
+      transform: translate(0, -0px);
+    }
+  }
 }

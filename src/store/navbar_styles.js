@@ -6,19 +6,25 @@ const useNavbarStylesStore = defineStore("navbar_styles", () => {
   const { scrollY } = useWindowScroll();
 
   const exactActiveClass = ref("font-black text-white");
-  const finalExactActiveClass = ref('');
-  const finalHeaderClass = ref('');
+  const finalExactActiveClass = ref("");
+  const finalHeaderClass = ref("");
   const headerClass = ref("bg-transparent text-white");
   const scrolledDownExactActiveClass = ref("font-black text-primary-500");
-  const scrolledDownHeaderClass = ref("bg-white/70 backdrop-blur border-b shadow-lg text-black");
+  const scrolledDownHeaderClass = ref(
+    "bg-white/70 backdrop-blur border-b shadow-lg text-black",
+  );
   const scrollThreshold = ref(20);
 
   const computedExactActiveClass = computed(() => exactActiveClass);
   const computedFinalExactActiveClass = computed(() => finalExactActiveClass);
   const computedFinalHeaderClass = computed(() => finalHeaderClass);
   const computedHeaderClass = computed(() => headerClass);
-  const computedScrolledDownExactActiveClass = computed(() => scrolledDownExactActiveClass);
-  const computedScrolledDownHeaderClass = computed(() => scrolledDownHeaderClass);
+  const computedScrolledDownExactActiveClass = computed(
+    () => scrolledDownExactActiveClass,
+  );
+  const computedScrolledDownHeaderClass = computed(
+    () => scrolledDownHeaderClass,
+  );
   const computedScrollThreshold = computed(() => scrollThreshold);
 
   const updateExactActiveClass = (styleClass) =>
@@ -31,10 +37,7 @@ const useNavbarStylesStore = defineStore("navbar_styles", () => {
     updateScrolledDownExactActiveClass(newScrolledDownExactActiveClass);
   };
   const updateHeaderClass = (styleClass) => (headerClass.value = styleClass);
-  const updateHeaderClasses = (
-    newHeaderClass,
-    newScrolledDownHeaderClass,
-  ) => {
+  const updateHeaderClasses = (newHeaderClass, newScrolledDownHeaderClass) => {
     updateHeaderClass(newHeaderClass);
     updateScrolledDownHeaderClass(newScrolledDownHeaderClass);
   };
@@ -44,16 +47,27 @@ const useNavbarStylesStore = defineStore("navbar_styles", () => {
     (scrolledDownHeaderClass.value = styleClass);
   const updateScrollThreshold = (newThreshold) =>
     (scrollThreshold.value = newThreshold);
-
-  watch(scrollY, (scrollYValue) => {
-    if (scrollYValue > scrollThreshold.value) {
+  function updateFinalClasses() {
+    if (scrollY.value > scrollThreshold.value) {
       finalExactActiveClass.value = scrolledDownExactActiveClass.value;
       finalHeaderClass.value = scrolledDownHeaderClass.value;
     } else {
       finalExactActiveClass.value = exactActiveClass.value;
       finalHeaderClass.value = headerClass.value;
     }
-  }, { immediate: true })
+  }
+
+  watch(scrollY, () => updateFinalClasses(), { immediate: true });
+  watch(
+    [
+      scrolledDownExactActiveClass,
+      scrolledDownHeaderClass,
+      exactActiveClass,
+      headerClass,
+    ],
+    () => updateFinalClasses(),
+    { immediate: true },
+  );
 
   return {
     computedExactActiveClass,

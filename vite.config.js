@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import path from "path";
 import svgLoader from "vite-svg-loader";
-import ViteYaml from '@modyfi/vite-plugin-yaml';
+import ViteYaml from "@modyfi/vite-plugin-yaml";
 import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
