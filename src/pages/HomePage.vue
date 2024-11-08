@@ -22,6 +22,6 @@ onMounted(() => {
 
 <template>
   <Hero />
-  <Skills />
+    <Skills />
   <Footer />
 </template>

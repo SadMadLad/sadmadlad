@@ -48,21 +48,20 @@ const socialsData = [
 </script>
 
 <template>
-  <footer class="flex items-center justify-between bg-primary-500 px-8">
-    <ul class="flex flex-row gap-2.5 px-2 py-2.5 text-white">
-      <li v-for="{ name, text } in links">
-        <RouterLink :to="{ name: name }">{{ text }}</RouterLink>
-      </li>
-    </ul>
-    <ul class="flex gap-2">
-      <li v-for="{ link, social } in socialsData">
-        <a :href="link">
-          <Component
-            :is="social"
-            class="h-5 w-auto fill-white hover:fill-secondary-500"
-          />
-        </a>
-      </li>
-    </ul>
+  <footer class="bg-primary-500 flex-center">
+    <div class="container flex items-center justify-between px-8">
+      <ul class="flex flex-row gap-2.5 px-2 py-2.5 text-white">
+        <li v-for="{ name, text } in links">
+          <RouterLink :to="{ name: name }">{{ text }}</RouterLink>
+        </li>
+      </ul>
+      <ul class="flex gap-2">
+        <li v-for="{ link, social } in socialsData">
+          <a :href="link">
+            <Component :is="social" class="h-5 w-auto fill-white hover:fill-secondary-500" />
+          </a>
+        </li>
+      </ul>
+    </div>
   </footer>
 </template>

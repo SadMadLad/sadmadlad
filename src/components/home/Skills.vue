@@ -36,8 +36,9 @@ const currentSkillIndex = ref(0);
 </script>
 
 <template>
-  <section
-    class="relative flex flex-col-reverse items-start gap-8 p-4 lg:flex-row lg:p-12"
+  <div class="container">
+    <section
+    class="relative flex items-start gap-8 p-4 lg:flex-row lg:p-12 container overflow-y-hidden"
   >
     <Circle
       class="animate-slow-spin absolute left-8 top-8 hidden h-12 w-auto fill-secondary-500 lg:block"
@@ -72,6 +73,7 @@ const currentSkillIndex = ref(0);
       </li>
     </ul>
   </section>
+  </div>
 </template>
 
 <style scoped>
