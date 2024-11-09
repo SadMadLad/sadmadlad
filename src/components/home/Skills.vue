@@ -36,43 +36,43 @@ const currentSkillIndex = ref(0);
 </script>
 
 <template>
-  <div class="container">
+  <div class="flex-center">
     <section
-    class="relative flex items-start gap-8 p-4 lg:flex-row lg:p-12 container overflow-y-hidden"
-  >
-    <Circle
-      class="animate-slow-spin absolute left-8 top-8 hidden h-12 w-auto fill-secondary-500 lg:block"
-    />
-    <div class="relative px-4 py-2.5 lg:px-8">
-      <Transition name="slide-fade">
-        <Skill v-bind="skills[currentSkillIndex]" :key="currentSkillIndex" />
-      </Transition>
-    </div>
-    <ul
-      class="flex w-auto flex-shrink-0 flex-wrap items-start justify-center gap-2.5 lg:w-[32rem]"
+      class="container relative flex flex-col-reverse items-start gap-8 overflow-y-hidden p-4 lg:flex-row lg:p-12"
     >
-      <li
-        v-for="(skillIcon, index) in skillIcons"
-        :class="
-          currentSkillIndex === index
-            ? 'border-secondary-500'
-            : 'border-primary-500'
-        "
-        class="flex-center h-20 w-20 cursor-pointer rounded-xl border-4 transition-all duration-300 lg:h-24 lg:w-24"
-        @click="currentSkillIndex = index"
+      <Circle
+        class="animate-slow-spin absolute left-8 top-8 hidden h-12 w-auto fill-secondary-500 lg:block"
+      />
+      <div class="relative px-4 py-2.5 lg:px-8">
+        <Transition name="slide-fade">
+          <Skill v-bind="skills[currentSkillIndex]" :key="currentSkillIndex" />
+        </Transition>
+      </div>
+      <ul
+        class="flex w-auto flex-shrink-0 flex-wrap items-start justify-center gap-2.5 lg:w-[32rem]"
       >
-        <Component
-          :is="skillIcon"
+        <li
+          v-for="(skillIcon, index) in skillIcons"
           :class="
             currentSkillIndex === index
-              ? 'fill-secondary-500'
-              : 'fill-primary-500'
+              ? 'border-secondary-500'
+              : 'border-primary-500'
           "
-          class="h-12 w-auto transition-all duration-300 lg:h-16"
-        />
-      </li>
-    </ul>
-  </section>
+          class="flex-center h-20 w-20 cursor-pointer rounded-xl border-4 transition-all duration-300 lg:h-24 lg:w-24"
+          @click="currentSkillIndex = index"
+        >
+          <Component
+            :is="skillIcon"
+            :class="
+              currentSkillIndex === index
+                ? 'fill-secondary-500'
+                : 'fill-primary-500'
+            "
+            class="h-12 w-auto transition-all duration-300 lg:h-16"
+          />
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
 

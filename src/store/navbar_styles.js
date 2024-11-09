@@ -5,6 +5,7 @@ import useWindowScroll from "@/composables/scroll";
 const useNavbarStylesStore = defineStore("navbar_styles", () => {
   const { scrollY } = useWindowScroll();
 
+  // Data Variables
   const exactActiveClass = ref("font-black text-white");
   const finalExactActiveClass = ref("");
   const finalHeaderClass = ref("");
@@ -15,6 +16,7 @@ const useNavbarStylesStore = defineStore("navbar_styles", () => {
   );
   const scrollThreshold = ref(20);
 
+  // Getters
   const computedExactActiveClass = computed(() => exactActiveClass);
   const computedFinalExactActiveClass = computed(() => finalExactActiveClass);
   const computedFinalHeaderClass = computed(() => finalHeaderClass);
@@ -27,6 +29,7 @@ const useNavbarStylesStore = defineStore("navbar_styles", () => {
   );
   const computedScrollThreshold = computed(() => scrollThreshold);
 
+  // Setters
   const updateExactActiveClass = (styleClass) =>
     (exactActiveClass.value = styleClass);
   const updateExactActiveClasses = (

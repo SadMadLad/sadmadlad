@@ -33,7 +33,7 @@ const links = [
     :class="computedFinalHeaderClass"
     class="fixed left-0 top-0 z-50 w-full transition-all"
   >
-    <nav class="flex-center p-4 transition-all">
+    <nav class="flex-center w-screen p-4 transition-all">
       <ul class="flex flex-wrap items-center justify-center gap-6">
         <li v-for="{ name, text } in links">
           <RouterLink

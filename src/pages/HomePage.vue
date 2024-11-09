@@ -1,7 +1,7 @@
 <script setup>
 import Footer from "@/components/shared/Footer.vue";
 import Hero from "@/components/home/Hero.vue";
-import { onMounted, onBeforeMount } from "vue";
+import { onMounted } from "vue";
 import Skills from "@/components/home/Skills.vue";
 import useNavbarStylesStore from "@/store/navbar_styles";
 
@@ -22,6 +22,6 @@ onMounted(() => {
 
 <template>
   <Hero />
-    <Skills />
+  <Skills />
   <Footer />
 </template>

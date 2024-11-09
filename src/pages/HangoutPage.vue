@@ -1,19 +1,14 @@
 <script setup>
 import ClapButton from "@/components/ClapButton.vue";
-import {
-  computed,
-  onMounted,
-  onBeforeMount,
-  onUnmounted,
-  ref,
-  watch,
-  onUpdated,
-} from "vue";
-import Songs from "@/constants/songs";
+import MusicPlayer from "@/components/hangout/MusicPlayer.vue";
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
+import { songs } from "@/constants/songs";
 import useNavbarStylesStore from "@/store/navbar_styles";
+import useSongStore from "@/store/song";
 
 const { updateExactActiveClasses, updateHeaderClasses } =
   useNavbarStylesStore();
+const { setBarAndThumbColor } = useSongStore();
 
 const FFT_SIZE = 256;
 const BUFFER_LENGTH = 128;
@@ -36,7 +31,7 @@ const songElement = ref(null);
 const songAnalyser = ref(null);
 const songContext = ref(new AudioContext());
 
-const varlaLyrics = ref(Songs[0].lyrics);
+const varlaLyrics = ref(songs[0].lyrics);
 
 const currentLyric = computed(() => {
   if (!songElement.value || !varlaLyrics.value) return;
@@ -93,7 +88,7 @@ const startFetchingAudioData = () => {
 };
 
 const moveToNext = () => {
-  currentSongIndex.value = (currentSongIndex.value + 1) % Songs.length;
+  currentSongIndex.value = (currentSongIndex.value + 1) % songs.length;
   cancelAnimationFrame(animationFrameId);
 };
 
@@ -113,7 +108,9 @@ function updateTimestamp() {
   songCurrentTimestamp.value = songElement.value.currentTime;
 }
 
-watch(currentSongIndex, () => canPlay());
+watch(currentSongIndex, () => {
+  canPlay();
+});
 
 onUnmounted(() => cancelAnimationFrame(animationFrameId));
 
@@ -134,7 +131,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1 class="mt-20">{{ Songs[currentSongIndex].title }}</h1>
+  <h1 class="mt-20">{{ songs[currentSongIndex].title }}</h1>
   <input
     v-model="songCurrentTimestamp"
     type="range"
@@ -146,7 +143,7 @@ onMounted(() => {
     @blur="isSliderInFocus = false"
     @mouseleave="isSliderInFocus = false"
   />
-  <img :src="Songs[currentSongIndex].cover" />
+  <img :src="songs[currentSongIndex].cover" />
   {{ songElement ? songElement.currentTime : 0 }} /
   {{ Math.round(songDuration) }}
   <audio
@@ -155,7 +152,7 @@ onMounted(() => {
     @ended="handleOnEnd"
     @timeupdate="updateTimestamp"
     :loop="loop"
-    :src="Songs[currentSongIndex].audio"
+    :src="songs[currentSongIndex].audio"
   ></audio>
   <div class="flex flex-col items-center">
     <div class="flex items-center">
@@ -222,6 +219,8 @@ onMounted(() => {
     :current-timestamp="songElement.currentTime ?? 0"
     v-if="currentSongIndex === 1"
   />
+
+  <MusicPlayer />
   <hr class="my-4" />
 </template>
 
