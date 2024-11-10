@@ -5,7 +5,8 @@ import useWindowScroll from "@/composables/scroll";
 const useNavbarStylesStore = defineStore("navbar_styles", () => {
   const { scrollY } = useWindowScroll();
 
-  // Data Variables
+  /** Data Variables **/
+
   const exactActiveClass = ref("font-black text-white");
   const finalExactActiveClass = ref("");
   const finalHeaderClass = ref("");
@@ -16,40 +17,27 @@ const useNavbarStylesStore = defineStore("navbar_styles", () => {
   );
   const scrollThreshold = ref(20);
 
-  // Getters
-  const computedExactActiveClass = computed(() => exactActiveClass);
+  /** Getters **/
+
   const computedFinalExactActiveClass = computed(() => finalExactActiveClass);
   const computedFinalHeaderClass = computed(() => finalHeaderClass);
-  const computedHeaderClass = computed(() => headerClass);
-  const computedScrolledDownExactActiveClass = computed(
-    () => scrolledDownExactActiveClass,
-  );
-  const computedScrolledDownHeaderClass = computed(
-    () => scrolledDownHeaderClass,
-  );
   const computedScrollThreshold = computed(() => scrollThreshold);
 
-  // Setters
-  const updateExactActiveClass = (styleClass) =>
-    (exactActiveClass.value = styleClass);
-  const updateExactActiveClasses = (
-    newExactActiveClass,
-    newScrolledDownExactActiveClass,
-  ) => {
-    updateExactActiveClass(newExactActiveClass);
-    updateScrolledDownExactActiveClass(newScrolledDownExactActiveClass);
-  };
-  const updateHeaderClass = (styleClass) => (headerClass.value = styleClass);
-  const updateHeaderClasses = (newHeaderClass, newScrolledDownHeaderClass) => {
-    updateHeaderClass(newHeaderClass);
-    updateScrolledDownHeaderClass(newScrolledDownHeaderClass);
-  };
-  const updateScrolledDownExactActiveClass = (styleClass) =>
-    (scrolledDownExactActiveClass.value = styleClass);
-  const updateScrolledDownHeaderClass = (styleClass) =>
-    (scrolledDownHeaderClass.value = styleClass);
-  const updateScrollThreshold = (newThreshold) =>
-    (scrollThreshold.value = newThreshold);
+  /** Methods **/
+
+  /* Private */
+  function updateExactActiveClass(styleClass) {
+    exactActiveClass.value = styleClass;
+  }
+  function updateHeaderClass(styleClass) {
+    headerClass.value = styleClass;
+  }
+  function updateScrolledDownExactActiveClass(styleClass) {
+    scrolledDownExactActiveClass.value = styleClass;
+  }
+  function updateScrolledDownHeaderClass(styleClass) {
+    scrolledDownHeaderClass.value = styleClass;
+  }
   function updateFinalClasses() {
     if (scrollY.value > scrollThreshold.value) {
       finalExactActiveClass.value = scrolledDownExactActiveClass.value;
@@ -59,6 +47,24 @@ const useNavbarStylesStore = defineStore("navbar_styles", () => {
       finalHeaderClass.value = headerClass.value;
     }
   }
+
+  /* Public */
+  function updateHeaderClasses({ newHeaderClass, newScrolledDownHeaderClass }) {
+    updateHeaderClass(newHeaderClass);
+    updateScrolledDownHeaderClass(newScrolledDownHeaderClass);
+  }
+  function updateExactActiveClasses({
+    newExactActiveClass,
+    newScrolledDownExactActiveClass,
+  }) {
+    updateExactActiveClass(newExactActiveClass);
+    updateScrolledDownExactActiveClass(newScrolledDownExactActiveClass);
+  }
+  function updateScrollThreshold(newThreshold) {
+    scrollThreshold.value = newThreshold;
+  }
+
+  /** Watchers **/
 
   watch(scrollY, () => updateFinalClasses(), { immediate: true });
   watch(
@@ -73,19 +79,12 @@ const useNavbarStylesStore = defineStore("navbar_styles", () => {
   );
 
   return {
-    computedExactActiveClass,
     computedFinalExactActiveClass,
     computedFinalHeaderClass,
-    computedHeaderClass,
-    computedScrolledDownExactActiveClass,
-    computedScrolledDownHeaderClass,
     computedScrollThreshold,
-    updateExactActiveClass,
+
     updateExactActiveClasses,
-    updateHeaderClass,
     updateHeaderClasses,
-    updateScrolledDownExactActiveClass,
-    updateScrolledDownHeaderClass,
     updateScrollThreshold,
   };
 });

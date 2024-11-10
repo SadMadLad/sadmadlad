@@ -1,22 +1,26 @@
 <script setup>
 import { ref } from "vue";
+import { storeToRefs } from "pinia";
 import useSongStore from "@/store/song";
 
-const { getThumbColor, getBarColor } = useSongStore();
+const songStore = useSongStore();
+const { barColor, thumbColor } = storeToRefs(songStore);
 
 const progress = ref(0);
 </script>
 
 <template>
-  <div class="flex-center relative">
-    <progress
-      class="absolute left-1/2 top-1/2 m-auto h-2 w-64 -translate-x-1/2 -translate-y-1/2"
-      :value="progress"
-      max="100"
-    >
-      {{ progress }}%
-    </progress>
-    <input id="slider" type="range" class="z-50" v-model="progress" />
+  <div>
+    <div class="flex-center relative">
+      <progress
+        class="absolute left-1/2 top-1/2 m-auto h-2 w-64 -translate-x-1/2 -translate-y-1/2"
+        :value="progress"
+        max="100"
+      >
+        {{ progress }}%
+      </progress>
+      <input id="slider" type="range" class="z-50" v-model="progress" />
+    </div>
   </div>
 </template>
 
@@ -46,14 +50,14 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   margin-top: -4px;
 
-  background-color: v-bind(getThumbColor);
+  background-color: v-bind(thumbColor);
   height: 1rem;
   width: 1rem;
 }
 
 input[type="range"]:focus::-webkit-slider-thumb {
-  border: 1px solid v-bind(getBarColor);
-  outline: 3px solid v-bind(getBarColor);
+  border: 1px solid v-bind(barColor);
+  outline: 3px solid v-bind(barColor);
   outline-offset: 0.125rem;
 }
 
@@ -68,28 +72,28 @@ input[type="range"]::-moz-range-thumb {
   border: none;
   border-radius: 0;
 
-  background-color: v-bind(getThumbColor);
+  background-color: v-bind(thumbColor);
   height: 2rem;
   width: 1rem;
 }
 
 input[type="range"]:focus::-moz-range-thumb {
-  border: 1px solid v-bind(getBarColor);
-  outline: 3px solid v-bind(getBarColor);
+  border: 1px solid v-bind(barColor);
+  outline: 3px solid v-bind(barColor);
   outline-offset: 0.125rem;
 }
 
 /* Progress Styling */
 progress::-webkit-progress-bar {
-  background-color: v-bind(getBarColor);
+  background-color: v-bind(barColor);
   border-radius: 7px;
 }
 progress::-webkit-progress-value {
-  background-color: v-bind(getThumbColor);
+  background-color: v-bind(thumbColor);
   border-radius: 7px;
 }
 progress::-moz-progress-bar {
-  background-color: v-bind(getThumbColor);
+  background-color: v-bind(thumbColor);
   border-radius: 7px;
 }
 </style>

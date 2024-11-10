@@ -9,14 +9,15 @@ const { updateExactActiveClasses, updateHeaderClasses } =
   useNavbarStylesStore();
 
 onMounted(() => {
-  updateHeaderClasses(
-    "bg-transparent text-white",
-    "bg-white/70 backdrop-blur border-b shadow-lg text-black",
-  );
-  updateExactActiveClasses(
-    "font-black text-white",
-    "font-black text-primary-500",
-  );
+  updateHeaderClasses({
+    newHeaderClass: "bg-transparent text-white",
+    newScrolledDownHeaderClass:
+      "bg-white/70 backdrop-blur border-b shadow-lg text-black",
+  });
+  updateExactActiveClasses({
+    newExactActiveClass: "font-black text-white",
+    newScrolledDownExactActiveClass: "font-black text-primary-500",
+  });
 });
 </script>
 
