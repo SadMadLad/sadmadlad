@@ -15,7 +15,17 @@ const songs = [
     title: "HOTD Overkill - Torn Out Twisted",
     musicPlayerStyles: {
       barColor: "#000000", // black
-      thumbColor: "#d97706", // amber-600
+      thumbColor: "#f59e0b", // amber-500
+      tailwindClasses: {
+        text: {
+          primary: "text-black",
+          secondary: "text-amber-500",
+        },
+        background: {
+          primary: "bg-black",
+          secondary: "bg-amber-500",
+        },
+      },
     },
   },
   {
@@ -27,6 +37,16 @@ const songs = [
     musicPlayerStyles: {
       barColor: "#ea580c", // orange-600
       thumbColor: "#c026d3", // fuchsia-600
+      tailwindClasses: {
+        text: {
+          primary: "text-orange-600",
+          secondary: "text-fuchsia-600",
+        },
+        background: {
+          primary: "bg-orange-600",
+          secondary: "bg-fuchsia-600",
+        },
+      },
     },
   },
   {
@@ -38,6 +58,16 @@ const songs = [
     musicPlayerStyles: {
       barColor: "#eab308", // yellow-500
       thumbColor: "#059669", // emerald-600
+      tailwindClasses: {
+        text: {
+          primary: "text-yellow-500",
+          secondary: "text-emerald-600",
+        },
+        background: {
+          primary: "bg-yellow-500",
+          secondary: "bg-emerald-600",
+        },
+      },
     },
   },
   {
@@ -49,6 +79,16 @@ const songs = [
     musicPlayerStyles: {
       barColor: "#525252", // neutral-600
       thumbColor: "#4f46e5", // indigo-700
+      tailwindClasses: {
+        text: {
+          primary: "text-neutral-600",
+          secondary: "text-indigo-700",
+        },
+        background: {
+          primary: "bg-neutral-600",
+          secondary: "bg-indigo-700",
+        },
+      },
     },
   },
   {
@@ -60,6 +100,16 @@ const songs = [
     musicPlayerStyles: {
       barColor: "#f59e0b", // amber-500
       thumbColor: "#0ea5e9", // sky-500
+      tailwindClasses: {
+        text: {
+          primary: "text-amber-500",
+          secondary: "text-sky-500",
+        },
+        background: {
+          primary: "bg-amber-500",
+          secondary: "bg-sky-500",
+        },
+      },
     },
   },
 ];

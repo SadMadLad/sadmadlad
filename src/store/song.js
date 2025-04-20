@@ -9,8 +9,6 @@ const useSongStore = defineStore("song", () => {
 
   const FFT_SIZE = 256;
   const BUFFER_LENGTH = 128;
-  const POWER_FACTOR = 1.25;
-  const LOWER_FACTOR = 6;
 
   /** Data Variables **/
   let frequencyBufferVal = new Uint8Array(BUFFER_LENGTH);

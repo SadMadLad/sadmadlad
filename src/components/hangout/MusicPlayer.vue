@@ -1,12 +1,23 @@
 <script setup>
-import { ref } from "vue";
 import { storeToRefs } from "pinia";
 import useSongStore from "@/store/song";
 
 const songStore = useSongStore();
-const { barColor, thumbColor } = storeToRefs(songStore);
 
-const progress = ref(0);
+function handleInput() {
+  isSliderInFocus.value = true;
+  audioElement.value.currentTime = timestamp.value;
+  isSliderInFocus.value = false;
+}
+const {
+  audioElement,
+  currentSong,
+  duration,
+  isSliderInFocus,
+  timestamp,
+  barColor,
+  thumbColor,
+} = storeToRefs(songStore);
 </script>
 
 <template>
@@ -14,12 +25,33 @@ const progress = ref(0);
     <div class="flex-center relative">
       <progress
         class="absolute left-1/2 top-1/2 m-auto h-2 w-64 -translate-x-1/2 -translate-y-1/2"
-        :value="progress"
+        :value="
+          isFinite(timestamp) && isFinite(duration) && duration > 0
+            ? (timestamp / duration) * 100
+            : 0
+        "
         max="100"
       >
-        {{ progress }}%
+        {{
+          isFinite(timestamp) && isFinite(duration) && duration > 0
+            ? (timestamp / duration) * 100
+            : 0
+        }}%
       </progress>
-      <input id="slider" type="range" class="z-50" v-model="progress" />
+      <input
+        v-model="timestamp"
+        type="range"
+        min="0"
+        class="z-50"
+        :max="duration"
+        @input="handleInput"
+        @change="audioElement.currentTime = timestamp"
+        @mousedown="isSliderInFocus = true"
+        @mouseup="isSliderInFocus = false"
+        @blur="isSliderInFocus = false"
+        @mouseleave="isSliderInFocus = false"
+        id="slider"
+      />
     </div>
   </div>
 </template>
