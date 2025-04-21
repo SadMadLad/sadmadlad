@@ -4,9 +4,6 @@ import { songs } from "@/constants/songs";
 
 const useSongStore = defineStore("song", () => {
   /* Constants */
-  const { barColor: firstSongBarColor, thumbColor: firstSongThumbColor } =
-    songs[0].musicPlayerStyles;
-
   const FFT_SIZE = 256;
   const BUFFER_LENGTH = 128;
 
@@ -17,13 +14,11 @@ const useSongStore = defineStore("song", () => {
   /* Private */
   const analyser = ref(null);
   const audioContext = ref(new AudioContext());
-  const barColor = ref(firstSongBarColor);
-  const currentSongIndex = ref(0);
   const frequencyBuffer = ref([]);
-  const thumbColor = ref(firstSongThumbColor);
 
   /* Public */
   const audioElement = ref(null);
+  const currentSongIndex = ref(0);
   const currentSong = ref(songs[currentSongIndex.value]);
   const duration = ref(0);
   const isOnLoop = ref(false);
@@ -40,11 +35,6 @@ const useSongStore = defineStore("song", () => {
   /** Methods **/
 
   /* Private */
-  function setBarAndThumbColor({ newBarColor, newThumbColor }) {
-    barColor.value = newBarColor;
-    thumbColor.value = newThumbColor;
-  }
-
   function getLiveAudioData() {
     if (!analyser.value) return;
 
@@ -65,13 +55,21 @@ const useSongStore = defineStore("song", () => {
   }
 
   /* Public */
+  function setCurrentSongIndex(index) {
+    currentSongIndex.value = index;
+  }
+
+  function setCurrentSongId(id) {
+    const songIndex = songs.findIndex(song => song.id === id);
+    currentSongIndex.value = songIndex;
+  }
+
   function cancelAnimation() {
     cancelAnimationFrame(animationFrameId);
   }
 
   function goToNextSong() {
     currentSongIndex.value = (currentSongIndex.value + 1) % songs.length;
-    currentSong.value = songs[currentSongIndex.value];
 
     cancelAnimation();
   }
@@ -130,28 +128,26 @@ const useSongStore = defineStore("song", () => {
 
   /** Watchers **/
 
-  watch(currentSong, (newSong) => {
-    const { barColor: newBarColor, thumbColor: newThumbColor } =
-      newSong.musicPlayerStyles;
+  watch(currentSongIndex, (index) => {
+    currentSong.value = songs[index];
+  })
 
+  watch(currentSong, () => {
     if (isPlaying.value) {
       audioElement.value.addEventListener("canplay", () => play(), {
         once: true,
       });
     }
-
-    setBarAndThumbColor({ newBarColor, newThumbColor });
   });
 
   return {
     audioElement,
-    barColor,
+    currentSongIndex,
     currentSong,
     duration,
     isOnLoop,
     isPlaying,
     isSliderInFocus,
-    thumbColor,
     timestamp,
 
     filteredFrequencyBuffer,
@@ -163,6 +159,8 @@ const useSongStore = defineStore("song", () => {
     initializeAudioSetup,
     pause,
     play,
+    setCurrentSongIndex,
+    setCurrentSongId,
     toggleIsOnLoop,
     updateTimestamp,
   };

@@ -34,7 +34,7 @@ const links = [
     class="fixed left-0 top-0 z-50 w-full transition-all"
   >
     <nav class="flex-center w-screen p-4 transition-all">
-      <ul class="flex flex-wrap items-center justify-center gap-6">
+      <ul class="flex items-center justify-center gap-6 overflow-x-auto">
         <li v-for="{ name, text } in links">
           <RouterLink
             :to="{ name }"

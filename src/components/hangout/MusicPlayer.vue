@@ -9,22 +9,18 @@ function handleInput() {
   audioElement.value.currentTime = timestamp.value;
   isSliderInFocus.value = false;
 }
-const {
-  audioElement,
-  currentSong,
-  duration,
-  isSliderInFocus,
-  timestamp,
-  barColor,
-  thumbColor,
-} = storeToRefs(songStore);
+const { audioElement, duration, isSliderInFocus, timestamp } =
+  storeToRefs(songStore);
+
+const barColor = "#c7d2fe";
+const thumbColor = "#6366f1";
 </script>
 
 <template>
-  <div>
+  <div class="absolute left-0 top-0 w-full">
     <div class="flex-center relative">
       <progress
-        class="absolute left-1/2 top-1/2 m-auto h-2 w-64 -translate-x-1/2 -translate-y-1/2"
+        class="absolute left-1/2 top-1/2 m-auto h-2 w-full -translate-x-1/2 -translate-y-1/2"
         :value="
           isFinite(timestamp) && isFinite(duration) && duration > 0
             ? (timestamp / duration) * 100
@@ -63,7 +59,7 @@ input[type="range"] {
   appearance: none;
   background: transparent;
   cursor: pointer;
-  width: 16rem;
+  width: 100%;
 }
 
 input[type="range"]:focus {
@@ -83,14 +79,19 @@ input[type="range"]::-webkit-slider-thumb {
   margin-top: -4px;
 
   background-color: v-bind(thumbColor);
-  height: 1rem;
-  width: 1rem;
+  height: 0rem;
+  width: 0rem;
+
+  border-radius: 5000px;
 }
 
 input[type="range"]:focus::-webkit-slider-thumb {
-  border: 1px solid v-bind(barColor);
-  outline: 3px solid v-bind(barColor);
-  outline-offset: 0.125rem;
+  /* border: 1px solid v-bind(barColor); */
+  /* outline: 3px solid v-bind(barColor); */
+  /* outline-offset: 0.125rem; */
+  /* border-radius: 5000px; */
+  display: hidden;
+  appearance: none;
 }
 
 /* Mozilla */
