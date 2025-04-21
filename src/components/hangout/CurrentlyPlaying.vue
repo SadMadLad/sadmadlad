@@ -9,7 +9,7 @@ import { storeToRefs } from "pinia";
 import useSongStore from "@/store/song";
 
 const songStore = useSongStore();
-const { pause, play }= songStore;
+const { pause, play } = songStore;
 const { isPlaying, currentSong } = storeToRefs(songStore);
 
 function togglePausePlay() {
@@ -26,8 +26,10 @@ function togglePausePlay() {
     class="flex-center fixed bottom-0 left-0 z-50 w-full bg-zinc-900 text-white"
   >
     <MusicPlayer />
-    <div class="container flex w-full gap-8 overflow-x-auto justify-between items-center px-4 py-6">
-      <div class="flex items-center gap-4 flex-shrink-0">
+    <div
+      class="container flex w-full items-center justify-between gap-8 overflow-x-auto px-4 py-6"
+    >
+      <div class="flex flex-shrink-0 items-center gap-4">
         <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg">
           <img
             :src="currentSong.cover"
@@ -39,16 +41,33 @@ function togglePausePlay() {
           <span class="font-semibold text-gray-400">{{ currentSong.by }}</span>
         </div>
       </div>
-      <div class="flex justify-center gap-4 items-center flex-grow">
-        <SkipBackButton class="fill-white cursor-pointer" @click="songStore.goToPreviousSong"/>
-        <button class="w-16 h-16 rounded-full bg-secondary-500 cursor-pointer" @click="togglePausePlay">
-          <PlayButton class="fill-white p-4 w-16 h-16" v-if="!songStore.isPlaying"/>
-          <PauseButton class="fill-white p-4 w-16 h-16" v-else />
+      <div class="flex flex-grow items-center justify-center gap-4">
+        <SkipBackButton
+          class="cursor-pointer fill-white"
+          @click="songStore.goToPreviousSong"
+        />
+        <button
+          class="h-16 w-16 cursor-pointer rounded-full bg-secondary-500"
+          @click="togglePausePlay"
+        >
+          <PlayButton
+            class="h-16 w-16 fill-white p-4"
+            v-if="!songStore.isPlaying"
+          />
+          <PauseButton class="h-16 w-16 fill-white p-4" v-else />
         </button>
-        <SkipForwardButton class="fill-white cursor-pointer" @click="songStore.goToNextSong"/>
+        <SkipForwardButton
+          class="cursor-pointer fill-white"
+          @click="songStore.goToNextSong"
+        />
       </div>
-      <div class="cursor-pointer flex-shrink-0" @click="songStore.toggleIsOnLoop">
-        <RepeatButton :class="`w-8 h-8 ${songStore.isOnLoop ? 'fill-secondary-500' : 'fill-white'}`"/>
+      <div
+        class="flex-shrink-0 cursor-pointer"
+        @click="songStore.toggleIsOnLoop"
+      >
+        <RepeatButton
+          :class="`h-8 w-8 ${songStore.isOnLoop ? 'fill-secondary-500' : 'fill-white'}`"
+        />
       </div>
     </div>
   </footer>

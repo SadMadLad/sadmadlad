@@ -60,7 +60,7 @@ const useSongStore = defineStore("song", () => {
   }
 
   function setCurrentSongId(id) {
-    const songIndex = songs.findIndex(song => song.id === id);
+    const songIndex = songs.findIndex((song) => song.id === id);
     currentSongIndex.value = songIndex;
   }
 
@@ -130,7 +130,7 @@ const useSongStore = defineStore("song", () => {
 
   watch(currentSongIndex, (index) => {
     currentSong.value = songs[index];
-  })
+  });
 
   watch(currentSong, () => {
     if (isPlaying.value) {
