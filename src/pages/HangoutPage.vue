@@ -1,7 +1,7 @@
 <script setup>
 import CurrentlyPlaying from "@/components/hangout/CurrentlyPlaying.vue";
 import WaveForms from "@/components/hangout/WaveForms.vue";
-import { onBeforeUnmount, onMounted, onUnmounted } from "vue";
+import { onBeforeUnmount, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import SongsList from "@/components/hangout/SongsList.vue";
 import useNavbarStylesStore from "@/store/navbar_styles";
@@ -28,8 +28,8 @@ onBeforeUnmount(() => {
 
 onMounted(() => {
   updateExactActiveClasses({
-    newExactActiveClass: "text-indigo-300 font-bold",
-    newScrolledDownExactActiveClass: "text-indigo-300 font-bold",
+    newExactActiveClass: "text-indigo-300 font-black",
+    newScrolledDownExactActiveClass: "text-indigo-300 font-black",
   });
   updateHeaderClasses({
     newHeaderClass: "text-white",
@@ -43,7 +43,7 @@ onMounted(() => {
 <template>
   <div class="flex-center bg-indigo-600/35 pb-40 backdrop-blur">
     <div
-      class="container flex min-h-screen flex-col items-center gap-12 pt-28 lg:flex-row lg:items-start px-8"
+      class="container flex min-h-screen flex-col items-center gap-12 px-8 pt-28 lg:flex-row lg:items-start"
     >
       <section class="flex-shrink-0">
         <div class="h-96 w-[22rem] sm:w-[28rem]">

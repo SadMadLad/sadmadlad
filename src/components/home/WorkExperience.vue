@@ -1,7 +1,9 @@
 <template>
   <section class="flex-center bg-primary-500">
     <div class="container py-20">
-      <h3 class="text-4xl text-center text-white font-black mb-12">Experience</h3>
+      <h3 class="mb-12 text-center text-4xl font-black text-white">
+        Experience
+      </h3>
       <div class="flex-center">
         <ul class="relative max-w-6xl pl-8">
           <div
@@ -15,11 +17,11 @@
             <div
               class="absolute left-[-0.75rem] top-0 h-6 w-6 rounded-full border-4 border-white bg-primary-500"
             ></div>
-            <div class="flex flex-col xl:grid grid-cols-6 gap-2.5">
-              <div class="ml-6 mt-0.5 text-start text-sm text-white min-w-32">
+            <div class="flex grid-cols-6 flex-col gap-2.5 xl:grid">
+              <div class="ml-6 mt-0.5 min-w-32 text-start text-sm text-white">
                 {{ item.dateRange }}
               </div>
-              <div class="col-span-5 min-w-32 ml-4">
+              <div class="col-span-5 ml-4 min-w-32">
                 <h3 class="text-lg font-black text-white" v-if="item.company">
                   {{ item.company }}, {{ item.location }}
                 </h3>
@@ -55,7 +57,8 @@ const workExperience = [
   {
     dateRange: "Jan 2025 - Present",
     role: "Freelancer",
-    description: "Currently freelancing, I develop new software solutions and collaborate directly with enterprise clients to facilitate their goal achievement and expedite the launch of their Minimum Viable Products (MVPs). I also work with projects which require upgrade, maintenance and bug-fixing."
-  }
+    description:
+      "Currently freelancing, I develop new software solutions and collaborate directly with enterprise clients to facilitate their goal achievement and expedite the launch of their Minimum Viable Products (MVPs). I also work with projects which require upgrade, maintenance and bug-fixing.",
+  },
 ];
 </script>
