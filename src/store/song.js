@@ -1,6 +1,7 @@
 import { computed, ref, watch } from "vue";
 import { defineStore } from "pinia";
 import { songs } from "@/constants/songs";
+import useWindowResize from "@/composables/window-resize";
 
 const useSongStore = defineStore("song", () => {
   /* Constants */
@@ -10,6 +11,7 @@ const useSongStore = defineStore("song", () => {
   /** Data Variables **/
   let frequencyBufferVal = new Uint8Array(BUFFER_LENGTH);
   let animationFrameId = null;
+  const { width, height } = useWindowResize();
 
   /* Private */
   const analyser = ref(null);
@@ -28,9 +30,14 @@ const useSongStore = defineStore("song", () => {
 
   /** Computed Properties **/
 
-  const filteredFrequencyBuffer = computed(() =>
-    frequencyBuffer.value.filter((freq) => freq > 0),
-  );
+  const filteredFrequencyBuffer = computed(() => {
+    console.log(width.value);
+    let waveFormsArray = frequencyBuffer.value.filter((freq) => freq > 0);
+    if (width.value < 640) {
+      waveFormsArray = waveFormsArray.slice(0, 25);
+    }
+    return waveFormsArray;
+  });
 
   /** Methods **/
 

@@ -27,9 +27,9 @@ function togglePausePlay() {
   >
     <MusicPlayer />
     <div
-      class="container flex w-full items-center justify-between gap-8 overflow-x-auto px-4 py-6"
+      class="container grid w-full grid-cols-3 items-center gap-8 overflow-x-auto px-4 py-6"
     >
-      <div class="flex flex-shrink-0 items-center gap-4">
+      <div class="flex flex-shrink-0 items-center gap-4 place-self-start">
         <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg">
           <img
             :src="currentSong.cover"
@@ -41,7 +41,9 @@ function togglePausePlay() {
           <span class="font-semibold text-gray-400">{{ currentSong.by }}</span>
         </div>
       </div>
-      <div class="flex flex-grow items-center justify-center gap-4">
+      <div
+        class="flex flex-grow items-center justify-center gap-4 place-self-center"
+      >
         <SkipBackButton
           class="cursor-pointer fill-white"
           @click="songStore.goToPreviousSong"
@@ -62,7 +64,7 @@ function togglePausePlay() {
         />
       </div>
       <div
-        class="flex-shrink-0 cursor-pointer"
+        class="flex-shrink-0 cursor-pointer place-self-end self-center"
         @click="songStore.toggleIsOnLoop"
       >
         <RepeatButton

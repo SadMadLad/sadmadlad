@@ -1,7 +1,7 @@
 <script setup>
 import CurrentlyPlaying from "@/components/hangout/CurrentlyPlaying.vue";
 import WaveForms from "@/components/hangout/WaveForms.vue";
-import { onMounted, onUnmounted } from "vue";
+import { onBeforeUnmount, onMounted, onUnmounted } from "vue";
 import { storeToRefs } from "pinia";
 import SongsList from "@/components/hangout/SongsList.vue";
 import useNavbarStylesStore from "@/store/navbar_styles";
@@ -12,20 +12,19 @@ const { updateExactActiveClasses, updateHeaderClasses } =
 const songStore = useSongStore();
 const {
   cancelAnimation,
-  goToNextSong,
-  goToPreviousSong,
   initializeAudioSetup,
   handleOnEnd,
   pause,
-  play,
-  toggleIsOnLoop,
   updateTimestamp,
 } = songStore;
 
 const { audioElement, currentSong, duration, isOnLoop } =
   storeToRefs(songStore);
 
-onUnmounted(() => cancelAnimation());
+onBeforeUnmount(() => {
+  cancelAnimation();
+  pause();
+});
 
 onMounted(() => {
   updateExactActiveClasses({
