@@ -41,7 +41,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex-center bg-indigo-900/35 pb-40 backdrop-blur">
+  <div class="flex-center bg-indigo-600/35 pb-40 backdrop-blur">
     <div
       class="container flex min-h-screen flex-col items-center gap-12 pt-28 lg:flex-row lg:items-start"
     >

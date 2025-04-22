@@ -27,7 +27,7 @@ function togglePausePlay() {
   >
     <MusicPlayer />
     <div
-      class="container grid w-full grid-cols-3 items-center gap-8 overflow-x-auto px-4 py-6"
+      class="container grid w-full grid-cols-[repeat(3,minmax(15rem,1fr))] items-center gap-8 overflow-x-auto px-4 py-6"
     >
       <div class="flex flex-shrink-0 items-center gap-4 place-self-start">
         <div class="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg">

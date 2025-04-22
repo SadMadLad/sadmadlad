@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import Circle from "@/assets/svgs/circle.svg";
 import Skill from "@/components/home/Skill.vue";
-import skills from "@/assets/content/skills.yml";
+import skills from "@/assets/content/yml/skills.yml";
 
 import Ruby from "@/assets/svgs/tools/ruby.svg";
 import Python from "@/assets/svgs/tools/python.svg";
@@ -38,7 +38,7 @@ const currentSkillIndex = ref(0);
 <template>
   <div class="flex-center">
     <section
-      class="container relative flex flex-col-reverse items-start gap-8 overflow-y-hidden p-4 lg:flex-row lg:p-12"
+      class="container relative flex flex-col-reverse items-start gap-8 overflow-y-hidden p-4 lg:flex-row lg:p-20"
     >
       <Circle
         class="animate-slow-spin absolute left-8 top-8 hidden h-12 w-auto fill-secondary-500 lg:block"
