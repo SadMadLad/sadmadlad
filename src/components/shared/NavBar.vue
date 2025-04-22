@@ -9,22 +9,22 @@ const links = [
     name: "home",
     text: "Home",
   },
-  {
-    name: "blogs",
-    text: "Blogs",
-  },
-  {
-    name: "hangout",
-    text: "Hangout",
-  },
+  // {
+  //   name: "blogs",
+  //   text: "Blogs",
+  // },
   {
     name: "notes",
     text: "Notes",
   },
   {
-    name: "projects",
-    text: "Projects",
+    name: "hangout",
+    text: "Hangout",
   },
+  // {
+  //   name: "projects",
+  //   text: "Projects",
+  // },
 ];
 </script>
 

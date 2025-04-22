@@ -1,5 +1,8 @@
 <script setup>
+import useWindowResize from "@/composables/window-resize";
 import useSongStore from "@/store/song";
+
+const { width } = useWindowResize();
 
 const POWER_FACTOR = 1.35;
 const LOWER_FACTOR = 6;
@@ -23,7 +26,7 @@ const songStore = useSongStore();
           }"
         ></li>
       </ul>
-      <ul class="flex h-1/2 min-h-60 w-1/2 flex-row gap-0.5">
+      <ul class="flex h-1/2 min-h-60 w-1/2 flex-row gap-0.5" v-if="width > 640">
         <li
           v-for="bar in songStore.filteredFrequencyBuffer"
           :class="`w-1 ${songStore.currentSong.styles.bg.secondary}`"
@@ -45,7 +48,7 @@ const songStore = useSongStore();
           }"
         ></li>
       </ul>
-      <ul class="flex h-1/2 min-h-60 w-1/2 flex-row gap-0.5">
+      <ul class="flex h-1/2 min-h-60 w-1/2 flex-row gap-0.5" v-if="width > 640">
         <li
           v-for="bar in songStore.filteredFrequencyBuffer"
           :class="`w-1 ${songStore.currentSong.styles.bg.secondary}`"
