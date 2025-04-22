@@ -48,7 +48,7 @@ const socialsData = [
 </script>
 
 <template>
-  <footer class="flex-center bg-primary-500">
+  <footer class="flex-center border-t border-white bg-primary-500">
     <div
       class="container flex flex-col flex-wrap items-center justify-between px-8 pb-4 sm:flex-row sm:pb-0"
     >

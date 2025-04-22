@@ -43,7 +43,7 @@ onMounted(() => {
 <template>
   <div class="flex-center bg-indigo-600/35 pb-40 backdrop-blur">
     <div
-      class="container flex min-h-screen flex-col items-center gap-12 pt-28 lg:flex-row lg:items-start"
+      class="container flex min-h-screen flex-col items-center gap-12 pt-28 lg:flex-row lg:items-start px-8"
     >
       <section class="flex-shrink-0">
         <div class="h-96 w-[22rem] sm:w-[28rem]">

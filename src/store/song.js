@@ -31,7 +31,6 @@ const useSongStore = defineStore("song", () => {
   /** Computed Properties **/
 
   const filteredFrequencyBuffer = computed(() => {
-    console.log(width.value);
     let waveFormsArray = frequencyBuffer.value.filter((freq) => freq > 0);
     if (width.value < 640) {
       waveFormsArray = waveFormsArray.slice(0, 25);

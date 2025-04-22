@@ -4,6 +4,7 @@ import Hero from "@/components/home/Hero.vue";
 import { onMounted } from "vue";
 import Skills from "@/components/home/Skills.vue";
 import useNavbarStylesStore from "@/store/navbar_styles";
+import WorkExperience from "@/components/home/WorkExperience.vue";
 
 const { updateExactActiveClasses, updateHeaderClasses } =
   useNavbarStylesStore();
@@ -24,5 +25,6 @@ onMounted(() => {
 <template>
   <Hero />
   <Skills />
+  <WorkExperience />
   <Footer />
 </template>

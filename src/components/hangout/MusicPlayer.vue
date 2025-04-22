@@ -12,8 +12,8 @@ function handleInput() {
 const { audioElement, duration, isSliderInFocus, timestamp } =
   storeToRefs(songStore);
 
-const barColor = "#c7d2fe";
-const thumbColor = "#6366f1";
+const barColor = "#6366f1";
+const thumbColor = "#84cc16";
 </script>
 
 <template>
