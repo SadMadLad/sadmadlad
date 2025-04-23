@@ -8,8 +8,6 @@ const { id } = defineProps({
 
 const markdownFileContent = (await import(`@/assets/content/notes/md/${id}.md?raw`)).default;
 const htmlString = marked.parse(markdownFileContent);
-
-console.log(htmlString)
 </script>
 
 <template>

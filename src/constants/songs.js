@@ -5,10 +5,12 @@ import TornOutTwistedCover from "@/assets/songs/pics/HOTD Overkill - Torn Out Tw
 import TornOutTwistedLyrics from "@/assets/songs/lyrics/HOTD Overkill - Torn Out Twisted.json";
 import YouNeverKnowCover from "@/assets/songs/pics/Marly - You Never Know.jpg";
 
+const basePath = "/sadmadlad/"
+
 const songs = [
   {
     id: "torn_out_twisted",
-    audio: "/songs/HOTD Overkill - Torn Out Twisted.mp3",
+    audio: `${basePath}/songs/HOTD Overkill - Torn Out Twisted.mp3`,
     by: "Casey & The Creepy Feeling",
     cover: TornOutTwistedCover,
     has_lyrics_available: true,
@@ -24,7 +26,7 @@ const songs = [
   },
   {
     id: "gta_v_theme",
-    audio: "/songs/GTA V Theme.mp3",
+    audio: `${basePath}/songs/GTA V Theme.mp3`,
     by: "Rockstar Games",
     cover: GtaVThemeCover,
     has_lyrics_available: false,
@@ -39,7 +41,7 @@ const songs = [
   },
   {
     id: "gerudo_valley",
-    audio: "/songs/Gerudo Valley - The Legend of Zelda Ocarina Of Time.mp3",
+    audio: `${basePath}/songs/Gerudo Valley - The Legend of Zelda Ocarina Of Time.mp3`,
     by: "Koji Londo",
     cover: GerudoValleyCover,
     has_lyrics_available: false,
@@ -51,7 +53,7 @@ const songs = [
   },
   {
     id: "goodbye_esaka",
-    audio: "/songs/Goodbye Esaka - KOF2000.mp3",
+    audio: `${basePath}/songs/Goodbye Esaka - KOF2000.mp3`,
     by: "SNK Sound Team",
     cover: GoodbyeEsakaCover,
     has_lyrics_available: false,
@@ -66,7 +68,7 @@ const songs = [
   },
   {
     id: "you_never_know",
-    audio: "/songs/Marly - You Never Know.mp3",
+    audio: `${basePath}/songs/Marly - You Never Know.mp3`,
     by: "Marly",
     cover: YouNeverKnowCover,
     has_lyrics_available: false,
