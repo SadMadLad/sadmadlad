@@ -1,4 +1,6 @@
 <script setup>
+document.title = "Notes"
+
 import NotesCard from "@/components/notes/NotesCard.vue";
 import NotesData from "@/assets/content/notes/data.json";
 import NotesSidebar from "@/components/notes/NotesSidebar.vue";

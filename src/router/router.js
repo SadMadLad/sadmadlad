@@ -33,6 +33,9 @@ const routes = [
         path: "notes",
         name: "notes",
         component: NotesPage,
+        meta: {
+          title: "Notes"
+        }
       },
       {
         path: "projects",

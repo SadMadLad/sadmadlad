@@ -1,4 +1,6 @@
 <script setup>
+document.title = "Hangout"
+
 import CurrentlyPlaying from "@/components/hangout/CurrentlyPlaying.vue";
 import WaveForms from "@/components/hangout/WaveForms.vue";
 import { onBeforeUnmount, onMounted } from "vue";

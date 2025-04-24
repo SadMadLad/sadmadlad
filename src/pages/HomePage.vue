@@ -1,4 +1,6 @@
 <script setup>
+document.title = "Saad Azam"
+
 import Footer from "@/components/shared/Footer.vue";
 import Hero from "@/components/home/Hero.vue";
 import { onMounted } from "vue";
