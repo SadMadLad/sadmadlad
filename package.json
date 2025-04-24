@@ -7,7 +7,7 @@
   "scripts": {
     "build": "vite build",
     "deploy": "gh-pages -d dist",
-    "full-deploy": "npm run pre-deploy && npm run deploy",
+    "full-deploy": "git push && npm run pre-deploy && npm run deploy",
     "dev": "vite",
     "dev-host": "vite --host",
     "pre-deploy": "npm run build",
