@@ -7,23 +7,29 @@ const notesSidebarStore = useNotesSidebarStore();
 
 <template>
   <Transition name="slide-fade-right">
-    <div v-if="notesSidebarStore.isSidebarOpen" class="fixed left-0 top-0 z-40 h-screen w-screen">
+    <div
+      v-if="notesSidebarStore.isSidebarOpen"
+      class="fixed left-0 top-0 z-40 h-screen w-screen"
+    >
       <div
         class="absolute left-0 top-0 z-10 h-screen w-screen bg-black/50"
         @click="notesSidebarStore.isSidebarOpen = false"
       ></div>
       <div class="relative">
         <div
-          class="z-20 w-full lg:min-w-max rounded-xl overflow-auto bg-white top-0 right-0 fixed h-screen shadow-xl"
+          class="fixed right-0 top-0 z-20 h-screen w-full overflow-auto rounded-xl bg-white shadow-xl lg:w-max lg:min-w-max"
         >
-          <div class="px-8 py-8 md:py-20 md:px-12">
+          <div class="px-8 py-8 md:px-12 md:py-20">
             <button
-              class="fill-red-500 absolute top-0 right-0 w-12 h-12"
+              class="absolute right-0 top-0 h-12 w-12 fill-red-500"
               @click="notesSidebarStore.isSidebarOpen = false"
             >
-              <CloseIcon class="fill-gray-500 w-8 h-8" />
+              <CloseIcon class="h-8 w-8 fill-gray-500" />
             </button>
-            <article class="prose-sm lg:prose" v-html="notesSidebarStore.markdownHtml"></article>
+            <article
+              class="prose-sm lg:prose"
+              v-html="notesSidebarStore.markdownHtml"
+            ></article>
           </div>
         </div>
       </div>

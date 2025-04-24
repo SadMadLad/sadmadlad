@@ -20,9 +20,9 @@ export default {
       },
       typography: {
         css: {
-          marginTop: '1rem'
-        }
-      }
+          marginTop: "1rem",
+        },
+      },
     },
   },
   plugins: [

@@ -5,13 +5,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build": "vite build",
+    "deploy": "gh-pages -d dist",
+    "full-deploy": "npm run pre-deploy && npm run deploy",
     "dev": "vite",
     "dev-host": "vite --host",
-    "build": "vite build",
     "pre-deploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "preview": "vite preview",
-    "pretty": "npx prettier . --write"
+    "pretty": "npx prettier . --write",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@modyfi/vite-plugin-yaml": "^1.1.0",

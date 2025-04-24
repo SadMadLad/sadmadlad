@@ -1,19 +1,19 @@
 <script setup>
 import EyeIcon from "@/assets/svgs/eye.svg";
-import hljs from 'highlight.js';
+import hljs from "highlight.js";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import useNotesSidebarStore from "@/store/notes_sidebar";
 
 const marked = new Marked(
   markedHighlight({
-	emptyLangClass: 'hljs',
-    langPrefix: 'hljs language-',
+    emptyLangClass: "hljs",
+    langPrefix: "hljs language-",
     highlight(code, lang) {
-      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      const language = hljs.getLanguage(lang) ? lang : "plaintext";
       return hljs.highlight(code, { language }).value;
-    }
-  })
+    },
+  }),
 );
 
 const notesSidebarStore = useNotesSidebarStore();
@@ -34,7 +34,7 @@ function openSidebar() {
 </script>
 
 <template>
-  <div class="relative rounded-lg overflow-hidden bg-white p-6 shadow-lg">
+  <div class="relative overflow-hidden rounded-lg bg-white p-6 shadow-lg">
     <span
       class="-underline-offset-4 decoration-no-skip-ink underline decoration-secondary-400 decoration-8"
       >{{ date }}</span

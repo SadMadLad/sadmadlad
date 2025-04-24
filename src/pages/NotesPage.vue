@@ -26,12 +26,12 @@ onMounted(() => {
       <div class="flex flex-col gap-2.5">
         <h2 class="text-center text-5xl font-black">Notes</h2>
         <div class="flex-center">
-          <p class="max-w-xl text-center text-2xl font-extralight px-6">
+          <p class="max-w-xl px-6 text-center text-2xl font-extralight">
             Here I write any tips, anything new I learnt or as a reminder!
           </p>
         </div>
       </div>
-      <ul class="my-16 flex flex-wrap gap-4 lg:gap-8 px-8 lg:px-0">
+      <ul class="my-16 flex flex-wrap gap-4 px-8 lg:gap-8 lg:px-0">
         <li v-for="note_data in NotesData" :key="note_data.id">
           <Suspense>
             <NotesCard v-bind="note_data" />
