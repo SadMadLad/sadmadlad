@@ -5,7 +5,7 @@ import TornOutTwistedCover from "@/assets/songs/pics/HOTD Overkill - Torn Out Tw
 import TornOutTwistedLyrics from "@/assets/songs/lyrics/HOTD Overkill - Torn Out Twisted.json";
 import YouNeverKnowCover from "@/assets/songs/pics/Marly - You Never Know.jpg";
 
-const basePath = "/sadmadlad/"
+const basePath = "/sadmadlad/";
 
 const songs = [
   {

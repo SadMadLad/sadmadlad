@@ -127,3 +127,18 @@
     }
   }
 }
+
+@layer components {
+  .offset-box-shadow {
+    box-shadow: rgba(0, 0, 0, 1) 8px 8px;
+  }
+  .decoration-no-skip-ink {
+    text-decoration-skip-ink: none;
+  }
+  .-underline-offset-4 {
+    text-underline-offset: -4px;
+  }
+  .decoration-12 {
+    text-decoration-thickness: 12px;
+  }
+}

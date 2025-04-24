@@ -31,7 +31,7 @@ const links = [
 <template>
   <header
     :class="computedFinalHeaderClass"
-    class="fixed left-0 top-0 z-50 w-full transition-all"
+    class="fixed left-0 top-0 z-40 w-full transition-all"
   >
     <nav class="flex-center w-screen p-4 transition-all">
       <ul class="flex items-center justify-center gap-6 overflow-x-auto">

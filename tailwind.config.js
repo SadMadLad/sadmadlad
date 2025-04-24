@@ -18,10 +18,15 @@ export default {
         sans: ["Geist", ...defaultTheme.fontFamily.sans],
         mono: ["GeistMono", ...defaultTheme.fontFamily.sans],
       },
+      typography: {
+        css: {
+          marginTop: '1rem'
+        }
+      }
     },
   },
   plugins: [
     require("@tailwindcss/container-queries"),
-    require('@tailwindcss/typography'),
+    require("@tailwindcss/typography"),
   ],
 };
