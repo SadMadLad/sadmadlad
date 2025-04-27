@@ -1,5 +1,5 @@
 <script setup>
-document.title = "Hangout"
+document.title = "Hangout";
 
 import CurrentlyPlaying from "@/components/hangout/CurrentlyPlaying.vue";
 import WaveForms from "@/components/hangout/WaveForms.vue";

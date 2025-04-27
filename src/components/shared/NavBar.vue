@@ -18,6 +18,10 @@ const links = [
     text: "Notes",
   },
   {
+    name: "resume",
+    text: "Resume",
+  },
+  {
     name: "hangout",
     text: "Hangout",
   },

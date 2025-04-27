@@ -8,6 +8,7 @@ import HomePage from "@/pages/HomePage.vue";
 import NotesPage from "@/pages/NotesPage.vue";
 import NotFoundPage from "@/pages/errors/NotFoundPage.vue";
 import ProjectsPage from "@/pages/ProjectsPage.vue";
+import ResumePage from "@/pages/ResumePage.vue";
 
 const routes = [
   {
@@ -33,14 +34,16 @@ const routes = [
         path: "notes",
         name: "notes",
         component: NotesPage,
-        meta: {
-          title: "Notes"
-        }
       },
       {
         path: "projects",
         name: "projects",
         component: ProjectsPage,
+      },
+      {
+        path: "resume",
+        name: "resume",
+        component: ResumePage,
       },
     ],
   },

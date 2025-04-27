@@ -1,4 +1,4 @@
-# Rendering Markdown with Tailwind CSS
+# **Rendering Markdown with Tailwind CSS**
 
 #### A Small Problem I Faced
 
@@ -15,10 +15,7 @@ The `prose` class provides sensible defaults for typographic content, which work
 Here’s a small example using Vue 3:
 
 ```html
-<article
-  class="prose-sm lg:prose"
-  v-html="markdownHtml"
-></article>
+<article class="prose-sm lg:prose" v-html="markdownHtml"></article>
 ```
 
 This note itself is being rendered using that approach.
