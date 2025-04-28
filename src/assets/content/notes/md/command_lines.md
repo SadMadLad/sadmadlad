@@ -6,3 +6,4 @@ Collection of command lines:
   ```bash
     chmod +x filename.sh
   ```
+  and then file is executable like `./filename.sh`.
