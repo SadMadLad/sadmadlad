@@ -1,4 +1,4 @@
-const n = `## **Command Lines**
+const n=`## **Command Lines**
 
 Collection of command lines:
 
@@ -7,5 +7,4 @@ Collection of command lines:
     chmod +x filename.sh
   \`\`\`
   and then file is executable like \`./filename.sh\`.
-`;
-export { n as default };
+`;export{n as default};
