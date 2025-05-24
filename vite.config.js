@@ -17,11 +17,11 @@ export default defineConfig({
 		port: 5174,
 	},
 	build: {
-    rollupOptions: {
-      input: {
-        main: 'index.html',
-        fallback: 'index.html',
-      }
-    }
-  }
+		rollupOptions: {
+			input: {
+				main: "index.html",
+				fallback: "index.html",
+			},
+		},
+	},
 });
