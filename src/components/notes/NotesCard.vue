@@ -6,30 +6,30 @@ import { markedHighlight } from "marked-highlight";
 import useNotesSidebarStore from "@/store/notes_sidebar";
 
 const marked = new Marked(
-  markedHighlight({
-    emptyLangClass: "hljs",
-    langPrefix: "hljs language-",
-    highlight(code, lang) {
-      const language = hljs.getLanguage(lang) ? lang : "plaintext";
-      return hljs.highlight(code, { language }).value;
-    },
-  }),
+	markedHighlight({
+		emptyLangClass: "hljs",
+		langPrefix: "hljs language-",
+		highlight(code, lang) {
+			const language = hljs.getLanguage(lang) ? lang : "plaintext";
+			return hljs.highlight(code, { language }).value;
+		},
+	}),
 );
 
 const notesSidebarStore = useNotesSidebarStore();
 const { id } = defineProps({
-  id: String,
-  date: String,
+	id: String,
+	date: String,
 });
 
 const markdownFileContent = (
-  await import(`@/assets/content/notes/md/${id}.md?raw`)
+	await import(`@/assets/content/notes/md/${id}.md?raw`)
 ).default;
 const htmlString = marked.parse(markdownFileContent);
 
 function openSidebar() {
-  notesSidebarStore.isSidebarOpen = true;
-  notesSidebarStore.markdownHtml = htmlString;
+	notesSidebarStore.isSidebarOpen = true;
+	notesSidebarStore.markdownHtml = htmlString;
 }
 </script>
 

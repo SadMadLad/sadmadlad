@@ -5,12 +5,12 @@ import useSongStore from "@/store/song";
 const songStore = useSongStore();
 
 function handleInput() {
-  isSliderInFocus.value = true;
-  audioElement.value.currentTime = timestamp.value;
-  isSliderInFocus.value = false;
+	isSliderInFocus.value = true;
+	audioElement.value.currentTime = timestamp.value;
+	isSliderInFocus.value = false;
 }
 const { audioElement, duration, isSliderInFocus, timestamp } =
-  storeToRefs(songStore);
+	storeToRefs(songStore);
 
 const barColor = "#6366f1";
 const thumbColor = "#84cc16";

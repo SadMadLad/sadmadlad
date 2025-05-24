@@ -13,11 +13,11 @@ const { pause, play } = songStore;
 const { isPlaying, currentSong } = storeToRefs(songStore);
 
 function togglePausePlay() {
-  if (isPlaying.value) {
-    pause();
-  } else {
-    play();
-  }
+	if (isPlaying.value) {
+		pause();
+	} else {
+		play();
+	}
 }
 </script>
 

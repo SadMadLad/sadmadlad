@@ -5,45 +5,45 @@ import LinkedIn from "@/assets/svgs/socials/linkedin.svg";
 import YouTube from "@/assets/svgs/socials/youtube.svg";
 
 const links = [
-  {
-    name: "home",
-    text: "Home",
-  },
-  {
-    name: "blogs",
-    text: "Blogs",
-  },
-  {
-    name: "hangout",
-    text: "Hangout",
-  },
-  {
-    name: "notes",
-    text: "Notes",
-  },
-  {
-    name: "projects",
-    text: "Projects",
-  },
+	{
+		name: "home",
+		text: "Home",
+	},
+	{
+		name: "blogs",
+		text: "Blogs",
+	},
+	{
+		name: "hangout",
+		text: "Hangout",
+	},
+	{
+		name: "notes",
+		text: "Notes",
+	},
+	{
+		name: "projects",
+		text: "Projects",
+	},
 ];
 
 const socialsData = [
-  {
-    link: "https://github.com/sadmadlad/",
-    social: GitHub,
-  },
-  {
-    link: "https://www.kaggle.com/sadmadlad",
-    social: Kaggle,
-  },
-  {
-    link: "https://www.linkedin.com/in/saad-azam-9113011b8/",
-    social: LinkedIn,
-  },
-  {
-    link: "https://www.youtube.com/@SubZero-vs2mu",
-    social: YouTube,
-  },
+	{
+		link: "https://github.com/sadmadlad/",
+		social: GitHub,
+	},
+	{
+		link: "https://www.kaggle.com/sadmadlad",
+		social: Kaggle,
+	},
+	{
+		link: "https://www.linkedin.com/in/saad-azam-9113011b8/",
+		social: LinkedIn,
+	},
+	{
+		link: "https://www.youtube.com/@SubZero-vs2mu",
+		social: YouTube,
+	},
 ];
 </script>
 

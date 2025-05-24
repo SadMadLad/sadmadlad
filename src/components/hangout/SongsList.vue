@@ -8,8 +8,8 @@ const songStore = useSongStore();
 const { setCurrentSongIndex, play, pause } = songStore;
 
 function playSongFromList(index) {
-  setCurrentSongIndex(index);
-  play();
+	setCurrentSongIndex(index);
+	play();
 }
 </script>
 

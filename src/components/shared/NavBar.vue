@@ -2,33 +2,33 @@
 import useNavbarStylesStore from "@/store/navbar_styles";
 
 const { computedFinalExactActiveClass, computedFinalHeaderClass } =
-  useNavbarStylesStore();
+	useNavbarStylesStore();
 
 const links = [
-  {
-    name: "home",
-    text: "Home",
-  },
-  // {
-  //   name: "blogs",
-  //   text: "Blogs",
-  // },
-  {
-    name: "notes",
-    text: "Notes",
-  },
-  {
-    name: "resume",
-    text: "Resume",
-  },
-  {
-    name: "hangout",
-    text: "Hangout",
-  },
-  // {
-  //   name: "projects",
-  //   text: "Projects",
-  // },
+	{
+		name: "home",
+		text: "Home",
+	},
+	{
+		name: "blogs",
+		text: "Blogs",
+	},
+	{
+		name: "notes",
+		text: "Notes",
+	},
+	{
+		name: "resume",
+		text: "Resume",
+	},
+	{
+		name: "hangout",
+		text: "Hangout",
+	},
+	// {
+	//   name: "projects",
+	//   text: "Projects",
+	// },
 ];
 </script>
 

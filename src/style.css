@@ -3,142 +3,142 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: "Geist";
-    font-weight: 100;
-    src: url("./assets/fonts/Geist-Thin.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "Geist";
-    font-weight: 200;
-    src: url("./assets/fonts/Geist-UltraLight.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "Geist";
-    font-weight: 300;
-    src: url("./assets/fonts/Geist-Light.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "Geist";
-    font-weight: 400;
-    src: url("./assets/fonts/Geist-Regular.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "Geist";
-    font-weight: 500;
-    src: url("./assets/fonts/Geist-Medium.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "Geist";
-    font-weight: 600;
-    src: url("./assets/fonts/Geist-SemiBold.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "Geist";
-    font-weight: 700;
-    src: url("./assets/fonts/Geist-Bold.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "Geist";
-    font-weight: 800;
-    src: url("./assets/fonts/Geist-Black.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "Geist";
-    font-weight: 900;
-    src: url("./assets/fonts/Geist-UltraBlack.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "GeistMono";
-    font-weight: 100;
-    src: url("./assets/fonts/GeistMono-Thin.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "GeistMono";
-    font-weight: 200;
-    src: url("./assets/fonts/GeistMono-UltraLight.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "GeistMono";
-    font-weight: 300;
-    src: url("./assets/fonts/GeistMono-Light.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "GeistMono";
-    font-weight: 400;
-    src: url("./assets/fonts/GeistMono-Regular.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "GeistMono";
-    font-weight: 500;
-    src: url("./assets/fonts/GeistMono-Medium.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "GeistMono";
-    font-weight: 600;
-    src: url("./assets/fonts/GeistMono-SemiBold.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "GeistMono";
-    font-weight: 700;
-    src: url("./assets/fonts/GeistMono-Bold.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "GeistMono";
-    font-weight: 800;
-    src: url("./assets/fonts/GeistMono-Black.woff2") format("woff2");
-  }
-  @font-face {
-    font-family: "GeistMono";
-    font-weight: 900;
-    src: url("./assets/fonts/GeistMono-UltraBlack.woff2") format("woff2");
-  }
+	@font-face {
+		font-family: "Geist";
+		font-weight: 100;
+		src: url("./assets/fonts/Geist-Thin.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "Geist";
+		font-weight: 200;
+		src: url("./assets/fonts/Geist-UltraLight.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "Geist";
+		font-weight: 300;
+		src: url("./assets/fonts/Geist-Light.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "Geist";
+		font-weight: 400;
+		src: url("./assets/fonts/Geist-Regular.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "Geist";
+		font-weight: 500;
+		src: url("./assets/fonts/Geist-Medium.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "Geist";
+		font-weight: 600;
+		src: url("./assets/fonts/Geist-SemiBold.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "Geist";
+		font-weight: 700;
+		src: url("./assets/fonts/Geist-Bold.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "Geist";
+		font-weight: 800;
+		src: url("./assets/fonts/Geist-Black.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "Geist";
+		font-weight: 900;
+		src: url("./assets/fonts/Geist-UltraBlack.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "GeistMono";
+		font-weight: 100;
+		src: url("./assets/fonts/GeistMono-Thin.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "GeistMono";
+		font-weight: 200;
+		src: url("./assets/fonts/GeistMono-UltraLight.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "GeistMono";
+		font-weight: 300;
+		src: url("./assets/fonts/GeistMono-Light.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "GeistMono";
+		font-weight: 400;
+		src: url("./assets/fonts/GeistMono-Regular.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "GeistMono";
+		font-weight: 500;
+		src: url("./assets/fonts/GeistMono-Medium.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "GeistMono";
+		font-weight: 600;
+		src: url("./assets/fonts/GeistMono-SemiBold.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "GeistMono";
+		font-weight: 700;
+		src: url("./assets/fonts/GeistMono-Bold.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "GeistMono";
+		font-weight: 800;
+		src: url("./assets/fonts/GeistMono-Black.woff2") format("woff2");
+	}
+	@font-face {
+		font-family: "GeistMono";
+		font-weight: 900;
+		src: url("./assets/fonts/GeistMono-UltraBlack.woff2") format("woff2");
+	}
 }
 
 @layer utilities {
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
+	.flex-center {
+		@apply flex items-center justify-center;
+	}
 
-  .tag {
-    @apply bg-red-500;
-  }
+	.tag {
+		@apply bg-red-500;
+	}
 
-  .floating {
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-  }
+	.floating {
+		animation-name: floating;
+		animation-duration: 3s;
+		animation-iteration-count: infinite;
+		animation-timing-function: ease-in-out;
+	}
 
-  .animate-slow-spin {
-    animation: spin 7s linear infinite;
-  }
+	.animate-slow-spin {
+		animation: spin 7s linear infinite;
+	}
 
-  @keyframes floating {
-    0% {
-      transform: translate(0, 0px);
-    }
-    50% {
-      transform: translate(0, 15px);
-    }
-    100% {
-      transform: translate(0, -0px);
-    }
-  }
+	@keyframes floating {
+		0% {
+			transform: translate(0, 0px);
+		}
+		50% {
+			transform: translate(0, 15px);
+		}
+		100% {
+			transform: translate(0, -0px);
+		}
+	}
 }
 
 @layer components {
-  .offset-box-shadow {
-    box-shadow: rgba(0, 0, 0, 1) 8px 8px;
-  }
-  .decoration-no-skip-ink {
-    text-decoration-skip-ink: none;
-  }
-  .-underline-offset-4 {
-    text-underline-offset: -4px;
-  }
-  .decoration-12 {
-    text-decoration-thickness: 12px;
-  }
+	.offset-box-shadow {
+		box-shadow: rgba(0, 0, 0, 1) 8px 8px;
+	}
+	.decoration-no-skip-ink {
+		text-decoration-skip-ink: none;
+	}
+	.-underline-offset-4 {
+		text-underline-offset: -4px;
+	}
+	.decoration-12 {
+		text-decoration-thickness: 12px;
+	}
 }

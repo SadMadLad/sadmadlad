@@ -6,18 +6,18 @@ import { onMounted } from "vue";
 import useNavbarStylesStore from "@/store/navbar_styles";
 
 const { updateExactActiveClasses, updateHeaderClasses } =
-  useNavbarStylesStore();
+	useNavbarStylesStore();
 
 onMounted(() => {
-  updateExactActiveClasses({
-    newExactActiveClass: "print:hidden text-primary-500 font-black",
-    newScrolledDownExactActiveClass: "print:hidden text-primary-500 font-black",
-  });
-  updateHeaderClasses({
-    newHeaderClass: "print:hidden text-primary-500",
-    newScrolledDownHeaderClass:
-      "print:hidden text-primary-500 bg-white/40 backdrop-blur",
-  });
+	updateExactActiveClasses({
+		newExactActiveClass: "print:hidden text-primary-500 font-black",
+		newScrolledDownExactActiveClass: "print:hidden text-primary-500 font-black",
+	});
+	updateHeaderClasses({
+		newHeaderClass: "print:hidden text-primary-500",
+		newScrolledDownHeaderClass:
+			"print:hidden text-primary-500 bg-white/40 backdrop-blur",
+	});
 });
 </script>
 

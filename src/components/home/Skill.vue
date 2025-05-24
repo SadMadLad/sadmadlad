@@ -1,8 +1,8 @@
 <script setup>
 defineProps({
-  skill_title: String,
-  description: String,
-  tags: Array,
+	skill_title: String,
+	description: String,
+	tags: Array,
 });
 </script>
 

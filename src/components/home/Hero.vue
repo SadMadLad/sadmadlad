@@ -5,7 +5,7 @@ import SquareDottedLine from "@/assets/svgs/diagonal-squares-dotted.svg";
 import SquaresDotted from "@/assets/svgs/squares-dotted.svg";
 
 const svgElementColors =
-  "floating absolute fill-secondary-500 stroke-secondary-500 hover:fill-tertiary-400 hover:stroke-tertiary-400 absolute transition-all";
+	"floating absolute fill-secondary-500 stroke-secondary-500 hover:fill-tertiary-400 hover:stroke-tertiary-400 absolute transition-all";
 </script>
 
 <template>

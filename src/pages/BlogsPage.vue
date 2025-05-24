@@ -1,3 +1,41 @@
-<script setup></script>
+<script setup>
+import { onMounted } from "vue";
+import useNavbarStylesStore from "@/store/navbar_styles";
 
-<template></template>
+const { updateExactActiveClasses, updateHeaderClasses } =
+	useNavbarStylesStore();
+
+onMounted(() => {
+	updateHeaderClasses({
+		newHeaderClass: "bg-transparent text-primary-500",
+		newScrolledDownHeaderClass: "bg-transparent text-primary-500",
+	});
+	updateExactActiveClasses({
+		newExactActiveClass: "font-black text-primary-500",
+		newScrolledDownExactActiveClass: "font-black text-primary-500",
+	});
+});
+</script>
+
+<template>
+  <div class="relative">
+    <section class="relative bg-primary-50 text-primary-600 pt-40 pb-56 text-center">
+      <span class="bg-primary-200 text-sm px-3 py-1.5 font-black rounded-lg">Blog</span>
+      <h2 class="font-black text-5xl my-8">Blogs. Anything.</h2>
+      <p class="text-lg mx-2.5">List of blogs about anything I want to write.</p>
+    </section>
+    <div class="overflow-x-hidden w-screen absolute left-0 h-32 -bottom-24 flex">
+      <div class="w-[120vw] h-12 bg-indigo-200 rotate-[-1.5deg] sm:rotate-[-1deg] translate-y-5"></div>
+    </div>
+    <div class="overflow-x-hidden w-screen absolute left-0 h-32 -bottom-12 flex">
+      <div class="w-[120vw] h-12 bg-indigo-300 rotate-[-1.5deg] sm:rotate-[-1deg] translate-y-5"></div>
+    </div>
+    <div class="overflow-x-hidden w-screen absolute left-0 h-32 bottom-0 flex">
+      <div class="w-[120vw] h-12 bg-indigo-400 rotate-[-1.5deg] sm:rotate-[-1deg] translate-y-5"></div>
+    </div>
+  </div>
+  <section class="">
+
+
+  </section>
+</template>

@@ -18,18 +18,18 @@ import Phoenix from "@/assets/svgs/tools/phoenix.svg";
 import Brain from "@/assets/svgs/tools/brain.svg";
 
 const skillIcons = [
-  Ruby,
-  Python,
-  Cplusplus,
-  JavaScript,
-  Elixir,
-  Rails,
-  React,
-  Vue,
-  Node,
-  TailwindCSS,
-  Phoenix,
-  Brain,
+	Ruby,
+	Python,
+	Cplusplus,
+	JavaScript,
+	Elixir,
+	Rails,
+	React,
+	Vue,
+	Node,
+	TailwindCSS,
+	Phoenix,
+	Brain,
 ];
 
 const currentSkillIndex = ref(0);

@@ -4,172 +4,172 @@ import { songs } from "@/constants/songs";
 import useWindowResize from "@/composables/window-resize";
 
 const useSongStore = defineStore("song", () => {
-  /* Constants */
-  const FFT_SIZE = 256;
-  const BUFFER_LENGTH = 128;
+	/* Constants */
+	const FFT_SIZE = 256;
+	const BUFFER_LENGTH = 128;
 
-  /** Data Variables **/
-  let frequencyBufferVal = new Uint8Array(BUFFER_LENGTH);
-  let animationFrameId = null;
-  const { width, height } = useWindowResize();
+	/** Data Variables **/
+	const frequencyBufferVal = new Uint8Array(BUFFER_LENGTH);
+	let animationFrameId = null;
+	const { width, height } = useWindowResize();
 
-  /* Private */
-  const analyser = ref(null);
-  const audioContext = ref(new AudioContext());
-  const frequencyBuffer = ref([]);
+	/* Private */
+	const analyser = ref(null);
+	const audioContext = ref(new AudioContext());
+	const frequencyBuffer = ref([]);
 
-  /* Public */
-  const audioElement = ref(null);
-  const currentSongIndex = ref(0);
-  const currentSong = ref(songs[currentSongIndex.value]);
-  const duration = ref(0);
-  const isOnLoop = ref(false);
-  const isPlaying = ref(false);
-  const isSliderInFocus = ref(false);
-  const timestamp = ref(0);
+	/* Public */
+	const audioElement = ref(null);
+	const currentSongIndex = ref(0);
+	const currentSong = ref(songs[currentSongIndex.value]);
+	const duration = ref(0);
+	const isOnLoop = ref(false);
+	const isPlaying = ref(false);
+	const isSliderInFocus = ref(false);
+	const timestamp = ref(0);
 
-  /** Computed Properties **/
+	/** Computed Properties **/
 
-  const filteredFrequencyBuffer = computed(() => {
-    let waveFormsArray = frequencyBuffer.value.filter((freq) => freq > 0);
-    if (width.value < 640) {
-      waveFormsArray = waveFormsArray.slice(0, 25);
-    }
-    return waveFormsArray;
-  });
+	const filteredFrequencyBuffer = computed(() => {
+		let waveFormsArray = frequencyBuffer.value.filter((freq) => freq > 0);
+		if (width.value < 640) {
+			waveFormsArray = waveFormsArray.slice(0, 25);
+		}
+		return waveFormsArray;
+	});
 
-  /** Methods **/
+	/** Methods **/
 
-  /* Private */
-  function getLiveAudioData() {
-    if (!analyser.value) return;
+	/* Private */
+	function getLiveAudioData() {
+		if (!analyser.value) return;
 
-    analyser.value.getByteFrequencyData(frequencyBufferVal);
-    frequencyBuffer.value = Array.from(frequencyBufferVal);
-  }
+		analyser.value.getByteFrequencyData(frequencyBufferVal);
+		frequencyBuffer.value = Array.from(frequencyBufferVal);
+	}
 
-  function startFetchingAudioData() {
-    function update() {
-      if (!isPlaying.value) return;
+	function startFetchingAudioData() {
+		function update() {
+			if (!isPlaying.value) return;
 
-      getLiveAudioData();
-      animationFrameId = requestAnimationFrame(update);
-    }
+			getLiveAudioData();
+			animationFrameId = requestAnimationFrame(update);
+		}
 
-    cancelAnimation();
-    update();
-  }
+		cancelAnimation();
+		update();
+	}
 
-  /* Public */
-  function setCurrentSongIndex(index) {
-    currentSongIndex.value = index;
-  }
+	/* Public */
+	function setCurrentSongIndex(index) {
+		currentSongIndex.value = index;
+	}
 
-  function setCurrentSongId(id) {
-    const songIndex = songs.findIndex((song) => song.id === id);
-    currentSongIndex.value = songIndex;
-  }
+	function setCurrentSongId(id) {
+		const songIndex = songs.findIndex((song) => song.id === id);
+		currentSongIndex.value = songIndex;
+	}
 
-  function cancelAnimation() {
-    cancelAnimationFrame(animationFrameId);
-  }
+	function cancelAnimation() {
+		cancelAnimationFrame(animationFrameId);
+	}
 
-  function goToNextSong() {
-    currentSongIndex.value = (currentSongIndex.value + 1) % songs.length;
+	function goToNextSong() {
+		currentSongIndex.value = (currentSongIndex.value + 1) % songs.length;
 
-    cancelAnimation();
-  }
+		cancelAnimation();
+	}
 
-  function goToPreviousSong() {
-    currentSongIndex.value =
-      currentSongIndex.value - 1 < 0
-        ? songs.length - 1
-        : currentSongIndex.value - 1;
-    currentSong.value = songs[currentSongIndex.value];
+	function goToPreviousSong() {
+		currentSongIndex.value =
+			currentSongIndex.value - 1 < 0
+				? songs.length - 1
+				: currentSongIndex.value - 1;
+		currentSong.value = songs[currentSongIndex.value];
 
-    cancelAnimation();
-  }
+		cancelAnimation();
+	}
 
-  function handleOnEnd() {
-    if (!isOnLoop.value) goToNextSong();
-  }
+	function handleOnEnd() {
+		if (!isOnLoop.value) goToNextSong();
+	}
 
-  function initializeAudioSetup() {
-    const songTrack = audioContext.value.createMediaElementSource(
-      audioElement.value,
-    );
+	function initializeAudioSetup() {
+		const songTrack = audioContext.value.createMediaElementSource(
+			audioElement.value,
+		);
 
-    analyser.value = audioContext.value.createAnalyser();
-    analyser.value.fftSize = FFT_SIZE;
+		analyser.value = audioContext.value.createAnalyser();
+		analyser.value.fftSize = FFT_SIZE;
 
-    songTrack.connect(analyser.value);
-    analyser.value.connect(audioContext.value.destination);
-  }
+		songTrack.connect(analyser.value);
+		analyser.value.connect(audioContext.value.destination);
+	}
 
-  function pause() {
-    audioContext.value.suspend();
-    audioElement.value.pause();
-    isPlaying.value = false;
+	function pause() {
+		audioContext.value.suspend();
+		audioElement.value.pause();
+		isPlaying.value = false;
 
-    cancelAnimationFrame(animationFrameId);
-  }
+		cancelAnimationFrame(animationFrameId);
+	}
 
-  function play() {
-    audioContext.value.resume();
-    audioElement.value.play();
-    isPlaying.value = true;
+	function play() {
+		audioContext.value.resume();
+		audioElement.value.play();
+		isPlaying.value = true;
 
-    startFetchingAudioData();
-  }
+		startFetchingAudioData();
+	}
 
-  function toggleIsOnLoop() {
-    isOnLoop.value = !isOnLoop.value;
-  }
+	function toggleIsOnLoop() {
+		isOnLoop.value = !isOnLoop.value;
+	}
 
-  function updateTimestamp() {
-    if (isSliderInFocus.value || !audioElement.value) return;
+	function updateTimestamp() {
+		if (isSliderInFocus.value || !audioElement.value) return;
 
-    timestamp.value = audioElement.value.currentTime;
-  }
+		timestamp.value = audioElement.value.currentTime;
+	}
 
-  /** Watchers **/
+	/** Watchers **/
 
-  watch(currentSongIndex, (index) => {
-    currentSong.value = songs[index];
-  });
+	watch(currentSongIndex, (index) => {
+		currentSong.value = songs[index];
+	});
 
-  watch(currentSong, () => {
-    if (isPlaying.value) {
-      audioElement.value.addEventListener("canplay", () => play(), {
-        once: true,
-      });
-    }
-  });
+	watch(currentSong, () => {
+		if (isPlaying.value) {
+			audioElement.value.addEventListener("canplay", () => play(), {
+				once: true,
+			});
+		}
+	});
 
-  return {
-    audioElement,
-    currentSongIndex,
-    currentSong,
-    duration,
-    isOnLoop,
-    isPlaying,
-    isSliderInFocus,
-    timestamp,
+	return {
+		audioElement,
+		currentSongIndex,
+		currentSong,
+		duration,
+		isOnLoop,
+		isPlaying,
+		isSliderInFocus,
+		timestamp,
 
-    filteredFrequencyBuffer,
+		filteredFrequencyBuffer,
 
-    cancelAnimation,
-    goToNextSong,
-    goToPreviousSong,
-    handleOnEnd,
-    initializeAudioSetup,
-    pause,
-    play,
-    setCurrentSongIndex,
-    setCurrentSongId,
-    toggleIsOnLoop,
-    updateTimestamp,
-  };
+		cancelAnimation,
+		goToNextSong,
+		goToPreviousSong,
+		handleOnEnd,
+		initializeAudioSetup,
+		pause,
+		play,
+		setCurrentSongIndex,
+		setCurrentSongId,
+		toggleIsOnLoop,
+		updateTimestamp,
+	};
 });
 
 export default useSongStore;

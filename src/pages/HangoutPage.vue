@@ -10,35 +10,35 @@ import useNavbarStylesStore from "@/store/navbar_styles";
 import useSongStore from "@/store/song";
 
 const { updateExactActiveClasses, updateHeaderClasses } =
-  useNavbarStylesStore();
+	useNavbarStylesStore();
 const songStore = useSongStore();
 const {
-  cancelAnimation,
-  initializeAudioSetup,
-  handleOnEnd,
-  pause,
-  updateTimestamp,
+	cancelAnimation,
+	initializeAudioSetup,
+	handleOnEnd,
+	pause,
+	updateTimestamp,
 } = songStore;
 
 const { audioElement, currentSong, duration, isOnLoop } =
-  storeToRefs(songStore);
+	storeToRefs(songStore);
 
 onBeforeUnmount(() => {
-  cancelAnimation();
-  pause();
+	cancelAnimation();
+	pause();
 });
 
 onMounted(() => {
-  updateExactActiveClasses({
-    newExactActiveClass: "text-indigo-300 font-black",
-    newScrolledDownExactActiveClass: "text-indigo-300 font-black",
-  });
-  updateHeaderClasses({
-    newHeaderClass: "text-white",
-    newScrolledDownHeaderClass: "text-white bg-black/40 backdrop-blur",
-  });
+	updateExactActiveClasses({
+		newExactActiveClass: "text-indigo-300 font-black",
+		newScrolledDownExactActiveClass: "text-indigo-300 font-black",
+	});
+	updateHeaderClasses({
+		newHeaderClass: "text-white",
+		newScrolledDownHeaderClass: "text-white bg-black/40 backdrop-blur",
+	});
 
-  initializeAudioSetup();
+	initializeAudioSetup();
 });
 </script>
 

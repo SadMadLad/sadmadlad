@@ -38,27 +38,27 @@
 
 <script setup>
 const workExperience = [
-  {
-    dateRange: "Nov 2022 - Oct 2024",
-    company: "Acklib",
-    location: "Lahore",
-    role: "Software Engineer",
-    description:
-      "At Acklib, I rapidly developed proficiency in Ruby on Rails and became a key contributor across numerous projects. My responsibilities encompassed maintaining and upgrading existing products, alongside the full lifecycle development of new features and applications",
-  },
-  {
-    dateRange: "Nov 2024 - Dec 2024",
-    company: "RStack Labs",
-    location: "Lahore",
-    role: "Senior Software Engineer",
-    description:
-      "During my brief 2-month tenure at RStack Labs, I gained rapid exposure to numerous high-level enterprise projects characterized by complex codebases. I actively contributed to both maintenance efforts and feature development, resulting in a significant and accelerated learning experience.",
-  },
-  {
-    dateRange: "Jan 2025 - Present",
-    role: "Freelancer",
-    description:
-      "Currently freelancing, I develop new software solutions and collaborate directly with enterprise clients to facilitate their goal achievement and expedite the launch of their Minimum Viable Products (MVPs). I also work with projects which require upgrade, maintenance and bug-fixing.",
-  },
+	{
+		dateRange: "Nov 2022 - Oct 2024",
+		company: "Acklib",
+		location: "Lahore",
+		role: "Software Engineer",
+		description:
+			"At Acklib, I rapidly developed proficiency in Ruby on Rails and became a key contributor across numerous projects. My responsibilities encompassed maintaining and upgrading existing products, alongside the full lifecycle development of new features and applications",
+	},
+	{
+		dateRange: "Nov 2024 - Dec 2024",
+		company: "RStack Labs",
+		location: "Lahore",
+		role: "Senior Software Engineer",
+		description:
+			"During my brief 2-month tenure at RStack Labs, I gained rapid exposure to numerous high-level enterprise projects characterized by complex codebases. I actively contributed to both maintenance efforts and feature development, resulting in a significant and accelerated learning experience.",
+	},
+	{
+		dateRange: "Jan 2025 - Present",
+		role: "Freelancer",
+		description:
+			"Currently freelancing, I develop new software solutions and collaborate directly with enterprise clients to facilitate their goal achievement and expedite the launch of their Minimum Viable Products (MVPs). I also work with projects which require upgrade, maintenance and bug-fixing.",
+	},
 ];
 </script>
