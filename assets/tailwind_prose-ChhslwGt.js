@@ -1,4 +1,4 @@
-const e=`# **Rendering Markdown with Tailwind CSS**
+const e = `# **Rendering Markdown with Tailwind CSS**
 
 #### A Small Problem I Faced
 
@@ -19,4 +19,5 @@ Here’s a small example using Vue 3:
 \`\`\`
 
 This note itself is being rendered using that approach.
-`;export{e as default};
+`;
+export { e as default };

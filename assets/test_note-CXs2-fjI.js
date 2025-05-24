@@ -1,4 +1,4 @@
-const n=`# **This is a Test Note**
+const n = `# **This is a Test Note**
 
 ### A subheading
 
@@ -26,4 +26,5 @@ str = "for different languages?"
 int x = 1000;
 int x[2] = {1, 2};
 \`\`\`
-`;export{n as default};
+`;
+export { n as default };
