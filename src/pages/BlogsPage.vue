@@ -19,7 +19,7 @@ onMounted(() => {
 
 <template>
   <div class="relative">
-    <section class="relative bg-primary-50 text-primary-600 pt-40 pb-56 text-center">
+    <section class="relative bg-primary-100 text-primary-600 pt-40 pb-56 text-center">
       <span class="bg-primary-200 text-sm px-3 py-1.5 font-black rounded-lg">Blog</span>
       <h2 class="font-black text-5xl my-8">Blogs. Anything.</h2>
       <p class="text-lg mx-2.5">List of blogs about anything I want to write.</p>
