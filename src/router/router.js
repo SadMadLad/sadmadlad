@@ -3,6 +3,7 @@ import { createWebHashHistory, createRouter } from "vue-router";
 import ApplicationLayout from "@/layouts/ApplicationLayout.vue";
 
 import BlogsPage from "@/pages/BlogsPage.vue";
+import BlogPage from "@/pages/BlogPage.vue";
 import HangoutPage from "@/pages/HangoutPage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import NotesPage from "@/pages/NotesPage.vue";
@@ -19,6 +20,11 @@ const routes = [
 				path: "blogs",
 				name: "blogs",
 				component: BlogsPage,
+			},
+			{
+				path: "blogs/:id",
+				name: "blog",
+				component: BlogPage,
 			},
 			{
 				path: "",

@@ -14,8 +14,9 @@ The `prose` class provides sensible defaults for typographic content, which work
 
 Here’s a small example using Vue 3:
 
-```html
+
+<pre data-controller="code-highlight" data-code-highlight-language-value="html" data-code-highlight-code-value='
 <article class="prose-sm lg:prose" v-html="markdownHtml"></article>
-```
+'></pre>
 
 This note itself is being rendered using that approach.

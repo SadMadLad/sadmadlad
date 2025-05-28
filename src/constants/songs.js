@@ -1,11 +1,11 @@
+import { basePath } from "@/constants/globals";
+
 import GerudoValleyCover from "@/assets/songs/pics/Gerudo Valley - The Legend of Zelda Ocarina Of Time.jpg";
 import GoodbyeEsakaCover from "@/assets/songs/pics/Goodbye Esaka - KOF2000.jpg";
 import GtaVThemeCover from "@/assets/songs/pics/GTA V Theme.jpg";
 import TornOutTwistedCover from "@/assets/songs/pics/HOTD Overkill - Torn Out Twisted.jpg";
 import TornOutTwistedLyrics from "@/assets/songs/lyrics/HOTD Overkill - Torn Out Twisted.json";
 import YouNeverKnowCover from "@/assets/songs/pics/Marly - You Never Know.jpg";
-
-const basePath = "/sadmadlad/";
 
 const songs = [
 	{

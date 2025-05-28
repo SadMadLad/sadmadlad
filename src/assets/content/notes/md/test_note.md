@@ -14,15 +14,15 @@ Do the lists work?
 - and this
 - and this
 
-```javascript
+<pre data-controller="code-highlight" data-code-highlight-language-value="javascript" data-code-highlight-code-value='
 const str = "asdasd";
-```
+'></pre>
 
-```ruby
+<pre data-controller="code-highlight" data-code-highlight-language-value="ruby" data-code-highlight-code-value='
 str = "for different languages?"
-```
+'></pre>
 
-```cpp
+<pre data-controller="code-highlight" data-code-highlight-language-value="cpp" data-code-highlight-code-value='
 int x = 1000;
 int x[2] = {1, 2};
-```
+'></pre>

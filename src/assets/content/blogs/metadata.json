@@ -1,9 +1,12 @@
 [
 	{
-		"id": "ai-tools",
-		"hasCover": true,
+		"id": "ai-for-ruby",
 		"primaryTag": "Technology",
-		"date": "May 24, 2025",
-		"hasPreview": true
+		"createdAt": "May 24, 2025",
+		"updatedAt": "May 24, 2025",
+		"previewDetails": {
+			"title": "AI for Ruby",
+			"description": "Collection of all awesome tools to use for your AI powered Ruby applications!"
+		}
 	}
 ]

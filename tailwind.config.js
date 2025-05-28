@@ -5,7 +5,11 @@ const colors = require("tailwindcss/colors");
 
 export default {
 	mode: "jit",
-	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,vue}"],
+	content: [
+		"./index.html",
+		"./src/**/*.{js,ts,jsx,tsx,vue,md}",
+		"./public/content/**/*.html",
+	],
 	theme: {
 		colors: {
 			primary: colors.indigo,
@@ -17,10 +21,11 @@ export default {
 			fontFamily: {
 				sans: ["Geist", ...defaultTheme.fontFamily.sans],
 				mono: ["GeistMono", ...defaultTheme.fontFamily.sans],
+				serif: ["Merriweather", ...defaultTheme.fontFamily.serif],
 			},
 			typography: {
 				css: {
-					marginTop: "1rem",
+					marginTop: "0.75rem",
 				},
 			},
 		},

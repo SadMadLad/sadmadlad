@@ -1,20 +1,7 @@
 <script setup>
 import EyeIcon from "@/assets/svgs/eye.svg";
-import hljs from "highlight.js";
-import { Marked } from "marked";
-import { markedHighlight } from "marked-highlight";
+import { markedParse } from "@/utils/marked_utils";
 import useNotesSidebarStore from "@/store/notes_sidebar";
-
-const marked = new Marked(
-	markedHighlight({
-		emptyLangClass: "hljs",
-		langPrefix: "hljs language-",
-		highlight(code, lang) {
-			const language = hljs.getLanguage(lang) ? lang : "plaintext";
-			return hljs.highlight(code, { language }).value;
-		},
-	}),
-);
 
 const notesSidebarStore = useNotesSidebarStore();
 const { id } = defineProps({
@@ -25,7 +12,7 @@ const { id } = defineProps({
 const markdownFileContent = (
 	await import(`@/assets/content/notes/md/${id}.md?raw`)
 ).default;
-const htmlString = marked.parse(markdownFileContent);
+const htmlString = markedParse(markdownFileContent);
 
 function openSidebar() {
 	notesSidebarStore.isSidebarOpen = true;
