@@ -33,7 +33,7 @@ onMounted(async () => {
 <template>
 	<Suspense>
 		<div class="flex items-center justify-center mt-48">
-			<article class="max-w-4xl" v-html="blogHtml"></article>
+			<article data-controller="blog" class="max-w-4xl" v-html="blogHtml"></article>
 		</div>
 	</Suspense>
 </template>

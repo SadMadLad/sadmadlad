@@ -7,6 +7,7 @@ import { Application } from "@hotwired/stimulus";
 import "highlight.js/styles/tokyo-night-dark.min.css";
 
 // Controllers
+import BlogController from "@/controllers/blog_controller";
 import CodeHighlightController from "@/controllers/code_highlight_controller";
 
 import "./style.css";
@@ -16,6 +17,7 @@ const pinia = createPinia();
 const app = createApp(App);
 
 window.Stimulus = Application.start();
+Stimulus.register("blog", BlogController);
 Stimulus.register("code-highlight", CodeHighlightController);
 
 app.use(pinia);
