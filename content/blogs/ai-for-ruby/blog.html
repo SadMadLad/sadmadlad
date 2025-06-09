@@ -1,3 +1,104 @@
 <h1 class="font-black text-4xl text-center mb-8">Collection of AI tools available in Ruby</h1>
-<p class="font-serif text-xl text-gray-700 leading-8">The ecosystem for Machine Learning and AI tools is quite shallow as compared to Python, but there have been a lot of attempts made by the Ruby community to develop gems and resources that can help you get started with AI in Ruby.<p>
+<p class="font-serif text-lg text-gray-700 leading-8">The ecosystem for Machine Learning and AI tools is quite shallow as compared to Python, but there have been a lot of attempts made by the Ruby community to develop gems and resources that can help you get started with AI in Ruby. Here is a collection of tools to help you out:<p>
 <img src="/sadmadlad/content/blogs/ai-for-ruby/cover.jpg" class="my-4" />
+
+<!--1. torch-rb-->
+<h3 class="font-bold text-2xl">1. <code>torch-rb</code></h3>
+<p class="text-lg my-2.5">
+    <a href="https://github.com/ankane/torch.rb" data-blog-target="link"><code>torch-rb</code></a> is a Ruby-based wrapper around the Libtorch library (the same library that powers <a href="https://pytorch.org/" class="underline text-primary-500">PyTorch</a>). Basically, this is PyTorch for Ruby. Other modules are also available for audio, vision and text like:
+</p>
+<ul class="list-disc text-lg pl-5">
+  <li><a data-blog-target="link" href="https://github.com/ankane/torchvision-ruby">TorchVision</a>: For computer vision</li>
+  <li><a data-blog-target="link" href="https://github.com/ankane/torchtext-ruby">TorchText</a>: For text related tasks</li>
+  <li><a data-blog-target="link" href="https://github.com/ankane/torchaudio-ruby">TorchAudio</a>: Audio library for Torch</li>
+  <li><a data-blog-target="link" href="https://github.com/ankane/torchrec-ruby">TorchRec</a>: For recommendation systems of Torch</li>
+  <li><a data-blog-target="link" href="https://github.com/ankane/torchdata-ruby">TorchData</a>: For loading data for Machine Learning tasks</li>
+</ul>
+<p class="text-lg">A sample CNN model can look like this:</p>
+<pre data-controller="code-highlight" data-code-highlight-language-value="ruby" class="my-2.5" data-code-highlight-code-value='
+class MnistModel < Torch::NN::Module
+  def initialize
+    super
+
+    @conv1 = Torch::NN::Conv2d.new(1, 32, 3, stride: 1)
+    @conv2 = Torch::NN::Conv2d.new(32, 64, 3, stride: 1)
+
+    @fc1 = Torch::NN::Linear.new(9216, 128)
+    @fc2 = Torch::NN::Linear.new(128, 18)
+  end
+
+  def forward(x)
+    x = @conv1.call(x)
+    x = Torch::NN::F.relu(x)
+
+    x = @conv2.call(x)
+    x = Torch::NN::F.max_pool2d(x, 2)
+
+    x = Torch.flatten
+
+    x = @fc1.call(x)
+    x = Torch::NN::F.relu(x)
+    x = @fc2.call(x)
+
+    Torch::NN::F.log_softmax(x, 1)
+  end
+end
+'>
+</pre>
+<p class="text-lg">And then, you can train this Neural Network in a similar fashion PyTorch does.</p>
+
+<!--2. rumale-->
+<h3 class="font-bold text-2xl mt-4">2. <code>rumale</code></h3>
+<p class="text-lg my-2.5">
+  <a data-blog-target="link" href="https://github.com/yoshoku/rumale">rumale</a> is <b>RU</b>by <b>MA</b>chine <b>LE</b>arning (hence <b>rumale</b>) library that encompasses most of the features that python's <a href="https://github.com/scikit-learn/scikit-learn" data-blog-target="link">scikit-learn</a> has. Of course, it is not as mature and feature rich as <code>scikit-learn</code>, it can still act as a fine alternative for your Rails Machine Learning project, encovering most of the features you can think of.
+</p>
+<p class="text-lg">Here is a sample, showcasing different features available in rumale:</p>
+<pre data-controller="code-highlight" data-code-highlight-language-value="ruby" class="my-2.5" data-code-highlight-code-value='
+# Loading the dataset and transform raw dataset to Numo::DFloat - similar to numpy.
+# Make sure to convert parsed CSV data to float first
+wine_quality_dataset = CSV.parse File.read("path/to/dataset.csv")
+wine_quality_dataset = Numo::DFloat[*wine_quality_dataset]
+
+# Separate out labels and inputs for training. Split data into training and test.
+x, y = wine_quality_dataset[true, 0..-2], wine_quality_dataset[true, -1]
+x_train, x_test, y_train, y_test = Rumale::ModelSelection.train_test_split(
+  x, y, test_size: 0.2
+)
+
+# Declare your model. I am using a pipeline here:
+model = Rumale::Pipeline::Pipeline.new(steps: {
+  scaler: Rumale::Preprocessing::StandardScaler.new,
+  pca: Rumale::Decomposition::PCA.new(n_components: 7),
+  forest: Rumale::Ensemble::RandomForestRegressor.new(
+    n_estimators: 10,
+    criterion: "gini",
+    max_depth: 3,
+    max_leaf_nodes: 10,
+    min_samples_leaf: 5,
+    n_jobs: -1,
+  )
+})
+
+# For optimization, we can use GridSearchCV to run through different combination
+# of parameters to find the combination of best ones.
+param_grid = {
+  pca__n_components: [ 5, 7, 9 ],
+  forest__n_estimators: [ 50, 100 ],
+  forest__max_depth: [ 5, 7 ],
+  forest__min_samples_leaf: [ 5, 7 ]
+}
+
+# Declaring the GridSearchCV
+grid_search_cv = Rumale::ModelSelection::GridSearchCV.new(
+  estimator: model,
+  param_grid: param_grid,
+)
+
+# Fit and find the best parameters
+grid_search_cv.fit(x_train, y_train)
+best_model = grid_search_cv.best_estimator
+
+# Evaluate the score
+predictions = best_model.predict(x_test)
+absolute_average_loss = (predictions - y_test).abs.mean
+'></pre>
