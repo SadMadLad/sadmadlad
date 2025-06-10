@@ -8,6 +8,8 @@ const { updateExactActiveClasses, updateHeaderClasses } =
 	useNavbarStylesStore();
 
 onMounted(() => {
+	document.title = "Blogs";
+
 	updateHeaderClasses({
 		newHeaderClass: "bg-transparent text-primary-500",
 		newScrolledDownHeaderClass: "bg-transparent text-primary-500",

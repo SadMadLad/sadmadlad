@@ -1,4 +1,5 @@
 <script setup>
+import blogs from "@/assets/content/blogs/metadata.json";
 import { onMounted, ref } from "vue";
 import useNavbarStylesStore from "@/store/navbar_styles";
 import { useRoute } from "vue-router";
@@ -12,6 +13,9 @@ const { updateExactActiveClasses, updateHeaderClasses } =
 onMounted(async () => {
 	const route = useRoute();
 	const id = route.params.id;
+	const blogTitle = blogs.find((blog) => blog.id === id).previewDetails.title;
+
+	document.title = blogTitle;
 
 	fetch(`/sadmadlad/content/blogs/${id}/blog.html`)
 		.then((response) => response.text())
