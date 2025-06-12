@@ -127,3 +127,4 @@ pos_tags = nltk.pos_tag(tokens)
 # ]
 '></pre>
 <p class="my-2.5"><i><b>Note:</b> <code>pycall.rb</code> does not work for every Python library. For example, I tried to use <code>PyTorch</code> with it but it did not work. (Torch Version: 2.7.0+cpu, <code>pycall.rb</code> Version: 1.5.2)</i></p>
+<p class="my-2.5"><i><b>Another Note: </b> <code>pycall.rb</code> does not support multi-threading. And probably because of this, it's behavior is buggy when used with Rails (as of now - June 12, 2025). My request was freezing when serving any action in my Rails app. A big deal-breaker for me personally 😞</i></p>
