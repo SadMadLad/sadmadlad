@@ -3,9 +3,9 @@
 <img src="/sadmadlad/content/blogs/ai-for-ruby/cover.jpg" class="my-4" />
 
 <!--1. torch-rb-->
-<h3 class="font-bold text-2xl">1. <code>torch-rb</code></h3>
+<h3 data-blog-target="heading">1. <code>torch-rb</code></h3>
 <p class="text-lg my-2.5">
-    <a href="https://github.com/ankane/torch.rb" data-blog-target="link"><code>torch-rb</code></a> is a Ruby-based wrapper around the Libtorch library (the same library that powers <a href="https://pytorch.org/" class="underline text-primary-500">PyTorch</a>). Basically, this is PyTorch for Ruby. Other modules are also available for audio, vision and text like:
+    <a href="https://github.com/ankane/torch.rb" data-blog-target="link"><code>torch-rb</code></a> is a Ruby-based wrapper around the Libtorch library (the same library that powers <a href="https://pytorch.org/" data-blog-target="link">PyTorch</a>). Basically, this is PyTorch for Ruby. Other modules are also available for audio, vision and text like:
 </p>
 <ul class="list-disc text-lg pl-5">
   <li><a data-blog-target="link" href="https://github.com/ankane/torchvision-ruby">TorchVision</a>: For computer vision</li>
@@ -48,7 +48,7 @@ end
 <p class="text-lg">And then, you can train this Neural Network in a similar fashion PyTorch does.</p>
 
 <!--2. rumale-->
-<h3 class="font-bold text-2xl mt-4">2. <code>rumale</code></h3>
+<h3 data-blog-target="heading">2. <code>rumale</code></h3>
 <p class="text-lg my-2.5">
   <a data-blog-target="link" href="https://github.com/yoshoku/rumale">rumale</a> is <b>RU</b>by <b>MA</b>chine <b>LE</b>arning (hence <b>rumale</b>) library that encompasses most of the features that python's <a href="https://github.com/scikit-learn/scikit-learn" data-blog-target="link">scikit-learn</a> has. Of course, it is not as mature and feature rich as <code>scikit-learn</code>, it can still act as a fine alternative for your Rails Machine Learning project, encovering most of the features you can think of.
 </p>
@@ -102,3 +102,29 @@ best_model = grid_search_cv.best_estimator
 predictions = best_model.predict(x_test)
 absolute_average_loss = (predictions - y_test).abs.mean
 '></pre>
+
+<!--pycall.rb-->
+<h3 data-blog-target="heading">3. <code>pycall.rb</code></h3>
+<p class="text-lg my-2.5">Python's Machine Learning and Deep Learning ecosystem is undoubtedly the best one. It has huge amount of libraries and a big community behind it when it comes to AI. With <a href="https://github.com/red-data-tools/pycall.rb" data-blog-target="link"><code>pycall.rb</code></a>, you can leverage some of the packages which are primarily available in Python. An example below (using <a href="https://github.com/nltk/nltk"><code>nltk</code></a>):</p>
+<pre data-controller="code-highlight" data-code-highlight-language-value="ruby" class="my-2.5" data-code-highlight-code-value='
+require "pycall/import"
+include PyCall::Import
+
+pyimport :nltk
+
+nltk.download("punkt_tab")
+nltk.download("averaged_perceptron_tagger_eng")
+
+sentence = "English is one of the languages of all time"
+
+tokens = nltk.tokenize.word_tokenize(sentence)
+
+pos_tags = nltk.pos_tag(tokens)
+
+# pos_tags is [
+#   ("English", "NNP"), ("is", "VBZ"), ("one", "CD"), ("of", "IN"), ("the", "DT"),
+#   ("languages", "NNS"), ("of", "IN"), ("all", "DT"), ("time", "NN")
+# ]
+'></pre>
+<p class="my-2.5"><i><b>Note:</b> <code>pycall.rb</code> does not work for every Python library. For example, I tried to use <code>PyTorch</code> with it but it did not work. (Torch Version: 2.7.0+cpu, <code>pycall.rb</code> Version: 1.5.2)</i></p>
+<p class="my-2.5"><i><b>Another Note: </b> <code>pycall.rb</code> does not support multi-threading. And probably because of this, it's behavior is buggy when used with Rails (as of now - June 12, 2025). My request was freezing when serving any action in my Rails app. A big deal-breaker for me personally 😞</i></p>
