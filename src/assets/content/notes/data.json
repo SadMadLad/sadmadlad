@@ -1,5 +1,13 @@
 [
 	{
+		"id": "ruby_object_allocations",
+		"date": "June 14, 2025"
+	},
+	{
+		"id": "ostruct_json_parse",
+		"date": "June 14, 2025"
+	},
+	{
 		"id": "command_lines",
 		"date": "April 26, 2025"
 	},

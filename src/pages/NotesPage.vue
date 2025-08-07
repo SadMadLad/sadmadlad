@@ -33,7 +33,7 @@ onMounted(() => {
           </p>
         </div>
       </div>
-      <ul class="my-16 flex flex-wrap gap-4 px-8 lg:gap-8 lg:px-0">
+      <ul class="my-16 flex flex-wrap gap-4 px-8 lg:gap-8 lg:px-0 items-center justify-center">
         <li v-for="note_data in NotesData" :key="note_data.id">
           <Suspense>
             <NotesCard v-bind="note_data" />

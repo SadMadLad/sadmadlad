@@ -56,9 +56,10 @@ const workExperience = [
 	},
 	{
 		dateRange: "Jan 2025 - Present",
-		role: "Freelancer",
+    company: "Bankom.co",
+		role: "Senior Software Engineer",
 		description:
-			"Currently freelancing, I develop new software solutions and collaborate directly with enterprise clients to facilitate their goal achievement and expedite the launch of their Minimum Viable Products (MVPs). I also work with projects which require upgrade, maintenance and bug-fixing.",
+			"Revived a stalled codebase and led it to production by handling deployments, optimizing performance, and refactoring core modules for maintainability. Improved monitoring with Rollbar, increased test coverage, and aligned with teams to fix bugs and streamline the roadmap.",
 	},
 ];
 </script>
