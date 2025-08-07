@@ -128,3 +128,57 @@ pos_tags = nltk.pos_tag(tokens)
 '></pre>
 <p class="my-2.5"><i><b>Note:</b> <code>pycall.rb</code> does not work for every Python library. For example, I tried to use <code>PyTorch</code> with it but it did not work. (Torch Version: 2.7.0+cpu, <code>pycall.rb</code> Version: 1.5.2)</i></p>
 <p class="my-2.5"><i><b>Another Note: </b> <code>pycall.rb</code> does not support multi-threading. And probably because of this, it's behavior is buggy when used with Rails (as of now - June 12, 2025). My request was freezing when serving any action in my Rails app. A big deal-breaker for me personally 😞</i></p>
+
+<!--pgvector-->
+<h3 data-blog-target="heading">4. <code>pgvector</code></h3>
+<p class="my-2.5 text-lg">
+  <a href="https://github.com/pgvector/pgvector" data-blog-target="link"><code>pgvector</code></a> is an Open-Source vector similarity search for PostgreSQL. It allows you to store vector embeddings in your PostgreSQL database and perform similarity searches on them. It supports various vector operations like cosine similarity, inner product, Euclidean distance and other operations.
+</p>
+<p class="text-lg">
+  <a href="https://github.com/pgvector/pgvector-ruby" data-blog-target="link"><code>pgvector-ruby</code></a> is a gem to add support for <code>pgvector</code> in Ruby. For Rails, you can use <a href="https://github.com/ankane/neighbor" data-blog-target="link"><code>neighbor</code></a> gem which adds support for <code>pgvector</code> when it comes to storing, querying and searching embeddings for your Rails application.
+</p>
+<p class="text-lg">
+  A sample code of how it can work in your Rails application:
+</p>
+
+<pre data-controller="code-highlight" data-code-highlight-language-value="ruby" class="my-2.5" data-code-highlight-code-value='
+# Add an embedding column to your model
+class AddEmbeddingToProducts < ActiveRecord::Migration[8.0]
+  def change
+    add_column :products, :embedding, :vector
+  end
+end
+
+# Migrate
+rails db:migrate
+
+# Declare in your model
+class Product < ApplicationRecord
+  has_neighbors :embedding
+end
+
+# Get your embedding. I am using Ollama + langchainrb for this.
+client = Langchain::LLM::Ollama.new(
+      url: ENV["OLLAMA_URL"],
+      default_options: {
+        embedding_model: "llama3.2:1b",
+        completion_model: "llama3.2:1b",
+        chat_model: "llama3.2:1b",
+      }
+    )
+
+product_description = "This is a cool red handbag"
+embedding = client.embed(text: product_description).embeddings
+
+# Create your record with the embedding
+product = Product.create(..., description: product_description, embedding: embedding)
+
+# Get the nearest neighbors
+nearest_products = product.nearest_neighbors(:embedding, distance: "euclidean")
+'></pre>
+
+<!--langchainrb-->
+<h3 data-blog-target="heading">5. Agentic AI Resources</h3>
+<p class="text-lg my-2.5">
+  <a href="https://github.com/patterns-ai-core/langchainrb" data-blog-target="link"><code>langchainrb</code></a> is a nice gem packaged to build LLM applications. It provides a convenient interface to interact to LLMs in order to create embeddings, prompt and chat completions and tool calls. It also facilitates creation of <a href="https://en.wikipedia.org/wiki/Retrieval-augmented_generation" data-blog-target="link">RAG</a> pipelines. Furthermore, it provides an interface to interact with and search vector databases. All in all, <code>langchainrb</code> allows you to build intelligent assistants, capable of handling conversations and tool executions.
+</p>
