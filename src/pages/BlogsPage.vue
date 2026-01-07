@@ -39,9 +39,9 @@ onMounted(() => {
     </div>
   </div>
   <section class="flex items-center justify-center -mt-48">
-    <div class="container max-w-6xl grid grid-cols-3 gap-8">
-      <div v-for="blog in blogs">
-        <Blog v-bind="blog"/>
+    <div class="container max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mx-6">
+      <div v-for="blog in blogs" :key="blog.id">
+        <Blog v-bind="blog" />
       </div>
     </div>
   </section>

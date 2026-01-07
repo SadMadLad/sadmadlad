@@ -6,7 +6,7 @@ export default class extends Controller {
 		headingClass: { type: Array, default: ["font-black", "mt-5", "mb-2"] },
 		linkClass: { type: Array, default: ["text-primary-500", "underline"] },
     cClass: { type: Array, default: ["bg-gray-100", "px-1", "py-0.5"] },
-    pClass: { type: Array, default: ["text-lg", "mt-2.5"] }
+    pClass: { type: Array, default: ["lg:text-lg", "mt-2.5"] }
 	};
 
   cTargetConnected(c) {
