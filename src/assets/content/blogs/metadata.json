@@ -1,4 +1,14 @@
 [
+  {
+    "id": "network-programming",
+    "primaryTag": "Networks",
+    "createdAt": "September 07, 2025",
+    "updatedAt": "September 07, 2025",
+    "previewDetails": {
+      "title": "Network Programming",
+      "description": "Some fundamentals to network coding and programming"
+    }
+  },
 	{
 		"id": "ai-for-ruby",
 		"primaryTag": "Technology",

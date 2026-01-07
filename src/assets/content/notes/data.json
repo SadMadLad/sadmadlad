@@ -1,4 +1,12 @@
 [
+  {
+    "id": "endianness",
+    "date": "September 10, 2025"
+  },
+  {
+    "id": "cpp_notes",
+    "date": "September 9, 2025"
+  },
 	{
 		"id": "ruby_object_allocations",
 		"date": "June 14, 2025"

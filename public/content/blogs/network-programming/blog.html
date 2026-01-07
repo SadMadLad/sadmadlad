@@ -1,0 +1,254 @@
+<h1 class="font-black text-4xl text-center mb-8">Network Programming</h1>
+<p class="font-serif text-lg text-gray-700 leading-8">My Glossary of concepts and coding terms for network programming.<p>
+<img src="/sadmadlad/content/blogs/network-programming/cover.jpg" class="my-4 w-full h-auto" />
+
+<h2 data-blog-target="heading" data-level="2">Terms and Definitions</h2>
+<ul class="list-disc text-lg flex flex-col gap-1.5">
+  <li>
+    <b class="font-black"><code>accept</code></b>
+    The accept returns the next completed request from the completed connection queue. Takes in server socket file descriptor, and other arguments to return the protocol address of the connected peer process. If the connection is accepted successfully, it returns non-negative value, else -1.
+  </li>
+  <li>
+    <b class="font-black">ANSI:</b>
+    Stands for <b>American National Standards Institute</b>.
+  </li>
+  <li>
+    <b class="font-black">ARP:</b>
+    Stands for <b>Address Resolution Protocol</b>. Maps IP Address to MAC Address.
+  </li>
+  <li>
+    <b class="font-black"><code>bind</code></b>
+    This functions assigns a local protocol address to a socket. Inputs are the socket file descriptor, socket structure, and size of the structure. Returns 0 if bound fine, something else in case of error (-1).
+  </li>
+  <li>
+    <b class="font-black">BPF:</b>
+    Stands for <b>BSD Packet Filter</b>. Allows programs to inspect raw packets in datalink layer.
+  </li>
+  <li>
+    <b class="font-black"><code>connect</code></b>
+    Takes in the socket file descriptor, pointer to socket address structure and size of the structure as the argument and returns 0 if the connection works fine, else it is erroneous.
+  </li>
+  <li>
+    <b class="font-black">DLPI:</b>
+    Stands for <b>Data Link Provider Interface</b>. Similar to BPF but different OS family.
+  </li>
+  <li>
+    <b class="font-black">Four-way handshake</b>
+    Used by <b>SCTP</b> to establish associations.
+  </li>
+  <li>
+    <b class="font-black">Full-duplex:</b>
+    Means two devices can send and receive data at the same time.
+  </li>
+  <li>
+    <b class="font-black">Host Byte Order:</b>
+    Endianness that the host is using, either it is little endian or big endian.
+  </li>
+  <li>
+    <b class="font-black">ICMP:</b>
+    Stands for <b>Internet Control Message Protocol</b>. Sends error messages and control info between hosts and routers. Used by
+    <code>ping</code>(to echo messages) and <code>traceroute</code>(to map paths).
+  </li>
+  <li>
+    <b class="font-black">ICMPv6:</b>
+    IPv6 version of ICMP. Combines ICMP, ARP and IGMP.
+  </li>
+  <li>
+    <b class="font-black">IGMP:</b>
+    Stands for <b>Internet Group Management Protocol</b>. For <b>multicasting (one-to-many) systems</b>. Uses IPv4.
+  </li>
+  <li>
+    <b class="font-black"><code>inet_aton</code></b>
+    Stands for <b>ASCII to Network</b>. Converts dotted string to valid address when the address structure is passed by reference. Returns <code>int</code>, 1 if it is a valid dotted IPv4 address.
+  </li>
+  <li>
+    <b class="font-black"><code>inet_ntoa</code></b>
+    Stands for <b>Network to ASCII</b>. Reverse of <code>inet_aton</code>, converts passed integer to dotted string. 
+  </li>
+  <li>
+    <b class="font-black"><code>inet_ntop</code></b>
+    Stands for <b>Network to Presentation</b>. IPv4 + IPv6 equivalent of <code data-blog-target="c">inet_ntoa</code>
+  </li>
+  <li>
+    <b class="font-black"><code>inet_pton</code></b>
+    Stands for <b>Presentation to Network</b>. IPv6 compatible version of <code>inet_aton</code>. Takes the address family as an argument (like <code>AF_INET</code> or <code>AF_INET6</code>) as well.
+  </li>
+  <li>
+    <b class="font-black">IPv4:</b>
+    Uses 32-bit addressing like 192.168.1.1.
+  </li>
+  <li>
+    <b class="font-black">IPv6:</b>
+    Uses 128-bit addressing like 2001:0db8:85a3:0000:0000:8a2e:0370:7334.
+  </li>
+  <li>
+    <b class="font-black"><code>listen</code></b>
+    When a socket is created, it is assumed to be a client one, an active one. The <code data-blog-target="c">listen</code> method converts that socket into a passive one, such that it can accept connections, making it into a server. Takes in the socket file descriptor and backlog - maximum number of pending connection queue.
+  </li>
+  <li>
+    <b class="font-black">MTU</b>
+    Stands for <b>Maximum Transmission Unit</b>. Maximum size (in bytes) of packet that can be passed through without breaking it down into smaller chunks.
+  </li>
+  <li>
+    <b class="font-black">Network Byte Order</b>
+    Endianness of the data sent over the network. Defined by the protocols like TCP/IP. Usually <b>big-endian</b>.
+  </li>
+  <li>
+    <b class="font-black">OSI Model:</b>
+    Conceptual model that standardizes how different computers interact with each other via networks. It has <b>seven</b> layers of abstraction from top to down:
+    <ol class="list-decimal ml-6">
+      <li>Application Layer</li>
+      <li>Presentation Layer</li>
+      <li>Session Layer</li>
+      <li>Transport Layer (TCP, UDP)</li>
+      <li>Network Layer (IPv4, IPv6)</li>
+      <li>Datalink Layer</li>
+      <li>Physical Layer</li>
+    </ol>
+  </li>
+  <li>
+    <b class="font-black">POSIX:</b>
+    POSIX stands for Portable Operating System Interface (for Unix). It defines a set of standards which if a program complies by, that program should be compilable
+    in other operating systems as well.
+  </li>
+  <li>
+    <b class="font-black">RARP:</b>
+    Stands for <b>Reverse Address Resolution Protocol</b>. Maps MAC Address to IP Address.
+  </li>
+  <li>
+    <b class="font-black">Raw Socket:</b>
+    Sockets that allow you to bypass the TCP/UDP layer and provide access to lower-level network protocols.
+  </li>
+  <li>
+    <b class="font-black">RTT:</b>
+    Stands for <b>Round-trip Time</b>. Time taken by a packet to go from your computer to destination to back to your computer. Smaller for LANs but usually larger for WANs.
+  </li>
+  <li>
+    <b class="font-black"><code>sockaddr_in</code></b>
+    <b>IPv4 socket address structure</b>. Consists of length, address family (usually<code data-blog-target="c">AF_INET</code>), 16-bit port, 32-bit IPv4 address.
+  </li>
+  <li>
+    <b class="font-black"><code>sockaddr_in6</code></b>
+    <b>IPv6 socket address structure</b>. Consists of length, address family (usually<code data-blog-taget="c">AF_INET6</code>), 16-bit port, 32-bit flow label, 128-bit IPv6 address, 32-bit scope ID.
+  </li>
+  <li>
+    <b class="font-black"><code>sockaddr_storage</code></b>
+    Generic container generic, big-enough structure that allows you to store socket data without worrying about the size.
+  </li>
+  <li>
+    <b class="font-black"><code>socket</code></b>
+    Returns a <b>socket file description</b> once the address family, type and protocol is specified. The address family can be <code data-blog-target="c">AF_INET</code>, <code data-blog-target="c">AF_INET6</code> etc. The type of socket can be <code data-blog-target="c">SOCK_STREAM</code>, <code data-blog-target="c">SOCK_DGRAM</code> etc. And protocol can be <code data-blog-target="c">IPPROTO_TCP</code>, <code data-blog-target="c">IPPROTO_UDP</code> etc.
+  </li>
+  <li>
+    <b class="font-black">SCTP:</b>
+    Stands for <b>Stream Control Transmission Protocol.</b> Mix of UDP and TCP. <b>Multihoming</b>. Reliable. Incorporates retransmission. Multiple streams.
+  </li>
+  <li class="font-black">
+    <b class="font-black">Socket Pair</b>
+    Identifies connection between two sockets. A (local IP, local port), (remote IP, remote port)
+  </li>
+  <li>
+    <b class="font-black">TCP:</b>
+    Stands for <b>Transmission Control Protocol</b>. A type of <i>stream socket</i>. Makes sure that packets reach their destination.
+    Incorporates timeouts, retransmissions. Can use either IPv4 and IPv6.
+  </li>
+  <li>
+    <b class="font-black">Three-way handshake</b>
+    Used by <b>TCP</b> to establish connection between applications.
+  </li>
+  <li>
+    <b class="font-black"><code>TIME_WAIT:</code></b>
+    Let's say after TCP connetion termination, the final ACK from client is lost. A new connection is opened from the client but then, the lost ACK is received later. The server may
+    interpret this as termination and this will cause an issue. To fix this, <code data-blog-target="c">TIME_WAIT</code> forces a pause of <b>2xMSL</b>. MSL stands for <b>Maximum Segment Lifetime</b> i.e. how long
+    a packet can survive in the network. With this, all <i>ghost packets</i> are gone.
+  </li>
+  <li>
+    <b class="font-black">UDP:</b>
+    Stands for <b>User Datagram Protocol</b>. An example of <i>datagram socket</i>. Not a guarantee that packets reach their destination.
+    Can be either IPv4 and IPv6.
+  </li>
+</ul>
+
+<h2 data-blog-target="heading" data-level="2">Concepts</h2>
+
+<article>
+  <h3 data-blog-target="heading" data-level="3">TCP Connection Establishment and Termination</h3>
+  <h4 data-blog-target="heading" data-level="4">Three-Way Handshake</h4>
+  <ol class="list-decimal ml-4">
+    <li>
+      The server must be ready to accept connections. This is set up with <code data-blog-target="c">socket</code>, <code data-blog-target="c">bind</code> and <code data-blog-target="c">listen</code>. This is called <i>passive open</i>.
+    </li>
+    <li>
+      The client issues an <i>active open</i> by sending a 'synchronize' <b>SYN</b> segment (J). The SYN segment has no data, only an IP header, a TCP header and some TCP options.
+    </li>
+    <li>
+      The server must accept the SYN segment by 'acknowledging' <b>ACK</b> it (J+1). The server then sends its own SYN segment (K). So, in total, the server sends its own SYN(K) and ACK(J+1) in a single segment.
+    </li>
+    <li>
+      The client then acknowledges ACK (K+1) segment of the server.
+    </li>
+  </ol>
+
+  <h4 data-blog-target="heading" data-level="4">TCP Options</h4>
+  <ul class="list-disc ml-4">
+    <li>
+      <b class="font-block">MSS Option:</b>
+      <b>Maximum Segment Size</b>. Sent alongwith SYN segments. Advertises maximum amount of data TCP device is willing to accept. Set with <code data-blog-target="c">TCP_MAXSEG</code> socket option.
+    </li>
+    <li>
+      <b class="font-black">Window Size Option:</b>
+      Advertises how much data can be 'in-flight'. Initially set to ~64kb. But can be shifted to upto 0-14 bits (2<sup>0-14</sup>) for increased bandwidth, (about 1Gb at max). Set with <code data-blog-target="c">SO_RCVBUF</code> socket option.
+    </li>
+    <li>
+      <b class="font-black">Timestamp option:</b>
+      For high-speed connections to prevent possible data corruption caused by old, delayed or duplicated segments.
+    </li>
+  </ul>
+
+  <h4 data-blog-target="heading" data-level="4">TCP Connection Termination</h4>
+  <ol class="list-decimal ml-4">
+    <li>
+      The application (let's say client) calls <code data-blog-target="c">close</code>. This is called <i>active close</i>. It sends a <b>FIN</b> segment (M) which means it is finished sending data.
+    </li>
+    <li>
+      The other end (let's say server) acknowledges the segment with <code data-blog-target="c">ACK (M+1)</code> segment.
+    </li>
+    <li>
+      Some time later, the server will close its socket and send FIN (N) back to client.
+    </li>
+    <li>
+      The client will acknowledge ACK (N+1) the FIN.
+    </li>
+  </ol>
+</article>
+
+<article>
+  <h3 data-blog-target="heading" data-level="3">SCTP Association Establishment and Termination</h3>
+  <h4 data-blog-target="heading" data-level="4">Four-way Handshake</h4>
+
+  <ol class="list-decimal ml-4">
+    <li>
+      Server is ready in <i>passive open</i> state.
+    </li>
+    <li>
+      Client sends in an initialization <b>INIT</b> segment with list of IP addresses, initial sequence number, initialization tag, number of outbound streams the client is requesting
+      and number of inbound streams that it can support.
+    </li>
+    <li>
+      The server acknowledges client's request with <b>INIT-ACK</b> segment and sends the list of IP addresses, initial sequence number, initialization tag, number of outbound streams the server is requesting,
+      the number of inbound streams the server can support and a state cookie.
+    </li>
+    <li>
+      The client echoes the server's state cookie with <b>COOKIE-ECHO</b> segment.
+    </li>
+    <li>
+      The server acknowledges that the cookie is correct and establishes the association with <b>COOKIE-ACK</b> message.
+    </li>
+  </ol>
+
+  <h4 data-blog-target="heading" data-level="4">Association Termination</h4>
+  <p class="list-decimal">
+    SCTP does not allow half-closed associations. When one end terminates the association, the other end must stop sending data. If there is some queued data, it would be send and shutdown will take place.
+    No concept of <code data-blog-target="c">TIME_WAIT</code>, as the messages are verified with verification tags. Older packets will have invalid verification tags.
+  </p>
+</article>
