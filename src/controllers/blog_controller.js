@@ -6,12 +6,19 @@ export default class extends Controller {
 		headingClass: { type: Array, default: ["font-black", "mt-5", "mb-2"] },
 		linkClass: { type: Array, default: ["text-primary-500", "underline"] },
     cClass: { type: Array, default: ["bg-gray-100", "px-1", "py-0.5"] },
+    pClass: { type: Array, default: ["text-lg", "mt-2.5"] }
 	};
 
   cTargetConnected(c) {
     if (c.classList.length > 0) return;
 
-  c.classList.add(...this.cClassValue);
+    c.classList.add(...this.cClassValue);
+  }
+
+  pTargetConnected(p) {
+    if (p.classList.length > 0) return;
+
+    p.classList.add(...this.pClassValue);
   }
 
 	headingTargetConnected(heading) {
